@@ -1,0 +1,68 @@
+/////////////////////////////////////////////////////////////////////////////
+// Name:        [!output PROJECT_NAME].rc
+// Purpose:     a standard Win32 .rc file for the wxWidgets
+// Author:      Ryan Pusztai
+// Modified by: Ryan Mulder
+// Created:     11.21.05
+// Copyright:   (c) 2005 RJP Computing <support@rjpcomputing.com>
+/////////////////////////////////////////////////////////////////////////////
+
+// note that the icon used by the Explorer (i.e. the programs icon) is the
+// first icon in the executable and the icons are sorted both by their order
+// (Win9x) and by alphabetically (!) (NT), so put this icon first and give it
+// a name starting with "a"
+//aaaaaaaa ICON "main.ico"
+
+// this icon is used with wxFrame::SetIcon()
+main ICON "res\\[!output PROJECT_NAME].ico"
+
+// set this to 1 if you don't want to use manifest resource (manifest resource
+// is needed to enable visual styles on Windows XP - see docs/msw/winxp.txt
+// for more information)
+[!if WX_USE_LIB]
+#define wxUSE_NO_MANIFEST 0
+[!else]
+#define wxUSE_NO_MANIFEST 1
+[!endif]
+
+// this is not always needed but doesn't hurt (except making the executable
+// very slightly larger): this file contains the standard icons, cursors, ...
+#include "wx/msw/wx.rc"
+
+[!if WX_USE_VERSION_RC]
+// Version
+//
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "A wxWidgets Project"
+            VALUE "CompanyName", "My Company"
+            VALUE "FileDescription", "[!output PROJECT_NAME]"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "[!output PROJECT_NAME]"
+            VALUE "LegalCopyright", "Copyright © 2006"
+            VALUE "OriginalFilename", "[!output PROJECT_NAME]"
+            VALUE "ProductName", "[!output PROJECT_NAME]"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+[!endif]

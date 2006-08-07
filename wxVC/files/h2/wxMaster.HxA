@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpAttributes>
+<HelpAttributes DTDVersion="1.0">
+
+<AttName Id="1" Name="DevLang" Display="Yes" UIString="DevLang" AttType="Enum">
+        <AttVal Id="1_1" Name="C++" Display="Yes" UIString="C++" />
+</AttName>
+<AttName Id="2" Name="Locale" Display="No" UIString="Locale" AttType="Enum">
+	<AttVal Id="2_1" Name="kbEnglish" Display="No" UIString="English" />
+</AttName>
+<AttName Id="3" Name="TargetOS" Display="No" UIString="TargetOS" AttType="Enum">
+	<AttVal Id="3_1" Name="Windows" Display="No" UIString="Windows" />
+</AttName>
+<AttName Id="4" Name="TopicType" Display="No" UIString="TopicType" AttType="Enum">
+	<AttVal Id="4_1" Name="kbArticle" Display="No" UIString="Article" />
+	<AttVal Id="4_2" Name="kbHowTo" Display="No" UIString="How To" />
+	<AttVal Id="4_3" Name="kbSyntax" Display="No" UIString="Syntax" />
+</AttName>
+<AttName Id="5" Name="LinkGroup" Display="No" UIString="LinkGroup" AttType="Enum">
+	<AttVal Id="5_1" Name="wxWindowsGroup" Display="No" UIString="wxWindows" />
+</AttName>
+<AttName Id="6" Name="DocSet" Display="Yes" UIString="DocSet" AttType="Enum">
+        <AttVal Id="6_1" Name="wxWindows" Display="Yes" UIString="wxWindows Library" />
+</AttName>
+
+</HelpAttributes>

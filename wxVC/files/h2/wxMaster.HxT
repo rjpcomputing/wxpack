@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpTOC>
+<HelpTOC DTDVersion="1.0" LangId="1033" PluginStyle="Hierarchical" PluginTitle="wxWindows 2.6.0">
+    <HelpTOCNode Title="wxWindows 2.6.0: A portable C++ and Python GUI toolkit">
+        <HelpTOCNode NodeType="TOC" Url="wx"/>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Manual for Tex2RTF 2.0: A LaTeX to RTF and HTML converter">
+        <HelpTOCNode NodeType="TOC" Url="tex2rtf"/>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Object Graphics Library 3.0">
+        <HelpTOCNode NodeType="TOC" Url="ogl"/>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Gizmos: a library of enhanced controls">
+        <HelpTOCNode NodeType="TOC" Url="gizmos"/>
+    </HelpTOCNode>
+    <HelpTOCNode Title="FL: a Frame Layout Framework">
+        <HelpTOCNode NodeType="TOC" Url="fl"/>
+    </HelpTOCNode>
+    <HelpTOCNode Title="User Manual for Dialog Editor Version 2.1">
+        <HelpTOCNode NodeType="TOC" Url="dialoged"/>
+    </HelpTOCNode>
+</HelpTOC>
