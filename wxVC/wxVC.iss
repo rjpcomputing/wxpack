@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.6.3.44"
+#define MyAppVer "2.6.3.45"
 #define MyAppName "wxVC"
 #define wxMajorVersion "2.6"
 
@@ -36,7 +36,6 @@ LicenseFile=files\license.txt
 
 [Files]
 Source: files\h2\*; DestDir: {app}\h2; Flags: ignoreversion recursesubdirs
-Source: files\support\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
 Source: files\vcWizard\vc7\*; DestDir: {code:GetVC7InstallDir}; Flags: ignoreversion recursesubdirs touch; Check: IsVC7Installed()
 Source: files\vcWizard\vc8\*; DestDir: {code:GetVC8InstallDir}; Flags: ignoreversion recursesubdirs touch; Check: IsVC8Installed()
 Source: files\vcWizard\vc8Express\*; DestDir: {code:GetVC8ExpressInstallDir}; Flags: ignoreversion recursesubdirs touch; Check: IsVC8ExpressInstalled()
