@@ -6,12 +6,14 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.6.3.23"
+#define MyAppVer "2.7.0.24"
 #define MyAppName "wxWidgets"
-#define wxMajorVersion "2.6"
-#define MyAppVerName "wxWidgets Compiled 2.6.3"
+#define wxMajorVersion "2.7"
+#define MyAppVerName "wxWidgets Compiled 2.7.0"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
+#define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
+#define AppMinVer "2.6.3.23"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
@@ -47,12 +49,12 @@ VersionInfoDescription={#MyAppName}
 [Files]
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
-Source: files26\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
-Source: files26\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll
-Source: files26\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib
-Source: files26\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc71
-Source: files26\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib
-Source: wxWidgets Compiled_v26.iss; DestDir: {app}; Flags: ignoreversion recursesubdirs dontcopy
+Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
+Source: files{#wxMajorVersion}\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll
+Source: files{#wxMajorVersion}\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib
+Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc71
+Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib
+Source: wxWidgets Compiled.iss; DestDir: {app}; Flags: dontcopy
 
 [InstallDelete]
 ; Remove plot from distribution. It is added to wxAdditions.
@@ -86,7 +88,7 @@ Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment
 [Icons]
 Name: {group}\{#MyAppName} 2.6.3 Help; Filename: {app}\help\wx.chm
 Name: {group}\{#MyAppName} Book; Filename: {app}\help\Cross Platform GUI Programming With wxWidget.pdf
-Name: {group}\{cm:UninstallProgram,{#MyAppName} 2.6.3}; Filename: {uninstallexe}
+Name: {group}\{cm:UninstallProgram,{#MyAppName} 2.7.0}; Filename: {uninstallexe}
 
 [Code]
 function GetPathInstalled( AppID: String ): String;
@@ -139,35 +141,39 @@ var
 	sUninstallEXE: String;
 
 begin
-	sVersion:= GetInstalledVersion('{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}');
-	sUninstallEXE:= RemoveQuotes(GetPathUninstallString('{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}'));
+	sVersion:= GetInstalledVersion('{{#wxWidgetsGUID}}');
+	sUninstallEXE:= RemoveQuotes(GetPathUninstallString('{{#wxWidgetsGUID}}'));
 
-	// Debug Stuff
-	//MsgBox('Version ' + sVersion + ' was found' #13 'The length is ' + IntToStr(Length(sVersion)), mbInformation, MB_OK);
-	//MsgBox('Uninstall is located at : ' + sUninstallEXE, mbInformation, MB_OK);
-	//MsgBox('Results from a string compare ' + IntToStr(CompareStr('4.18', sVersion)), mbInformation, MB_OK);
-
+	// Check to make sure there is an exceptable version of wxAdditions installed.
 	if Length(sVersion) = 0 then begin
 		result:= true;
 	end else begin
-		if CompareStr('2.6.2.17', sVersion) >= 0 then begin
-			if FileExists(sUninstallEXE) then begin
-				//  #13 #13 'WARNING: This will delete all files in the wxWidgets Compiled install directory.'
-				if MsgBox('An old version of {#MyAppVerName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO) = IDYES then begin
-					Exec(sUninstallEXE,
-							'/SILENT',
-							GetPathInstalled('{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}'),
-							SW_SHOWNORMAL,
-							ewWaitUntilTerminated,
-							ResultCode);
+		if CompareText( sVersion, '{#AppMinVer}' ) <= 0 then begin
+			if FileExists( sUninstallEXE ) then begin
+				if WizardSilent() then begin
+					// Just uninstall without asking because we are in silent mode.
+					Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'),
+							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
 
 					// Make sure that Setup is visible and the foreground window
 					BringToFrontAndRestore;
 					result := true;
-				end else
-					result := true;
+				end else begin
+					// Ask if they really want to uninstall because we are in the default installer.
+					if SuppressibleMsgBox( 'Version ' + sVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDYES ) = IDYES then begin
+						Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'),
+							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
+
+						// Make sure that Setup is visible and the foreground window
+						BringToFrontAndRestore;
+						result := true;
+					end else begin
+						result := true;
+					end;
+				end;
 			end;
-		end else
+		end else begin
 			result := true;
+		end;
 	end;
 end;
