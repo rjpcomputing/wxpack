@@ -1,0 +1,59 @@
+object WizardForm: TISCustomForm
+  Left = 0
+  Top = 0
+  Width = 413
+  Height = 237
+  DesignPanel = frmISWizardPage.elDesignPanel
+  object Label1: TLabel
+    Left = 0
+    Top = 38
+    Width = 390
+    Height = 13
+    Caption = 
+      'To continue, click Next. If you would like to select a different' +
+      ' folder, click Browse.'
+  end
+  object wxLogo: TBitmapImage
+    Left = 0
+    Top = 0
+    Width = 32
+    Height = 32
+  end
+  object Label2: TLabel
+    Left = 40
+    Top = 10
+    Width = 352
+    Height = 13
+    Caption = 
+      'Setup will create the wxWidgets Compiled library in the followin' +
+      'g location.'
+  end
+  object wxLocationFolderTreeView: TFolderTreeView
+    Left = 0
+    Top = 88
+    Width = 409
+    Height = 145
+    Cursor = crArrow
+    Hint = 'Enter Path for the wxWidgets Compiled Library'
+    Enabled = False
+    ShowHint = True
+    Directory = 'C:\SourceCode\Libraries'
+    TabOrder = 2
+  end
+  object Edit1: TEdit
+    Left = 0
+    Top = 62
+    Width = 330
+    Height = 21
+    TabOrder = 0
+    Text = 'C:\SourceCode\Libraries'
+  end
+  object BrowseButton: TButton
+    Left = 336
+    Top = 60
+    Width = 74
+    Height = 24
+    Caption = 'Browse ...'
+    TabOrder = 1
+  end
+end
