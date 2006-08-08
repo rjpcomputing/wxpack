@@ -35,10 +35,10 @@ VersionInfoDescription={#MyAppName}
 LicenseFile=files\license.txt
 
 [Files]
-Source: files\h2\*; DestDir: {app}\h2; Flags: ignoreversion recursesubdirs
-Source: files\vcWizard\vc7\*; DestDir: {code:GetVC7InstallDir}; Flags: ignoreversion recursesubdirs touch; Check: IsVC7Installed()
-Source: files\vcWizard\vc8\*; DestDir: {code:GetVC8InstallDir}; Flags: ignoreversion recursesubdirs touch; Check: IsVC8Installed()
-Source: files\vcWizard\vc8Express\*; DestDir: {code:GetVC8ExpressInstallDir}; Flags: ignoreversion recursesubdirs touch; Check: IsVC8ExpressInstalled()
+Source: files\h2\*; DestDir: {app}\h2; Excludes: .svn\; Flags: ignoreversion recursesubdirs
+Source: files\vcWizard\vc7\*; DestDir: {code:GetVC7InstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC7Installed()
+Source: files\vcWizard\vc8\*; DestDir: {code:GetVC8InstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC8Installed()
+Source: files\vcWizard\vc8Express\*; DestDir: {code:GetVC8ExpressInstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC8ExpressInstalled()
 Source: files\license.txt; DestDir: {app}
 Source: wxVC.iss; DestDir: {app}; Flags: dontcopy
 

@@ -6,16 +6,16 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.6.3.14"
+#define MyAppVer "2.7.0.15"
 #define MyAppName "wxAdditions"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define wxWidgetsMinVer "2.6.3.17"
-#define wxAdditionsMinVer "2.6.3.08"
+#define wxWidgetsMinVer "2.6.3.23"
+#define wxAdditionsMinVer "2.6.3.14"
 
 [Setup]
 AppName={#MyAppName}
 AppVerName={#MyAppName} {#MyAppVer}
-; Set the app directory to the wxWidgets 2.6 directory.
+; Set the app directory to the wxWidgets directory.
 DefaultDirName={code:GetWxAdditionsAppPath|{{{#wxWidgetsGUID}%7d}\additions
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=false
@@ -36,7 +36,7 @@ ChangesEnvironment=true
 UsePreviousAppDir=false
 
 [Files]
-Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\
 
 [Registry]
 Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXADDITIONS; ValueData: {app}; Flags: preservestringtype; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,5.2
