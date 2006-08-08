@@ -47,13 +47,13 @@ VersionInfoVersion={#MyAppVer}
 VersionInfoDescription={#MyAppName}
 
 [Files]
-Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
+Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
-Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
-Source: files{#wxMajorVersion}\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll
-Source: files{#wxMajorVersion}\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib
-Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc71
-Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib
+Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: files{#wxMajorVersion}\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc71; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
 Source: wxWidgets Compiled.iss; DestDir: {app}; Flags: dontcopy
 
 [InstallDelete]
