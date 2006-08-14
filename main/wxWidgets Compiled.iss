@@ -1,12 +1,12 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-; File:        wxWidgets Compiled_v26.iss
+; File:        wxWidgets Compiled.iss
 ; Author:      Ryan Pusztai
 ; Date:        11/28/2005
 ; Copyright:   (c) 2006 Ryan Pusztai <rpusztai@gmail.com>
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.7.0.24"
+#define MyAppVer "2.7.0.25"
 #define MyAppName "wxWidgets"
 #define wxMajorVersion "2.7"
 #define MyAppVerName "wxWidgets Compiled 2.7.0"
@@ -86,7 +86,7 @@ Name: custom; Description: Custom Installation; Flags: iscustom
 Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXWIN; ValueData: {app}; Flags: uninsdeletevalue preservestringtype deletevalue; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,5.2; Components: 
 
 [Icons]
-Name: {group}\{#MyAppName} 2.6.3 Help; Filename: {app}\help\wx.chm
+Name: {group}\{#MyAppName} 2.7.0 Help; Filename: {app}\help\wx.chm
 Name: {group}\{#MyAppName} Book; Filename: {app}\help\Cross Platform GUI Programming With wxWidget.pdf
 Name: {group}\{cm:UninstallProgram,{#MyAppName} 2.7.0}; Filename: {uninstallexe}
 
