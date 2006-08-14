@@ -50,6 +50,10 @@ Name: {app}\lib\vc_libdll; Type: filesandordirs
 Name: {app}\lib\gcc_dll\*.a; Type: files
 Name: {app}\lib\vc_dll\*.a; Type: files
 Name: {app}\licence.txt; Type: files
+; Removing wxAUI because it is now in wxWidgets 2.7.0.
+Name: {app}\build\wxAUI; Type: filesandordirs
+Name: {app}\include\wx\wxAUI; Type: filesandordirs
+Name: {app}\src\wxAUI; Type: filesandordirs
 
 [Code]
 function GetPathInstalled( AppID: String ): String;
