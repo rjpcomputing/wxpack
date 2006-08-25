@@ -14,7 +14,7 @@
 //aaaaaaaa ICON "main.ico"
 
 // this icon is used with wxFrame::SetIcon()
-main ICON "res\\[!output PROJECT_NAME].ico"
+amain ICON "res\\[!output PROJECT_NAME].ico"
 
 // set this to 1 if you don't want to use manifest resource (manifest resource
 // is needed to enable visual styles on Windows XP - see docs/msw/winxp.txt

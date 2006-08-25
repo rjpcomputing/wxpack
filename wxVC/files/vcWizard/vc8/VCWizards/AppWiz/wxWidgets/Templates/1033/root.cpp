@@ -10,7 +10,7 @@ bool MyApp::OnInit()
 [!else]
 	[!output SAFE_PROJECT_NAME]Frame* frame = new [!output SAFE_PROJECT_NAME]Frame( 0L, wxT("[!output PROJECT_NAME]") );
 [!endif]
-	frame->SetIcon( wxICON( main ) );
+	frame->SetIcon( wxICON( amain ) );
 	frame->Show();
 	return true;
 }

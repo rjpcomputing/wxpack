@@ -140,7 +140,7 @@ function AddConfig(proj, strProjectName)
 			CLTool.TreatWChar_tAsBuiltInType = false;
 			CLTool.Detect64BitPortabilityProblems = true;
 			CLTool.WarningLevel = warningLevel_3;
-			CLTool.AdditionalIncludeDirectories = "$(WXWIN)/include;$(WXWIN)/additions/include;$(WXWIN)/contrib/include"
+			CLTool.AdditionalIncludeDirectories = "$(WXWIN)/include;$(WXADDITIONS)/include;$(WXWIN)/contrib/include"
 			
 			var forcedIncludes = "$(WXWIN)/include/wx/wxprec.h;"
 			if(wizard.FindSymbol('WX_USE_MONOLITHIC_DLL'))
@@ -189,9 +189,13 @@ function AddConfig(proj, strProjectName)
 			var strDefines = GetPlatformDefine(config);
 			strDefines += "STRICT;__WXMSW__;__WX__;";
 			if(bDebug)
-				strDefines += "_DEBUG;__WXDEBUG;";
+			{
+				strDefines += "_DEBUG;__WXDEBUG__;";
+			}
 			else
+			{
 				strDefines += "NDEBUG;";
+			}
 				
 			if(wizard.FindSymbol('WX_APPTYPE_CONSOLE'))
 			{
@@ -201,6 +205,12 @@ function AddConfig(proj, strProjectName)
 			{
 				strDefines += "_WINDOWS;";
 			}
+			
+			if(wizard.FindSymbol('WX_USE_UNICODE'))
+			{
+				strDefines += "wxUSE_UNICODE;";
+			}
+			
 			if( useDLL )
 			{
 				strDefines += "WXUSINGDLL;";
@@ -263,11 +273,11 @@ function AddConfig(proj, strProjectName)
 			
 			if(useDLL)
 			{
-				LinkTool.AdditionalLibraryDirectories = "$(WXWIN)/lib/vc_dll;$(WXWIN)/additions/lib/vc_dll";
+				LinkTool.AdditionalLibraryDirectories = "$(WXWIN)/lib/vc_dll;$(WXADDITIONS)/lib/vc_dll";
 			}
 			else
 			{
-				LinkTool.AdditionalLibraryDirectories = "$(WXWIN)/lib/vc_lib;$(WXWIN)/additions/lib/vc_lib";
+				LinkTool.AdditionalLibraryDirectories = "$(WXWIN)/lib/vc_lib;$(WXADDITIONS)/lib/vc_lib";
 			}
 			
 			// As of VC8, manifests are used with executables to inform the operating system of its DLL dependencies
