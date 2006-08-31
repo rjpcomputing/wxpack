@@ -185,7 +185,7 @@
 									<property name="proportion">0</property>
 									<object class="wxStaticBitmap">
 										<property name="bg"></property>
-										<property name="bitmap">main; Load From Icon Resource</property>
+										<property name="bitmap">amain; Load From Icon Resource</property>
 										<property name="enabled">1</property>
 										<property name="extra_style"></property>
 										<property name="fg"></property>
