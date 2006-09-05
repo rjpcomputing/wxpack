@@ -207,7 +207,7 @@ begin
 	end;
 
 	if Length(wxVersion) = 0 then begin
-		SuppressibleMsgBox('WARNING: wxWidgets not found.' + #13 + #13 + 'wxAdditions was compiled against wxWidget v2.6.3-p2. Please install wxWidgets Compiled v{#wxWidgetsMinVer} or above.' + #13 + #13 + 'NOTE: The installer will continue after pressing "OK".', mbError, MB_OK, idOk )
+		SuppressibleMsgBox('WARNING: wxWidgets not found.' + #13 + #13 + 'wxAdditions was compiled against wxWidget v2.7.0. Please install wxWidgets Compiled v{#wxWidgetsMinVer} or above.' + #13 + #13 + 'NOTE: The installer will continue after pressing "OK".', mbError, MB_OK, idOk )
 		result:= true;
 	end else begin
 		if CompareStr('{#wxWidgetsMinVer}', wxVersion) > 0 then begin
