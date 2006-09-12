@@ -28,7 +28,7 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.7.0.32"
+#define MyAppVer "2.7.0.33"
 #define wxMajorVersion "2.7"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -122,6 +122,9 @@ Name: custom; Description: Custom Installation; Flags: iscustom
 [CustomMessages]
 PackCustomPagesCaption=Select Destination Location
 PackCustomPagesDescription=Where should wxWidgets Compiled be installed?
+
+[UninstallDelete]
+Name: {app}\files; Type: filesandordirs
 
 [Code]
 // -- Custom Page Functions
