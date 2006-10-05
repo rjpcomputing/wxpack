@@ -6,11 +6,12 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.7.0.16"
+#define MyAppVer "2.7.0.18"
 #define MyAppName "wxAdditions"
+#define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
 #define wxWidgetsMinVer "2.6.3.23"
-#define wxAdditionsMinVer "2.6.3.14"
+#define wxAdditionsMinVer "2.7.0.16"
 
 [Setup]
 AppName={#MyAppName}
@@ -37,6 +38,7 @@ UsePreviousAppDir=false
 
 [Files]
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\
+Source: files\wxfbPlugin\wxAdditions\*; DestDir: {code:GetPathInstalled|{#wxFBAppID}}\plugins\wxAdditions; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\; Check: IsInstalled( 'wxFormBuilder' )
 
 [Registry]
 Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXADDITIONS; ValueData: {app}; Flags: preservestringtype; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,5.2
@@ -74,6 +76,23 @@ begin
   //MsgBox( 'Installed Path: ' + sPrevPath, mbInformation, MB_OK);
 
   Result := sPrevPath;
+end;
+
+function IsInstalled( AppID: String ): Boolean;
+var
+	sInstallPath: String;
+	bExists: Boolean;
+begin
+	bExists := false;
+	sInstallPath := GetPathInstalled( AppID );
+
+	// Check to see if it returned something
+	if not Length( sInstallPath ) = 0 then
+	begin
+		bExists := true;
+	end;
+
+	Result := bExists;
 end;
 
 function GetPathInstalledOrDefault( AppID: String; defVal: String ): String;
