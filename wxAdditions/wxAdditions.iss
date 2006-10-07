@@ -161,11 +161,14 @@ begin
 	end;
 
 	// Check for a commandline parameter of wxfbpath.
-	sTmp := '{param:wxfbpath|''}';
+	sTmp := ExpandConstant( '{param:wxfbpath}' );
 	if Length(sTmp) >= 0 then
 	begin
 		sDefaultLocation := sTmp;
 	end;
+
+    // Debug Stuff
+	//MsgBox( 'wxFB Path: ' + sDefaultLocation, mbInformation, MB_OK);
 
 	Result := sDefaultLocation;
 end;
