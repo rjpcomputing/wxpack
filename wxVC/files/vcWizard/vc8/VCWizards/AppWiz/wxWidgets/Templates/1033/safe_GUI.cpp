@@ -57,7 +57,7 @@ AboutDlg::AboutDlg( wxWindow* parent, int id, wxString title, wxPoint pos, wxSiz
 	infoSizer = new wxStaticBoxSizer( new wxStaticBox( this, -1, wxT("") ), wxVERTICAL );
 	wxBoxSizer* bSizer10;
 	bSizer10 = new wxBoxSizer( wxHORIZONTAL );
-	m_icon = new wxStaticBitmap( this, ID_ABOUT_ICON, wxICON( main ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_icon = new wxStaticBitmap( this, ID_ABOUT_ICON, wxICON( amain ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer10->Add( m_icon, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	wxBoxSizer* textSizer;
