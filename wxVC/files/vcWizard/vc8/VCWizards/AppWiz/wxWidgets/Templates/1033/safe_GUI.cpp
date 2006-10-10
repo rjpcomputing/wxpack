@@ -37,7 +37,7 @@ MainPanel::MainPanel( wxWindow* parent, int id, wxPoint pos, wxSize size, int st
 {
 	wxBoxSizer* mainSizer;
 	mainSizer = new wxBoxSizer( wxVERTICAL );
-	mainSizer->Add( 10, 10, 1, wxALL, 5 );
+	mainSizer->Add( 0, 0, 1, 0, 0 );
 	m_OK = new wxButton( this, ID_MAIN_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
 	mainSizer->Add( m_OK, 0, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5 );
 	

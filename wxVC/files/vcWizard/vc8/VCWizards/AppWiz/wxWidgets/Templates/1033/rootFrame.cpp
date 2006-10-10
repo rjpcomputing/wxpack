@@ -23,7 +23,12 @@ END_EVENT_TABLE()
 [!output SAFE_PROJECT_NAME]Frame::[!output SAFE_PROJECT_NAME]Frame( wxWindow *parent, int id )
 	: MainFrame( parent, id )
 {
-	new [!output SAFE_PROJECT_NAME]Panel( this );
+	wxBoxSizer* sizer = new wxBoxSizer( wxVERTICAL );
+	wxPanel* panel = new [!output SAFE_PROJECT_NAME]Panel( this );
+	sizer->Add( panel, 1, wxEXPAND );
+	wxSize panelSize = panel->GetSize();
+	this->SetSizerAndFit( sizer );
+	this->SetClientSize( panelSize );	
 }
 
 [!if WX_MENU_BAR]

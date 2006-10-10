@@ -51,7 +51,7 @@ class MainFrame : public wxFrame
 [!endif]
 	
 	public:
-		MainFrame( wxWindow* parent, int id = -1, wxString title = wxT("[!output PROJECT_NAME]"), wxPoint pos = wxDefaultPosition, wxSize size = wxSize( 500,300 ), int style = wxDEFAULT_FRAME_STYLE );
+		MainFrame( wxWindow* parent, int id = -1, wxString title = wxT("[!output PROJECT_NAME]"), wxPoint pos = wxDefaultPosition, wxSize size = wxDefaultSize, int style = wxDEFAULT_FRAME_STYLE );
 };
 
 /**
@@ -85,7 +85,7 @@ class AboutDlg : public wxDialog
 		wxStdDialogButtonSizer* m_aboutDialogButtonSizer;
 	
 	public:
-		AboutDlg( wxWindow* parent, int id = -1, wxString title = wxT("About [!output PROJECT_NAME]..."), wxPoint pos = wxDefaultPosition, wxSize size = wxSize( 230,150 ), int style = wxDEFAULT_DIALOG_STYLE );
+		AboutDlg( wxWindow* parent, int id = -1, wxString title = wxT("About [!output PROJECT_NAME]..."), wxPoint pos = wxDefaultPosition, wxSize size = wxDefaultSize, int style = wxDEFAULT_DIALOG_STYLE );
 };
 [!endif]
 

@@ -29,8 +29,12 @@
 	
 	// Set the version label.
 	m_staticVersion->SetLabel( m_staticVersion->GetLabel() + wxT(" ") + fileVersion );
+	
 [!else]
 	m_staticVersion->SetLabel( m_staticVersion->GetLabel() + wxT(" " APP_VERSION_NUMBER) );
+	
 [!endif]
 [!endif]
+	// Resize to fit the contents.
+	this->GetSizer()->SetSizeHints( this );
 }
