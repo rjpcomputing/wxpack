@@ -20,7 +20,6 @@
 			<property name="minimum_size"></property>
 			<property name="name">MainFrame</property>
 			<property name="pos"></property>
-			<property name="size">500,300</property>
 			<property name="style">wxDEFAULT_FRAME_STYLE</property>
 			<property name="title">[!output PROJECT_NAME]</property>
 			<property name="tooltip"></property>
@@ -112,11 +111,11 @@
 				<property name="name">mainSizer</property>
 				<property name="orient">wxVERTICAL</property>
 				<object class="spacer">
-					<property name="border">5</property>
-					<property name="flag">wxALL</property>
-					<property name="height">10</property>
+					<property name="border">0</property>
+					<property name="flag"></property>
+					<property name="height">0</property>
 					<property name="proportion">1</property>
-					<property name="width">10</property>
+					<property name="width">0</property>
 				</object>
 				<object class="sizeritem">
 					<property name="border">5</property>
@@ -154,7 +153,6 @@
 			<property name="minimum_size"></property>
 			<property name="name">AboutDlg</property>
 			<property name="pos"></property>
-			<property name="size">230,150</property>
 			<property name="style">wxDEFAULT_DIALOG_STYLE</property>
 			<property name="title">About [!output PROJECT_NAME]...</property>
 			<property name="tooltip"></property>
