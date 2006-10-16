@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.7.0.19"
+#define MyAppVer "2.7.0.21"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -35,6 +35,8 @@ VersionInfoDescription={#MyAppName}
 LicenseFile=files\license.txt
 ChangesEnvironment=true
 UsePreviousAppDir=false
+
+
 
 [Files]
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\
@@ -77,6 +79,7 @@ begin
 
   Result := sPrevPath;
 end;
+//--------------------------------------------------------------------------------
 {Unused function}
 function IsInstalled( AppID: String ): Boolean;
 var
@@ -87,14 +90,14 @@ begin
 	sInstallPath := GetPathInstalled( AppID );
 
 	// Check to see if it returned something
-	if not Length( sInstallPath ) = 0 then
+	if not ( Length( sInstallPath ) = 0 ) then
 	begin
 		bExists := true;
 	end;
 
 	Result := bExists;
 end;
-
+//--------------------------------------------------------------------------------
 function GetPathInstalledOrDefault( AppID: String; defVal: String ): String;
 var
    sPath: String;
@@ -110,7 +113,7 @@ begin
 
   Result := sPath;
 end;
-
+//--------------------------------------------------------------------------------
 function GetWxAdditionsAppPath( AppID: String ): String;
 var
   sEnvVar, sDefaultLocation: String;
@@ -121,7 +124,6 @@ begin
   sEnvVar := GetEnv('WXWIN');
   if Length(sEnvVar) > 0 then
   begin
-    //MsgBox( 'Setting the default value to "WXWIN": ' + sEnvVar, mbInformation, MB_OK);
     sDefaultLocation := sEnvVar;
   end;
 
@@ -131,20 +133,18 @@ begin
     sEnvVar := GetEnv('WX');
     if Length(sEnvVar) > 0 then
     begin
-      //MsgBox( 'Setting the default value to "WX": ' + sEnvVar, mbInformation, MB_OK);
       sDefaultLocation := sEnvVar;
     end;
   end;
 
   if Length(sDefaultLocation) <= 0 then
   begin
-    //MsgBox( 'Setting the default value to: ' + ExpandConstant( '{sd}' ), mbInformation, MB_OK);
     sDefaultLocation := ExpandConstant( '{sd}' );
   end;
 
   Result := GetPathInstalledOrDefault( AppID, sDefaultLocation );
 end;
-
+//--------------------------------------------------------------------------------
 function GetWxFormBuilderAppPath( tmp : String ): String;
 var
 	sTmp, sDefaultLocation: String;
@@ -155,14 +155,14 @@ begin
 
 	// Check for a previous install.
 	sTmp := GetPathInstalled( '{#wxFBAppID}' );
-	if Length(sTmp) >= 0 then
+	if not ( Length(sTmp) = 0 ) then
 	begin
 		sDefaultLocation := sTmp;
 	end;
 
 	// Check for a commandline parameter of wxfbpath.
 	sTmp := ExpandConstant( '{param:wxfbpath}' );
-	if Length(sTmp) >= 0 then
+	if not ( Length(sTmp) = 0 ) then
 	begin
 		sDefaultLocation := sTmp;
 	end;
@@ -172,17 +172,24 @@ begin
 
 	Result := sDefaultLocation;
 end;
-
+//--------------------------------------------------------------------------------
 function IsWxFBInstalled(): Boolean;
+var
+	sInstallPath: String;
+	bExists: Boolean;
 begin
-	if Length( GetWxFormBuilderAppPath('') ) > 0 then
-	begin
-		Result := true;
-	end else begin
-		Result := false;
-	end;
-end;
+	bExists := false;
+	sInstallPath := GetWxFormBuilderAppPath( '' );
 
+	// Check to see if it returned something
+	if not ( Length( sInstallPath ) = 0 ) then
+	begin
+		bExists := true;
+	end;
+
+	Result := bExists;
+end;
+//--------------------------------------------------------------------------------
 function GetInstalledVersion( AppID: String ): String;
 var
    sPrevPath: String;
@@ -197,7 +204,7 @@ begin
 
   Result := sPrevPath;
 end;
-
+//--------------------------------------------------------------------------------
 function GetPathUninstallString( AppID: String ): String;
 var
    sPrevPath: String;
@@ -211,7 +218,7 @@ begin
 
   Result := sPrevPath;
 end;
-
+//--------------------------------------------------------------------------------
 function InitializeSetup(): boolean;
 var
 	ResultCode: Integer;
@@ -275,3 +282,5 @@ begin
 		end;
 	end;
 end;
+
+
