@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.7.0.21"
+#define MyAppVer "2.7.0.22"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -282,5 +282,4 @@ begin
 		end;
 	end;
 end;
-
 
