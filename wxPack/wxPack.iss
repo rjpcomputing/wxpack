@@ -9,13 +9,6 @@
 
 ; -- Installer configurations
 
-; Name:    IncludeABN
-; Options: 1 or 0
-;
-; If 1 it will include Auto Build Number in the install,
-; else if 0 it will not include Auto Build Number in the install.
-#define IncludeABN 1
-
 ; Name:    ShowComponentsListAlways
 ; Options: 1 or 0
 ;
@@ -28,15 +21,14 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.7.0.38"
+#define MyAppVer "2.7.0.39"
 #define wxMajorVersion "2.7"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AutoBuildNumber "AutoBuildNumber_v1.0.1.2.exe"
 #define FormBulder "wxFormBuilder_v2.0.75.exe"
 #define Compiled "wxWidgets Compiled_v2.7.0.25.exe"
 #define Additions "wxAdditions_v2.7.0.22.exe"
-#define VC "wxVC_v2.7.0.49.exe"
+#define VC "wxVC_v2.7.0.50.exe"
 #define AppMinVer "2.6.3.25"
 
 
@@ -70,9 +62,6 @@ LicenseFile=license.txt
 
 [Files]
 Source: files\{#FormBulder}; DestDir: {app}\files; DestName: wxFormBuilder_setup.exe
-#if IncludeABN == 1
-Source: files\{#AutoBuildNumber}; DestDir: {app}\files; DestName: AutoBuildNumber_setup.exe
-#endif
 Source: files\{#Compiled}; DestDir: {app}\files; DestName: wxWidgets Compiled_setup.exe
 Source: files\{#Additions}; DestDir: {app}\files; DestName: wxAdditions_setup.exe
 Source: files\{#VC}; DestDir: {app}\files; DestName: wxVC_setup.exe; Check: IsVCInstalled
@@ -87,18 +76,12 @@ Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
 Filename: {app}\files\wxFormBuilder_setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-#if IncludeABN == 1
-Filename: {app}\files\AutoBuildNumber_setup.exe; StatusMsg: Installing AutoBuildNumber ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|AutoBuildNumber}"""; Flags: hidewizard; Components: abn
-#endif
 Filename: {app}\files\wxWidgets Compiled_setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR={code:GetLocation} ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc71 wx\gcc\gcclib wx\gcc\gccdll
 Filename: {app}\files\wxAdditions_setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 Filename: {app}\files\wxVC_setup.exe; StatusMsg: Installing wxVC ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxVC}"""; Flags: hidewizard; Components: wxvc; Check: IsVCInstalled
 
 [Components]
 Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc71 gcc compact; ExtraDiskSpaceRequired: 17406362
-#if IncludeABN == 1
-Name: abn; Description: AutoBuildNumber; Flags: disablenouninstallwarning; Types: custom full vc71 gcc compact; ExtraDiskSpaceRequired: 1048576
-#endif
 Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc71 gcc compact; ExtraDiskSpaceRequired: 216111514
 Name: wxvc; Description: wxVC; Flags: disablenouninstallwarning; Types: custom full vc71 compact; Check: IsVCInstalled; ExtraDiskSpaceRequired: 3565158
 Name: wx; Description: wxWidgets Compiled By:; Flags: disablenouninstallwarning
@@ -432,7 +415,6 @@ end;
 //
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
-	autoBuildNumberEXE: String;
 	wxAdditionsUninstEXE: String;
 	wxVCUninstEXE: String;
 	wxFormBuilderUninstEXE: String;
@@ -443,29 +425,10 @@ begin
 	if CurUninstallStep = usUninstall then
 	begin
 		// Get all the paths to the components uninstaller
-		#if IncludeABN == 1
-		autoBuildNumberEXE := RemoveQuotes( GetPathUninstallString( 'AutoBuildNumber' ) );
-		#endif
 		wxAdditionsUninstEXE := RemoveQuotes( GetPathUninstallString( 'wxAdditions' ) );
 		wxVCUninstEXE := RemoveQuotes( GetPathUninstallString( 'wxVC' ) );
 		wxFormBuilderUninstEXE := RemoveQuotes( GetPathUninstallString( 'wxFormBuilder' ) );
 		wxCompiledUninstEXE := RemoveQuotes( GetPathUninstallString( '{{#wxWidgetsGUID}}' ) );
-
-		#if IncludeABN == 1
-		// Check to make sure the return has a valid location.
-		if CompareStr( autoBuildNumberEXE, '' ) > 0 then
-		begin
-			//MsgBox(autoBuildNumberEXE, mbInformation, MB_OK);
-			if Exec( autoBuildNumberEXE, '/silent', '', SW_SHOW, ewWaitUntilTerminated, ResultCode ) then
-			begin
-				// handle success if necessary; ResultCode contains the exit code
-			end
-			else begin
-				// handle failure if necessary; ResultCode contains the error code
-				MsgBox(autoBuildNumberEXE + ' could not be executed', mbError, MB_OK);
-			end;
-		end;
-		#endif
 
 		// Check to make sure the return has a valid location.
 		if CompareStr( wxAdditionsUninstEXE, '' ) > 0 then
