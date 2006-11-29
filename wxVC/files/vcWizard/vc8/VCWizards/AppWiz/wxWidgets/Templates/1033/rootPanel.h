@@ -6,7 +6,7 @@
 class [!output SAFE_PROJECT_NAME]Panel : public MainPanel
 {
 public:
-	[!output SAFE_PROJECT_NAME]Panel( wxWindow* parent, int id = -1, wxPoint pos = wxDefaultPosition, wxSize size = wxSize(500,300), int style = 0 );
+	[!output SAFE_PROJECT_NAME]Panel( wxWindow* parent );
 	~[!output SAFE_PROJECT_NAME]Panel();
 
 private:
