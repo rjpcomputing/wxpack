@@ -6,14 +6,14 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.7.0.25"
+#define MyAppVer "2.8.0.01"
 #define MyAppName "wxWidgets"
-#define wxMajorVersion "2.7"
-#define MyAppVerName "wxWidgets Compiled 2.7.0"
+#define wxMajorVersion "2.8"
+#define MyAppVerName "wxWidgets Compiled 2.8.0"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "2.6.3.23"
+#define AppMinVer "2.7.0.25"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
@@ -56,12 +56,12 @@ Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: i
 Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
 Source: wxWidgets Compiled.iss; DestDir: {app}; Flags: dontcopy
 
-[InstallDelete]
+;[InstallDelete]
 ; Remove plot from distribution. It is added to wxAdditions.
-Name: {app}\contrib\build\plot; Type: filesandordirs
-Name: {app}\contrib\include\wx\plot; Type: filesandordirs
-Name: {app}\contrib\samples\plot; Type: filesandordirs
-Name: {app}\contrib\src\plot; Type: filesandordirs
+;Name: {app}\contrib\build\plot; Type: filesandordirs
+;Name: {app}\contrib\include\wx\plot; Type: filesandordirs
+;Name: {app}\contrib\samples\plot; Type: filesandordirs
+;Name: {app}\contrib\src\plot; Type: filesandordirs
 
 [Components]
 Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom compact
@@ -86,8 +86,8 @@ Name: custom; Description: Custom Installation; Flags: iscustom
 Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXWIN; ValueData: {app}; Flags: uninsdeletevalue preservestringtype deletevalue; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,5.2; Components: 
 
 [Icons]
-Name: {group}\{#MyAppName} 2.7.0 Help; Filename: {app}\help\wx.chm
-Name: {group}\{#MyAppName} Book; Filename: {app}\help\Cross Platform GUI Programming With wxWidget.pdf
+Name: {group}\{#MyAppName} 2.8.0 Help; Filename: {app}\docs\wx.chm
+Name: {group}\{#MyAppName} Book; Filename: {app}\docs\Cross Platform GUI Programming With wxWidget.pdf
 Name: {group}\{cm:UninstallProgram,{#MyAppName} 2.7.0}; Filename: {uninstallexe}
 
 [Code]
