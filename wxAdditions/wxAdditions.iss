@@ -6,12 +6,12 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.7.0.22"
+#define MyAppVer "2.8.0.01"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define wxWidgetsMinVer "2.6.3.23"
-#define wxAdditionsMinVer "2.7.0.16"
+#define wxWidgetsMinVer "2.8.0.01"
+#define wxAdditionsMinVer "2.8.0.00"
 
 [Setup]
 AppName={#MyAppName}
@@ -35,8 +35,6 @@ VersionInfoDescription={#MyAppName}
 LicenseFile=files\license.txt
 ChangesEnvironment=true
 UsePreviousAppDir=false
-
-
 
 [Files]
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\
@@ -282,4 +280,3 @@ begin
 		end;
 	end;
 end;
-
