@@ -237,11 +237,11 @@ function AddConfig(proj, strProjectName)
 				{
 				    if ( wizard.FindSymbol( 'WX_USE_UNICODE' ) )
 				    {
-						additionalDepends += "wxmsw27ud.lib ";
+						additionalDepends += "wxmsw28ud.lib ";
 					}
 					else
 					{
-					    additionalDepends += "wxmsw27d.lib ";
+					    additionalDepends += "wxmsw28d.lib ";
 					}
 				}
 				LinkTool.LinkIncremental = linkIncrementalYes;
@@ -253,11 +253,11 @@ function AddConfig(proj, strProjectName)
 				{
 					if ( wizard.FindSymbol( 'WX_USE_UNICODE' ) )
 				    {
-						additionalDepends += "wxmsw27u.lib ";
+						additionalDepends += "wxmsw28u.lib ";
 					}
 					else
 					{
-					    additionalDepends += "wxmsw27.lib ";
+					    additionalDepends += "wxmsw28.lib ";
 					}
 				}
 				LinkTool.LinkIncremental = linkIncrementalNo;
