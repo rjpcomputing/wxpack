@@ -58,6 +58,7 @@ MergeDuplicateFiles=true
 VersionInfoVersion={#MyAppVer}
 VersionInfoDescription={#MyAppName}
 LicenseFile=license.txt
+ChangesEnvironment=true
 
 [Files]
 Source: files\{#FormBulder}; DestDir: {app}\files; DestName: wxFormBuilder_setup.exe
