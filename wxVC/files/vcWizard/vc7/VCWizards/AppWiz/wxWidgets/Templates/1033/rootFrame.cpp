@@ -14,7 +14,7 @@
 [!endif]
 
 [!if WX_MENU_BAR]
-BEGIN_EVENT_TABLE( [!output SAFE_PROJECT_NAME]Frame, wxFrame )
+BEGIN_EVENT_TABLE( [!output SAFE_PROJECT_NAME]Frame, MainFrame )
 	EVT_MENU( ID_FILE_EXIT, [!output SAFE_PROJECT_NAME]Frame::OnExit )
 	EVT_MENU( ID_HELP_ABOUT, [!output SAFE_PROJECT_NAME]Frame::OnAbout )
 END_EVENT_TABLE()
