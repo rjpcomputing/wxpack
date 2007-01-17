@@ -88,7 +88,7 @@ Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment
 [Icons]
 Name: {group}\{#MyAppName} 2.8.0 Help; Filename: {app}\docs\wx.chm
 Name: {group}\{#MyAppName} Book; Filename: {app}\docs\Cross Platform GUI Programming With wxWidget.pdf
-Name: {group}\{cm:UninstallProgram,{#MyAppName} 2.7.0}; Filename: {uninstallexe}
+Name: {group}\{cm:UninstallProgram,{#MyAppVerName}}; Filename: {uninstallexe}
 
 [Code]
 function GetPathInstalled( AppID: String ): String;
