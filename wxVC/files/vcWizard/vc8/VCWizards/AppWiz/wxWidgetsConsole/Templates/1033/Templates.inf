@@ -1,0 +1,3 @@
+[!if !WX_EMPTY_PROJECT]
+main.cpp
+[!endif]
