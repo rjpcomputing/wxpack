@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.0.03"
+#define MyAppVer "2.8.0.04"
 #define MyAppName "wxWidgets"
 #define wxMajorVersion "2.8"
 #define MyAppVerName "wxWidgets Compiled 2.8.0"
@@ -83,7 +83,7 @@ Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
 
 [Registry]
-Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXWIN; ValueData: {app}; Flags: uninsdeletevalue preservestringtype deletevalue; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,5.2; Components: 
+Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXWIN; ValueData: {app}; Flags: uninsdeletevalue preservestringtype deletevalue; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,0; Components: 
 
 [Icons]
 Name: {group}\{#MyAppName} 2.8.0 Help; Filename: {app}\docs\wx.chm

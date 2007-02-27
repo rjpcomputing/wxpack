@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.0.04"
+#define MyAppVer "2.8.0.05"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -41,7 +41,7 @@ Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsu
 Source: files\wxfbPlugin\wxAdditions\*; DestDir: {code:GetWxFormBuilderAppPath}\plugins\wxAdditions; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\; Check: IsWxFBInstalled
 
 [Registry]
-Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXADDITIONS; ValueData: {app}; Flags: preservestringtype; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,5.2
+Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXADDITIONS; ValueData: {app}; Flags: preservestringtype; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,0
 
 [Icons]
 Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
