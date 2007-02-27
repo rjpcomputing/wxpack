@@ -25,7 +25,7 @@
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define FormBulder "wxFormBuilder_v3.0.23-beta3.exe"
+#define FormBulder "wxFormBuilder_v3.0.24-beta3.exe"
 #define Compiled "wxWidgets Compiled_v2.8.0.04.exe"
 #define Additions "wxAdditions_v2.8.0.05.exe"
 #define VC "wxVC_v2.8.0.01.exe"
