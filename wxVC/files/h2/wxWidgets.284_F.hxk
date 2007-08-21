@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE HelpIndex SYSTEM "MS-Help://Hx/Resources/HelpIndex.DTD">
+<HelpIndex 
+	Name = "F"
+	DTDVersion = "1.0"
+	Visible = "No"
+	LangId = "1033"
+	Merge = "Yes"
+	Sort = "Yes"
+	Title = "Dynamic Help and F1 Index"
+	>
+
+</HelpIndex>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE HelpIndex SYSTEM "MS-Help://Hx/Resources/HelpIndex.DTD">
+<HelpIndex Name = "A"
+           DTDVersion = "1.0"
+           Visible = "Yes"
+           LangId = "1033">
+<Keyword Term = "_vsipsample_index_entry_not_found">
+<Jump Url = "_index_entry_not_found.html"/>
+ </Keyword>
+           
+</HelpIndex>

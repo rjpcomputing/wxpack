@@ -6,9 +6,10 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.3.01"
+#define MyAppVer "2.8.4.01"
 #define MyAppName "wxVC"
 #define wxMajorVersion "2.8"
+#define AppMinVer "2.8.3.01"
 
 [Setup]
 AppName={#MyAppName}
@@ -44,7 +45,7 @@ Source: files\autobuildnumber.exe; DestDir: {win}
 Source: wxVC.iss; DestDir: {app}; Flags: dontcopy
 
 [Run]
-Filename: {app}\h2\H2Reg.exe; Parameters: -r cmdfile={app}\h2\H2Reg_Cmd.ini; StatusMsg: Registering wxWidgets Help With Visual C++ IDE's; Flags: runhidden; Check: IsVCInstalled()
+Filename: {app}\h2\H2Reg.exe; Parameters: -r cmdfile={app}\h2\H2Reg_cmd.ini; StatusMsg: Registering wxWidgets Help With Visual C++ IDE's; Flags: runhidden; Check: IsVCInstalled()
 
 [INI]
 Filename: {code:GetVS7CommonDir}\Packages\Debugger\autoexp.dat; Section: autoexpand; Key: wxString; String: <m_pchData,st>; Flags: uninsdeleteentry; Check: IsVC7Installed()
@@ -233,4 +234,77 @@ begin
 	end;
 
 	Result := sPath;
+end;
+
+function GetPathUninstallString( AppID: String ): String;
+var
+   sPrevPath: String;
+begin
+  sPrevPath := '';
+  if not RegQueryStringValue( HKLM,
+    'Software\Microsoft\Windows\CurrentVersion\Uninstall\'+AppID+'_is1',
+		'UninstallString', sPrevpath) then
+    RegQueryStringValue( HKCU, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\'+AppID+'_is1' ,
+		'UninstallString', sPrevpath);
+
+  Result := sPrevPath;
+end;
+
+function GetInstalledVersion( AppID: String ): String;
+var
+   sPrevPath: String;
+
+begin
+  sPrevPath := '';
+  if not RegQueryStringValue( HKLM,
+    'Software\Microsoft\Windows\CurrentVersion\Uninstall\'+AppID+'_is1',
+		'DisplayVersion', sPrevpath) then
+    RegQueryStringValue( HKCU, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\'+AppID+'_is1' ,
+		'DisplayVersion', sPrevpath);
+
+  Result := sPrevPath;
+end;
+
+function InitializeSetup(): boolean;
+var
+	ResultCode: Integer;
+	sVersion: String;
+	sUninstallEXE: String;
+
+begin
+	sVersion:= GetInstalledVersion('{#MyAppName}');
+	sUninstallEXE:= RemoveQuotes(GetPathUninstallString('{#MyAppName}'));
+
+	// Check to make sure there is an exceptable version of wxAdditions installed.
+	if Length(sVersion) = 0 then begin
+		result:= true;
+	end else begin
+		if CompareText( sVersion, '{#AppMinVer}' ) <= 0 then begin
+			if FileExists( sUninstallEXE ) then begin
+				if WizardSilent() then begin
+					// Just uninstall without asking because we are in silent mode.
+					Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'),
+							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
+
+					// Make sure that Setup is visible and the foreground window
+					BringToFrontAndRestore;
+					result := true;
+				end else begin
+					// Ask if they really want to uninstall because we are in the default installer.
+					if SuppressibleMsgBox( 'Version ' + sVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDYES ) = IDYES then begin
+						Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'),
+							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
+
+						// Make sure that Setup is visible and the foreground window
+						BringToFrontAndRestore;
+						result := true;
+					end else begin
+						result := true;
+					end;
+				end;
+			end;
+		end else begin
+			result := true;
+		end;
+	end;
 end;
