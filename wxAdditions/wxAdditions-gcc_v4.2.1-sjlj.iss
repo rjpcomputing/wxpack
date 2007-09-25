@@ -6,12 +6,12 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.4.02"
+#define MyAppVer "2.8.5.01"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define wxWidgetsMinVer "2.8.4.03"
-#define wxAdditionsMinVer "2.8.3.02"
+#define wxWidgetsMinVer "2.8.5.01"
+#define wxAdditionsMinVer "2.8.4.02"
 
 [Setup]
 AppName={#MyAppName}
@@ -21,7 +21,7 @@ DefaultDirName={code:GetWxAdditionsAppPath|{{{#wxWidgetsGUID}%7d}\additions
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=false
 AllowNoIcons=true
-OutputBaseFilename={#MyAppName}_v{#MyAppVer}-gcc_v4.2.1-dw2
+OutputBaseFilename={#MyAppName}_v{#MyAppVer}-gcc_v4.2.1-sjlj
 Compression=lzma/ultra
 SolidCompression=true
 InternalCompressLevel=ultra
@@ -37,8 +37,8 @@ ChangesEnvironment=true
 UsePreviousAppDir=false
 
 [Files]
-Source: files_4.2.1\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\
-Source: files_4.2.1\wxfbPlugin\wxAdditions\*; DestDir: {code:GetWxFormBuilderAppPath}\plugins\wxAdditions; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\; Check: IsWxFBInstalled
+Source: files_4.2.1-sjlj\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\
+Source: files_4.2.1-sjlj\wxfbPlugin\wxAdditions\*; DestDir: {code:GetWxFormBuilderAppPath}\plugins\wxAdditions; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: .svn\; Check: IsWxFBInstalled
 
 [Registry]
 Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXADDITIONS; ValueData: {app}; Flags: preservestringtype; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,0
