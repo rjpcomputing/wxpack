@@ -10,7 +10,7 @@
 #define wxMinorVersion "5"
 #define MyAppVer "2.8.5.01"
 #define MyAppName "wxWidgets"
-#define MyAppVerName "wxWidgets Compiled 2.8.5-gcc_v4.2.1"
+#define MyAppVerName "wxWidgets Compiled 2.8.5-gcc_v4.2.1-sjlj"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -28,7 +28,7 @@ DefaultDirName=C:\SourceCode\Libraries\{#MyAppName}{#wxMajorVersion}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=false
 AllowNoIcons=true
-OutputBaseFilename={#MyAppName} Compiled_v{#MyAppVer}-gcc_v4.2.1
+OutputBaseFilename={#MyAppName} Compiled_v{#MyAppVer}-gcc_v4.2.1-sjlj
 Compression=lzma/ultra
 SolidCompression=true
 InternalCompressLevel=ultra
@@ -51,8 +51,8 @@ VersionInfoDescription={#MyAppName}
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: files{#wxMajorVersion}\lib\gcc_dll_4.2.1-dw2\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
-Source: files{#wxMajorVersion}\lib\gcc_lib_4.2.1-dw2\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\gcc_dll_4.2.1\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\gcc_lib_4.2.1\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
 Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc71; Excludes: .svn\, *.ilk
 Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
 Source: wxWidgets Compiled.iss; DestDir: {app}; Flags: dontcopy
