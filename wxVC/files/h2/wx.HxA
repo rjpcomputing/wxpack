@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!DOCTYPE HelpAttributes SYSTEM "ms-help://hx/resources/HelpAttributes.DTD">
 <HelpAttributes DTDVersion="1.0">
 
 <AttName Id="1" Name="DevLang" Display="Yes" UIString="DevLang" AttType="Enum">

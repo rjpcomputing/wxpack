@@ -7,14 +7,14 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #define wxMajorVersion "2.8"
-#define wxMinorVersion "4"
-#define MyAppVer "2.8.4.02"
+#define wxMinorVersion "5"
+#define MyAppVer "2.8.5.01"
 #define MyAppName "wxWidgets"
-#define MyAppVerName "wxWidgets Compiled 2.8.4"
+#define MyAppVerName "wxWidgets Compiled 2.8.5"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "2.8.3.01"
+#define AppMinVer "2.8.4.03"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
@@ -83,7 +83,7 @@ Name: custom; Description: Custom Installation; Flags: iscustom
 Root: HKLM; Subkey: SYSTEM\CurrentControlSet\Control\Session Manager\Environment; ValueType: string; ValueName: WXWIN; ValueData: {app}; Flags: uninsdeletevalue preservestringtype deletevalue; MinVersion: 0,4.0.1381; OnlyBelowVersion: 0,0; Components: 
 
 [Icons]
-Name: {group}\{#MyAppName} Help; Filename: {app}\docs\wx.chm
+Name: {group}\{#MyAppName} Help; Filename: {app}\docs\htmlhelp\wx.chm
 Name: {group}\{#MyAppName} Book; Filename: {app}\docs\Cross Platform GUI Programming With wxWidget.pdf
 Name: {group}\{cm:UninstallProgram,{#MyAppVerName}}; Filename: {uninstallexe}
 
