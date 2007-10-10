@@ -1,5 +1,5 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-; File:        wxWidgets Compiled.iss
+; File:        wxWidgets Compiled-gcc_v4.2.1-sjlj.iss
 ; Author:      Ryan Pusztai
 ; Date:        11/28/2005
 ; Copyright:   (c) 2007 Ryan Pusztai <rpusztai@gmail.com>
@@ -7,14 +7,14 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #define wxMajorVersion "2.8"
-#define wxMinorVersion "5"
-#define MyAppVer "2.8.5.01"
+#define wxMinorVersion "6"
+#define MyAppVer "2.8.6.01"
 #define MyAppName "wxWidgets"
-#define MyAppVerName "wxWidgets Compiled 2.8.5-gcc_v4.2.1-sjlj"
+#define MyAppVerName "wxWidgets Compiled 2.8.6-gcc_v4.2.1-sjlj"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "2.8.4.03"
+#define AppMinVer "2.8.5.01"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
@@ -51,8 +51,8 @@ VersionInfoDescription={#MyAppName}
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: files{#wxMajorVersion}\lib\gcc_dll_4.2.1\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
-Source: files{#wxMajorVersion}\lib\gcc_lib_4.2.1\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\gcc_dll_4.2.1-sjlj\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
+Source: files{#wxMajorVersion}\lib\gcc_lib_4.2.1-sjlj\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
 Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc71; Excludes: .svn\, *.ilk
 Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
 Source: wxWidgets Compiled.iss; DestDir: {app}; Flags: dontcopy

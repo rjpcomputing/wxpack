@@ -6,10 +6,10 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.5.01"
+#define MyAppVer "2.8.6.01"
 #define MyAppName "wxVC"
 #define wxMajorVersion "2.8"
-#define AppMinVer "2.8.4.01"
+#define AppMinVer "2.8.5.01"
 
 [Setup]
 AppName={#MyAppName}
