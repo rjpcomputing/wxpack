@@ -8,7 +8,7 @@
 
 #define wxMajorVersion "2.8"
 #define wxMinorVersion "6"
-#define MyAppVer "2.8.6.01"
+#define MyAppVer "2.8.6.03"
 #define MyAppName "wxWidgets"
 #define MyAppVerName "wxWidgets Compiled 2.8.6-gcc_v4.2.1-sjlj"
 #define MyAppPublisher "Julian Smart"
