@@ -21,7 +21,7 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.6.03"
+#define MyAppVer "2.8.6.04"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -76,7 +76,7 @@ Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
 Filename: {app}\files\wxFormBuilder_setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets Compiled_setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR={code:GetLocation} ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc71 wx\gcc\gcclib wx\gcc\gccdll
+Filename: {app}\files\wxWidgets Compiled_setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc71 wx\gcc\gcclib wx\gcc\gccdll
 Filename: {app}\files\wxAdditions_setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 Filename: {app}\files\wxVC_setup.exe; StatusMsg: Installing wxVC ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxVC}"""; Flags: hidewizard; Components: wxvc; Check: IsVCInstalled
 
@@ -217,7 +217,7 @@ begin
 		Top := ScaleY(40);
 		Width := ScaleX(390);
 		Height := ScaleY(13);
-		Caption := 'To continue, click Next. If you would like to select a different'' folder, click Browse.';
+		Caption := 'To continue, click Next. If you would like to select a different folder, click Browse.';
 	end;
 
 	BitmapFileName := ExpandConstant('{tmp}\wxWin.bmp');
@@ -244,7 +244,7 @@ begin
 		Top := ScaleY(10);
 		Width := ScaleX(352);
 		Height := ScaleY(13);
-		Caption := 'Setup will create the wxWidgets Compiled library in the followin''g location.';
+		Caption := 'Setup will create the wxWidgets Compiled library in the following location.';
 	end;
 
 	{ wxLocationFolderTreeView }
