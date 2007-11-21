@@ -21,13 +21,13 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.6.04"
+#define MyAppVer "2.8.6.05"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
 #define FormBulder "wxFormBuilder_v3.0.50-RC3.exe"
 #define Compiled "wxWidgets Compiled_v2.8.6.02-gcc_v4.2.1.exe"
-#define Additions "wxAdditions_v2.8.6.02-gcc_v4.2.1.exe"
+#define Additions "wxAdditions_v2.8.6.03-gcc_v4.2.1.exe"
 #define VC "wxVC_v2.8.6.01.exe"
 #define AppMinVer "2.8.5.01"
 
