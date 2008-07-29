@@ -21,14 +21,14 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.8.01"
+#define MyAppVer "2.8.8.02"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
 #define FormBulder "wxFormBuilder_v3.0.57.exe"
 #define Compiled "wxWidgets Compiled_v2.8.8.01.exe"
-#define Additions "wxAdditions_v2.8.8.01.exe"
-#define VC "wxVC_v2.8.8.01.exe"
+#define Additions "wxAdditions_v2.8.8.02.exe"
+#define VC "wxVC_v2.8.8.02.exe"
 #define AppMinVer "2.8.7.03"
 
 ; **** DON'T EDIT BELOW THIS LINE! ****
@@ -76,28 +76,30 @@ Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
 Filename: {app}\files\wxFormBuilder_setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets Compiled_setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc71 wx\gcc\gcclib wx\gcc\gccdll
+Filename: {app}\files\wxWidgets Compiled_setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc80 wx\gcc\gcclib wx\gcc\gccdll
 Filename: {app}\files\wxAdditions_setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 Filename: {app}\files\wxVC_setup.exe; StatusMsg: Installing wxVC ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxVC}"""; Flags: hidewizard; Components: wxvc; Check: IsVCInstalled
 
 [Components]
-Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc71 gcc compact; ExtraDiskSpaceRequired: 17406362
-Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc71 gcc compact; ExtraDiskSpaceRequired: 216111514
-Name: wxvc; Description: wxVC; Flags: disablenouninstallwarning; Types: custom full vc71 compact; Check: IsVCInstalled; ExtraDiskSpaceRequired: 3565158
+Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc80 gcc compact; ExtraDiskSpaceRequired: 17406362
+Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc80 gcc compact; ExtraDiskSpaceRequired: 216111514
+Name: wxvc; Description: wxVC; Flags: disablenouninstallwarning; Types: custom full vc80 compact; Check: IsVCInstalled; ExtraDiskSpaceRequired: 3565158
 Name: wx; Description: wxWidgets Compiled By:; Flags: disablenouninstallwarning
 Name: wx\vc; Description: Visual C++; Flags: disablenouninstallwarning
-Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc71; ExtraDiskSpaceRequired: 397410304
+Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc80; ExtraDiskSpaceRequired: 397410304
 Name: wx\vc\vcdll; Description: Dll's; Flags: disablenouninstallwarning; ExtraDiskSpaceRequired: 298844160
-Name: wx\vc\vcdll\vc71; Description: Visual C++ 7.1 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc71
-;Name: wx\vc\vcdll\vc80; Description: Visual C++ 8.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: vc80
-Name: wx\gcc; Description: MinGW Gcc; Flags: disablenouninstallwarning
+;Name: wx\vc\vcdll\vc71; Description: Visual C++ 7.1 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc71
+Name: wx\vc\vcdll\vc80; Description: Visual C++ 8.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc80
+;Name: wx\vc\vcdll\vc90; Description: Visual C++ 9.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc90
+Name: wx\gcc; Description: MinGW Gcc 4.2.1; Flags: disablenouninstallwarning
 Name: wx\gcc\gcclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 1887436800
 Name: wx\gcc\gccdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 350224384
 
 [Types]
 Name: full; Description: Full Installation
-Name: vc71; Description: Visual C++ Only   Runtime Version: 7.1
-;Name: vc80; Description: Visual C++ Only   Runtime Version: 8.0
+;Name: vc71; Description: Visual C++ Only   Runtime Version: 7.1
+Name: vc80; Description: Visual C++ Only   Runtime Version: 8.0
+;Name: vc90; Description: Visual C++ Only   Runtime Version: 9.0
 Name: gcc; Description: MinGW Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
@@ -135,7 +137,7 @@ function GetSelectedComponents( Param: String ): String;
 var
 	compList: String;
 begin
-	compList := CheckComponent('wx\vc\vclib') + CheckComponent('wx\vc\vcdll\vc71') + CheckComponent('wx\gcc\gcclib') + CheckComponent('wx\gcc\gccdll');
+	compList := CheckComponent('wx\vc\vclib') + CheckComponent('wx\vc\vcdll\vc80') + CheckComponent('wx\gcc\gcclib') + CheckComponent('wx\gcc\gccdll');
 	//MsgBox(compList, mbInformation, MB_OK);
 	result := compList;
 end;
@@ -489,7 +491,37 @@ begin
 end;
 
 // -- Visual C++ install functions.
-//    All used to check to see if VC 7.1+ is installed.
+//    All used to check to see if VC is installed.
+function GetVC9InstallDir(Param: String): String;
+var
+   sPath: String;
+begin
+	sPath := '';
+
+	// Check to see if Visual Studio 9.0 is installed.
+	if RegQueryStringValue( HKLM, 'Software\Microsoft\VisualStudio\9.0\Setup\VC', 'ProductDir', sPath) then
+	begin
+		Result := sPath;
+	end;
+
+	Result := sPath;
+end;
+
+function GetVC9ExpressInstallDir(Param: String): String;
+var
+   sPath: String;
+begin
+	sPath := '';
+
+	// Check to see if Visual C++ Express 9.0 is installed.
+	if RegQueryStringValue( HKLM, 'Software\Microsoft\VCExpress\9.0\Setup\VC', 'ProductDir', sPath) then
+	begin
+		Result := sPath;
+	end;
+
+	Result := sPath;
+end;
+
 function GetVC8InstallDir(Param: String): String;
 var
    sPath: String;
@@ -561,8 +593,27 @@ begin
 	end;
 end;
 
-
 function IsVC8ExpressInstalled(): Boolean;
+begin
+	if CompareStr( GetVC8ExpressInstallDir(''), '' ) = 0 then
+	begin
+		Result := false;
+	end else begin
+		Result := true;
+	end;
+end;
+
+function IsVC9Installed(): Boolean;
+begin
+	if CompareStr( GetVC8InstallDir(''), '' ) = 0 then
+	begin
+		Result := false;
+	end else begin
+		Result := true;
+	end;
+end;
+
+function IsVC9ExpressInstalled(): Boolean;
 begin
 	if CompareStr( GetVC8ExpressInstallDir(''), '' ) = 0 then
 	begin
@@ -589,6 +640,16 @@ begin
 	end;
 
 	if IsVC8ExpressInstalled() then
+	begin
+		IsInstalled := true;
+	end;
+
+	if IsVC9Installed() then
+	begin
+		IsInstalled := true;
+	end;
+
+	if IsVC9ExpressInstalled() then
 	begin
 		IsInstalled := true;
 	end;
