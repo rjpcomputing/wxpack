@@ -127,7 +127,7 @@ function AddConfig(proj, strProjectName)
 			// Compiler settings
 			var CLTool = config.Tools('VCCLCompilerTool');
 			CLTool.RuntimeTypeInfo = true;
-			CLTool.TreatWChar_tAsBuiltInType = false;
+			//CLTool.TreatWChar_tAsBuiltInType = false;
 			CLTool.Detect64BitPortabilityProblems = true;
 			CLTool.WarningLevel = warningLevel_3;
 			CLTool.AdditionalIncludeDirectories = "$(WXWIN)/include;$(WXADDITIONS)/include;$(WXWIN)/contrib/include"
