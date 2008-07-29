@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.8.01"
+#define MyAppVer "2.8.8.02"
 #define MyAppName "wxVC"
 #define wxMajorVersion "2.8"
 #define AppMinVer "2.8.7.01"
@@ -40,6 +40,8 @@ Source: files\h2\*; DestDir: {app}\h2; Excludes: .svn\; Flags: ignoreversion rec
 Source: files\vcWizard\vc7\*; DestDir: {code:GetVC7InstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC7Installed()
 Source: files\vcWizard\vc8\*; DestDir: {code:GetVC8InstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC8Installed()
 Source: files\vcWizard\vc8Express\*; DestDir: {code:GetVC8ExpressInstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC8ExpressInstalled()
+;Source: files\vcWizard\vc9\*; DestDir: {code:GetVC9InstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC9Installed()
+;Source: files\vcWizard\vc9Express\*; DestDir: {code:GetVC9ExpressInstallDir}; Flags: ignoreversion recursesubdirs touch; Excludes: .svn\; Check: IsVC9ExpressInstalled()
 Source: files\license.txt; DestDir: {app}
 Source: files\autobuildnumber.exe; DestDir: {win}
 Source: wxVC.iss; DestDir: {app}; Flags: dontcopy
@@ -51,6 +53,8 @@ Filename: {app}\h2\H2Reg.exe; Parameters: -r cmdfile={app}\h2\H2Reg_cmd.ini; Sta
 Filename: {code:GetVS7CommonDir}\Packages\Debugger\autoexp.dat; Section: autoexpand; Key: wxString; String: <m_pchData,st>; Flags: uninsdeleteentry; Check: IsVC7Installed()
 Filename: {code:GetVS8CommonDir}\Packages\Debugger\autoexp.dat; Section: autoexpand; Key: wxString; String: <m_pchData,st>; Flags: uninsdeleteentry; Check: IsVC8Installed()
 Filename: {code:GetVS8ExpressCommonDir}\Packages\Debugger\autoexp.dat; Section: autoexpand; Key: wxString; String: <m_pchData,st>; Flags: uninsdeleteentry; Check: IsVC8ExpressInstalled()
+;Filename: {code:GetVS9CommonDir}\Packages\Debugger\autoexp.dat; Section: autoexpand; Key: wxString; String: <m_pchData,st>; Flags: uninsdeleteentry; Check: IsVC9Installed()
+;Filename: {code:GetVS9ExpressCommonDir}\Packages\Debugger\autoexp.dat; Section: autoexpand; Key: wxString; String: <m_pchData,st>; Flags: uninsdeleteentry; Check: IsVC9ExpressInstalled()
 
 [Icons]
 Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
@@ -77,6 +81,36 @@ begin
   //MsgBox( 'Installed Path: ' + sPrevPath, mbInformation, MB_OK);
 
   Result := sPrevPath;
+end;
+
+function GetVC9InstallDir(Param: String): String;
+var
+   sPath: String;
+begin
+	sPath := '';
+
+	// Check to see if Visual Studio 9.0 is installed.
+	if RegQueryStringValue( HKLM, 'Software\Microsoft\VisualStudio\9.0\Setup\VC', 'ProductDir', sPath) then
+	begin
+		Result := sPath;
+	end;
+
+	Result := sPath;
+end;
+
+function GetVC9ExpressInstallDir(Param: String): String;
+var
+   sPath: String;
+begin
+	sPath := '';
+
+	// Check to see if Visual C++ Express 9.0 is installed.
+	if RegQueryStringValue( HKLM, 'Software\Microsoft\VCExpress\9.0\Setup\VC', 'ProductDir', sPath) then
+	begin
+		Result := sPath;
+	end;
+
+	Result := sPath;
 end;
 
 function GetVC8InstallDir(Param: String): String;
@@ -150,8 +184,27 @@ begin
 	end;
 end;
 
-
 function IsVC8ExpressInstalled(): Boolean;
+begin
+	if CompareStr( GetVC8ExpressInstallDir(''), '' ) = 0 then
+	begin
+		Result := false;
+	end else begin
+		Result := true;
+	end;
+end;
+
+function IsVC9Installed(): Boolean;
+begin
+	if CompareStr( GetVC8InstallDir(''), '' ) = 0 then
+	begin
+		Result := false;
+	end else begin
+		Result := true;
+	end;
+end;
+
+function IsVC9ExpressInstalled(): Boolean;
 begin
 	if CompareStr( GetVC8ExpressInstallDir(''), '' ) = 0 then
 	begin
@@ -182,7 +235,47 @@ begin
 		IsInstalled := true;
 	end;
 
+	if IsVC9Installed() then
+	begin
+		IsInstalled := true;
+	end;
+
+	if IsVC9ExpressInstalled() then
+	begin
+		IsInstalled := true;
+	end;
+
 	Result := IsInstalled;
+end;
+
+function GetVS9CommonDir(Param: String): String;
+var
+   sPath: String;
+begin
+	sPath := '';
+
+	// Check to see if Visual Studio 9.0 is installed.
+	if RegQueryStringValue( HKLM, 'Software\Microsoft\VisualStudio\9.0\Setup\VS', 'VS7CommonDir', sPath) then
+	begin
+		Result := sPath;
+	end;
+
+	Result := sPath;
+end;
+
+function GetVS9ExpressCommonDir(Param: String): String;
+var
+   sPath: String;
+begin
+	sPath := '';
+
+	// Check to see if Visual C++ Express 9.0 is installed.
+	if RegQueryStringValue( HKLM, 'Software\Microsoft\VCExpress\9.0\Setup\VS', 'VS7CommonDir', sPath) then
+	begin
+		Result := sPath;
+	end;
+
+	Result := sPath;
 end;
 
 function GetVS8CommonDir(Param: String): String;
