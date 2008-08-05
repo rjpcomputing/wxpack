@@ -14,7 +14,7 @@
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "2.8.7.01"
+#define AppMinVer "2.8.8.01"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
