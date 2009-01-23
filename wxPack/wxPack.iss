@@ -21,15 +21,15 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.8.04"
+#define MyAppVer "2.8.9.01"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
 #define FormBulder "wxFormBuilder_v3.1.58-beta.exe"
-#define Compiled "wxWidgets Compiled_v2.8.8.02.exe"
-#define Additions "wxAdditions_v2.8.8.02.exe"
-#define VC "wxVC_v2.8.8.03.exe"
-#define AppMinVer "2.8.8.02"
+#define Compiled "wxWidgets Compiled_v2.8.9.01.exe"
+#define Additions "wxAdditions_v2.8.9.01.exe"
+#define VC "wxVC_v2.8.9.01.exe"
+#define AppMinVer "2.8.9.00"
 
 ; **** DON'T EDIT BELOW THIS LINE! ****
 [Setup]
@@ -91,7 +91,7 @@ Name: wx\vc\vcdll; Description: Dll's; Flags: disablenouninstallwarning; ExtraDi
 ;Name: wx\vc\vcdll\vc71; Description: Visual C++ 7.1 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc71
 Name: wx\vc\vcdll\vc80; Description: Visual C++ 8.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc80
 ;Name: wx\vc\vcdll\vc90; Description: Visual C++ 9.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc90
-Name: wx\gcc; Description: MinGW Gcc 4.2.1; Flags: disablenouninstallwarning
+Name: wx\gcc; Description: MinGW Gcc 4.3.2-sjlj; Flags: disablenouninstallwarning
 Name: wx\gcc\gcclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 1887436800
 Name: wx\gcc\gccdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 350224384
 
