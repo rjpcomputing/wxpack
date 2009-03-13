@@ -50,6 +50,7 @@ VersionInfoDescription={#MyAppName}
 [Files]
 Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
+Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
 Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: files{#wxMajorVersion}\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
 Source: files{#wxMajorVersion}\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
