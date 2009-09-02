@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<HelpIndex
+   Name="NamedUrlIndex"
+   DTDVersion="1.0"
+   FileVersion="1.0"
+   LangId="1033">
+
+   <Keyword Term="HomePage">
+      <Jump Url="wx_contents.html"/>
+   </Keyword>
+   <Keyword Term="DefaultPage">
+      <Jump Url="wx_contents.html"/>
+   </Keyword>
+   <Keyword Term="NavFailPage"><Jump Url="_topic_not_found.html"/></Keyword>
+   <Keyword Term="EmptyIndexTerm"><Jump Url="_index_entry_not_found.html"/></Keyword>
+   
+</HelpIndex>
