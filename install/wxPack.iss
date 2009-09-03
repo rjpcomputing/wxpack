@@ -21,7 +21,7 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.9.02"
+#define MyAppVer "2.8.10.01"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -61,10 +61,10 @@ LicenseFile=license.txt
 ChangesEnvironment=true
 
 [Files]
-Source: files\{#FormBulder}; DestDir: {app}\files; DestName: wxFormBuilder_setup.exe
-Source: files\{#Compiled}; DestDir: {app}\files; DestName: wxWidgets Compiled_setup.exe
-Source: files\{#Additions}; DestDir: {app}\files; DestName: wxAdditions_setup.exe
-Source: files\{#VC}; DestDir: {app}\files; DestName: wxVC_setup.exe; Check: IsVCInstalled
+Source: ..\wxformbuilder\install\windows\{#FormBulder}; DestDir: {app}\files; DestName: wxFormBuilder_setup.exe
+Source: wxCompiled\{#Compiled}; DestDir: {app}\files; DestName: wxWidgets Compiled_setup.exe
+Source: wxAdditions\{#Additions}; DestDir: {app}\files; DestName: wxAdditions_setup.exe
+Source: wxVC\{#VC}; DestDir: {app}\files; DestName: wxVC_setup.exe; Check: IsVCInstalled
 Source: license.txt; DestDir: {app}
 Source: wxwin.bmp; Flags: dontcopy
 
