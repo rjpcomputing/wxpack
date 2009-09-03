@@ -117,7 +117,7 @@ echo.
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0
 goto START
 
 :SETUP_GCC4_BUILD_ENVIRONMENT
@@ -132,7 +132,7 @@ echo.
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
-set FLAGS=CXXFLAGS=-Wno-attributes USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=CXXFLAGS=-Wno-attributes USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0
 goto START
 
 :START
