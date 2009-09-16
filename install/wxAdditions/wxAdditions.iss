@@ -262,6 +262,8 @@ begin
 						result := true;
 					end;
 				end;
+			end else begin
+				result := true;
 			end;
 		end else begin
 			result := true;
@@ -280,3 +282,4 @@ begin
 		end;
 	end;
 end;
+
