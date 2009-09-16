@@ -393,6 +393,8 @@ begin
 						result := true;
 					end;
 				end;
+			end else begin
+				result := true;
 			end;
 		end else begin
 			result := true;
@@ -656,3 +658,4 @@ begin
 
 	Result := IsInstalled;
 end;
+
