@@ -1,5 +1,5 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-; File:        wxWidgets Compiled.iss
+; File:        wxWidgets_Compiled.iss
 ; Author:      Ryan Pusztai
 ; Date:        11/28/2005
 ; Copyright:   (c) 2007 Ryan Pusztai <rpusztai@gmail.com>
@@ -171,6 +171,8 @@ begin
 						result := true;
 					end;
 				end;
+			end else begin
+				result := true;
 			end;
 		end else begin
 			result := true;
