@@ -25,10 +25,10 @@
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define FormBulder "wxFormBuilder_v3.1.59-beta.exe"
-#define Compiled "wxWidgets Compiled_v2.8.9.01.exe"
-#define Additions "wxAdditions_v2.8.9.01.exe"
-#define VC "wxVC_v2.8.9.01.exe"
+;#define FormBulder "wxFormBuilder_v3.1.59-beta.exe"
+;#define Compiled "wxWidgets_Compiled_v2.8.9.01.exe"
+;#define Additions "wxAdditions_v2.8.9.01.exe"
+;#define VC "wxVC_v2.8.9.01.exe"
 #define AppMinVer "2.8.9.00"
 
 ; **** DON'T EDIT BELOW THIS LINE! ****
@@ -61,10 +61,10 @@ LicenseFile=license.txt
 ChangesEnvironment=true
 
 [Files]
-Source: ..\wxformbuilder\install\windows\{#FormBulder}; DestDir: {app}\files; DestName: wxFormBuilder_setup.exe
-Source: wxCompiled\{#Compiled}; DestDir: {app}\files; DestName: wxWidgets Compiled_setup.exe
-Source: wxAdditions\{#Additions}; DestDir: {app}\files; DestName: wxAdditions_setup.exe
-Source: wxVC\{#VC}; DestDir: {app}\files; DestName: wxVC_setup.exe; Check: IsVCInstalled
+Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files
+Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files
+Source: wxAdditions\wxAdditions*.exe; DestDir: {app}\files
+Source: wxVC\wxVC*.exe; DestDir: {app}\files; Check: IsVCInstalled
 Source: license.txt; DestDir: {app}
 Source: wxwin.bmp; Flags: dontcopy
 
@@ -658,4 +658,3 @@ begin
 
 	Result := IsInstalled;
 end;
-

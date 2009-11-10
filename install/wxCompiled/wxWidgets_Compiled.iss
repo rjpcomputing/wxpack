@@ -7,14 +7,14 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #define wxMajorVersion "2.8"
-#define wxMinorVersion "9"
-#define MyAppVer "2.8.9.01"
+#define wxMinorVersion "10"
+#define MyAppVer "2.8.10.01"
 #define MyAppName "wxWidgets"
-#define MyAppVerName "wxWidgets Compiled 2.8.9"
+#define MyAppVerName "wxWidgets Compiled 2.8.10"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "2.8.9.00"
+#define AppMinVer "2.8.10.00"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
@@ -28,7 +28,7 @@ DefaultDirName=C:\SourceCode\Libraries\{#MyAppName}{#wxMajorVersion}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=false
 AllowNoIcons=true
-OutputBaseFilename={#MyAppName} Compiled_v{#MyAppVer}
+OutputBaseFilename={#MyAppName}_Compiled_v{#MyAppVer}
 Compression=lzma/ultra
 SolidCompression=true
 InternalCompressLevel=ultra
@@ -48,15 +48,24 @@ VersionInfoVersion={#MyAppVer}
 VersionInfoDescription={#MyAppName}
 
 [Files]
-Source: files\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\license.txt; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\art\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\contrib\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\docs\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\locale\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\samples\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\utils\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\build\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\, msw\, *.ilk, *.o, *.d, *.obj
+Source: ..\..\wxwidgets\build\msw\*; DestDir: {app}; Flags: ignoreversion; Excludes: .svn\, *.ilk, *.o, *.d, *.obj
+Source: ..\..\wxwidgets\include\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\src\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
-Source: files{#wxMajorVersion}\common\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: files{#wxMajorVersion}\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
-Source: files{#wxMajorVersion}\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
-Source: files{#wxMajorVersion}\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc80; Excludes: .svn\, *.ilk
-Source: files{#wxMajorVersion}\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
-Source: wxWidgets Compiled.iss; DestDir: {app}; Flags: dontcopy
+Source: ..\..\wxwidgets\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc80; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
+Source: wxWidgets_Compiled.iss; DestDir: {app}; Flags: dontcopy
 
 [InstallDelete]
 Name: {group}\{#MyAppName} {#wxMajorVersion}. Help; Type: filesandordirs
