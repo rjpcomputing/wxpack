@@ -49,22 +49,21 @@ VersionInfoDescription={#MyAppName}
 
 [Files]
 Source: ..\..\wxwidgets\license.txt; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\art\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\contrib\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\docs\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\locale\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\samples\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\utils\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\build\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\, msw\, *.ilk, *.o, *.d, *.obj
-Source: ..\..\wxwidgets\build\msw\*; DestDir: {app}; Flags: ignoreversion; Excludes: .svn\, *.ilk, *.o, *.d, *.obj
-Source: ..\..\wxwidgets\include\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\src\*; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
-Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
+Source: ..\..\wxwidgets\art\*; DestDir: {app}\art; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\contrib\*; DestDir: {app}\contrib; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\docs\*; DestDir: {app}\docs; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\locale\*; DestDir: {app}\locale; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\samples\*; DestDir: {app}\samples; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\utils\*; DestDir: {app}\utils; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\build\*; DestDir: {app}\build; Flags: ignoreversion recursesubdirs; Excludes: .svn\, *.ilk, *.exp, *.pch, *.o, *.d, *.obj
+Source: ..\..\wxwidgets\include\*; DestDir: {app}\include; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\src\*; DestDir: {app}\src; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: ..\..\wxwidgets\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc80; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
+Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
+Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
 Source: wxWidgets_Compiled.iss; DestDir: {app}; Flags: dontcopy
 
 [InstallDelete]
@@ -188,3 +187,6 @@ begin
 		end;
 	end;
 end;
+
+
+

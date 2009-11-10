@@ -50,8 +50,11 @@ goto BUILD_WXADDITIONS
 :BUILD_WXADDITIONS
 	echo Change to additions build directory
 	cd wxwidgets\additions\build
-	call build_wxadditions VC80
-	call build_wxadditions MINGW4
+	call build_wxadditions.bat VC80
+	call build_wxadditions.bat MINGW4
+	
+	echo Build the wxFormBuilder plugin
+	call build_wxfb_plugin.bat
 
 	echo Change to installer directory
 	cd ..\..\..\install\wxAdditions
@@ -71,10 +74,10 @@ goto BUILD_WXFORMBUILDER
 	cd wxformbuilder
 	
 	echo Create the build files...
-	call premake --target gnu --unicode --with-wx-shared
+	call premake.exe --target gnu --unicode --with-wx-shared
 	
 	echo Building wxFormBuilder
-	call mingw32-make.exe CONFIG=Release -j
+	call mingw32-make.exe CONFIG=Release -j %NUMBER_OF_PROCESSORS%
 	
 	echo Change to installer directory
 	cd install\windows
@@ -89,7 +92,7 @@ goto BUILD_WXVC
 	echo Change to wxVC installer directory
 	cd install\wxVC
 	
-	echo Building wxFormBuilder installer...
+	echo Building wxVC installer...
 	"C:\Program Files\Inno Setup 5\iscc.exe" /F"wxVC-setup" "wxVC.iss"
 	
 	cd ..\..
@@ -99,7 +102,7 @@ goto BUILD_WXPACK
 	echo Change to wxPack installer directory
 	cd install
 	
-	echo Building wxFormBuilder installer...
+	echo Building wxPack installer...
 	"C:\Program Files\Inno Setup 5\iscc.exe" /cc "wxPack.iss"
 	
 	cd ..
