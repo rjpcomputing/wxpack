@@ -103,7 +103,7 @@ goto BUILD_WXFORMBUILDER
 	cd install\windows
 	
 	echo Building wxFormBuilder installer. Current Directory: %CD%
-	"C:\Program Files\Inno Setup 5\ISCC.exe" /F"wxFormBuilder-setup" "wxFormBuilder.iss"
+	call "C:\Program Files\Inno Setup 5\ISCC.exe" /F"wxFormBuilder-setup" "wxFormBuilder.iss"
 	if ERRORLEVEL 1 goto END
 	
 	cd ..\..\..
@@ -118,7 +118,7 @@ goto BUILD_WXVC
 	cd install\wxVC
 	
 	echo Building wxVC installer...
-	"C:\Program Files\Inno Setup 5\iscc.exe" /F"wxVC-setup" "wxVC.iss"
+	call "C:\Program Files\Inno Setup 5\iscc.exe" /F"wxVC-setup" "wxVC.iss"
 	if ERRORLEVEL 1 goto END
 	
 	cd ..\..
@@ -133,7 +133,7 @@ goto BUILD_WXPACK
 	cd install
 	
 	echo Building wxPack installer...
-	"C:\Program Files\Inno Setup 5\iscc.exe" /cc "wxPack.iss"
+	call "C:\Program Files\Inno Setup 5\iscc.exe" /cc "wxPack.iss"
 	if ERRORLEVEL 1 goto END
 	
 	cd ..
