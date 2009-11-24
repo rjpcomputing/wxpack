@@ -5,7 +5,7 @@
 	:: google for "batch parameter modifiers"
 	set WXWIN=%~dp0wxwidgets
 	echo %WXWIN%
-	goto BUILD_WXFORMBUILDER
+	::goto BUILD_WXFORMBUILDER
 goto CONFIGURE
 
 :CONFIGURE
@@ -91,15 +91,15 @@ goto BUILD_WXFORMBUILDER
 	echo Change to wxFormBuilder build directory
 	cd wxformbuilder
 	
-	echo Create the build files. Current Directory: %CD%
+	echo Create the build files.
 	call premake.exe --target gnu --unicode --with-wx-shared
 	if ERRORLEVEL 1 goto END
 	
-	echo Building wxFormBuilder. Current Directory: %CD%
+	echo Building wxFormBuilder.
 	call mingw32-make.exe CONFIG=Release -j %NUMBER_OF_PROCESSORS%
 	if ERRORLEVEL 1 goto END
 	
-	echo Change to installer directory. Current Directory: %CD%
+	echo Change to installer directory.
 	cd install\windows
 	
 	echo Building wxFormBuilder installer. Current Directory: %CD%
