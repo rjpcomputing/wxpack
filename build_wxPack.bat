@@ -5,7 +5,7 @@
 	:: google for "batch parameter modifiers"
 	set WXWIN=%~dp0wxwidgets
 	echo %WXWIN%
-	::goto END
+	goto BUILD_WXFORMBUILDER
 goto CONFIGURE
 
 :CONFIGURE
@@ -84,26 +84,26 @@ goto BUILD_WXFORMBUILDER
 :BUILD_WXFORMBUILDER
 	echo -- WXFORMBUILDER ------------------------------------------------------
 	echo --
-	echo Starting to build wxFormBuilder from %CD%
+	echo Starting to build wxFormBuilder from '%CD%'
 	:: This is currently relying on the fact that MinGW was setup in the environment before running this build.
 	:: It has been because we are building wxCompiled and wxAdditions before this.
 	:: NOTE: This mayu be fragile, but it works.
 	echo Change to wxFormBuilder build directory
 	cd wxformbuilder
 	
-	echo Create the build files...
+	echo Create the build files. Current Directory: %CD%
 	call premake.exe --target gnu --unicode --with-wx-shared
 	if ERRORLEVEL 1 goto END
 	
-	echo Building wxFormBuilder
+	echo Building wxFormBuilder. Current Directory: %CD%
 	call mingw32-make.exe CONFIG=Release -j %NUMBER_OF_PROCESSORS%
 	if ERRORLEVEL 1 goto END
 	
-	echo Change to installer directory
+	echo Change to installer directory. Current Directory: %CD%
 	cd install\windows
 	
-	echo Building wxFormBuilder installer...
-	"C:\Program Files\Inno Setup 5\iscc.exe" /F"wxFormBuilder-setup" "wxFormBuilder.iss"
+	echo Building wxFormBuilder installer. Current Directory: %CD%
+	"C:\Program Files\Inno Setup 5\ISCC.exe" /F"wxFormBuilder-setup" "wxFormBuilder.iss"
 	if ERRORLEVEL 1 goto END
 	
 	cd ..\..\..
