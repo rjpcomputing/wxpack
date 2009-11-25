@@ -36,9 +36,9 @@ goto BUILD_WXCOMPILED
 
 	echo Run the build file for each compiler
 	call wxBuild_wxWidgets.bat VC80 ALL
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat MINGW4 ALL
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	::call wxBuild_wxWidgets.bat MINGW4 NULL LIB_RELEASE_UNICODE
 	::call wxBuild_wxWidgets.bat MINGW4 NULL DLL_RELEASE_UNICODE
 
@@ -48,7 +48,7 @@ goto BUILD_WXCOMPILED
 	:: Make installer for wxCompiled
 	echo Building wxCompiled installer...
 	call "C:\Program Files\Inno Setup 5\iscc.exe" /F"wxWidgets_Compiled-setup" "wxWidgets_Compiled.iss"
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..\..
 	echo Done building wxCompiled. Current Directory: %CD%
@@ -62,9 +62,9 @@ goto BUILD_WXADDITIONS
 	cd wxwidgets\additions\build
 	
 	call build_wxadditions.bat VC80
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	call build_wxadditions.bat MINGW4
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	echo Build the wxFormBuilder plugin
 	call build_wxfb_plugin.bat
@@ -75,7 +75,7 @@ goto BUILD_WXADDITIONS
 	:: Make installer for wxAdditions
 	echo Building wxAdditions installer...
 	"C:\Program Files\Inno Setup 5\iscc.exe" /F"wxAdditions-setup" "wxAdditions.iss"
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..\..
 	echo Done building wxAdditions. Current Directory: %CD%
@@ -93,18 +93,18 @@ goto BUILD_WXFORMBUILDER
 	
 	echo Create the build files.
 	call premake.exe --target gnu --unicode --with-wx-shared
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	echo Building wxFormBuilder.
 	call mingw32-make.exe CONFIG=Release -j %NUMBER_OF_PROCESSORS%
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	echo Change to installer directory.
 	cd install\windows
 	
 	echo Building wxFormBuilder installer. Current Directory: %CD%
 	call "C:\Program Files\Inno Setup 5\ISCC.exe" /F"wxFormBuilder-setup" "wxFormBuilder.iss"
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..\..\..
 	echo Done building wxFormBuilder. Current Directory: %CD%
@@ -119,8 +119,8 @@ goto BUILD_WXVC
 	
 	echo Building wxVC installer...
 	call "C:\Program Files\Inno Setup 5\iscc.exe" /F"wxVC-setup" "wxVC.iss"
-	if ERRORLEVEL 1 goto END
-	
+	if ERRORLEVEL 1 goto ERROR
+		
 	cd ..\..
 	echo Done building wxVC. Current Directory: %CD%
 goto BUILD_WXPACK
@@ -134,10 +134,17 @@ goto BUILD_WXPACK
 	
 	echo Building wxPack installer...
 	call "C:\Program Files\Inno Setup 5\iscc.exe" /cc "wxPack.iss"
-	if ERRORLEVEL 1 goto END
+	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..
 	echo Done building wxVC. Current Directory: %CD%
+goto END
+
+:ERROR
+	echo An error (%ERRORLEVEL%) occurred...
+	echo.
+	echo Cleaning up the old wxPack installs...
+	del /F /Q %~dp0install\wxPack_v*
 goto END
 
 :END
