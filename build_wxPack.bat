@@ -5,7 +5,6 @@
 	:: google for "batch parameter modifiers"
 	set WXWIN=%~dp0wxwidgets
 	echo %WXWIN%
-	::goto BUILD_WXFORMBUILDER
 goto CONFIGURE
 
 :CONFIGURE
@@ -85,17 +84,29 @@ goto BUILD_WXFORMBUILDER
 	echo -- WXFORMBUILDER ------------------------------------------------------
 	echo --
 	echo Starting to build wxFormBuilder from '%CD%'
-	:: This is currently relying on the fact that MinGW was setup in the environment before running this build.
-	:: It has been because we are building wxCompiled and wxAdditions before this.
-	:: NOTE: This mayu be fragile, but it works.
+	
+	:: MinGW Gcc install location. This must match you systems configuration.
+	set GCCDIR=C:\MinGW4
+	set CC=gcc
+	set CXX=g++
+
+	echo Assuming that MinGW has been installed to:
+	echo   %GCCDIR%
+	echo.
+	:: -- Add MinGW directory to the systems PATH --
+	echo Setting environment for MinGW Gcc...
+	if "%OS%" == "Windows_NT" set PATH=%GCCDIR%\BIN;%PATH%
+	if "%OS%" == "" set PATH="%GCCDIR%\BIN";"%PATH%"
+	echo.
+	
 	echo Change to wxFormBuilder build directory
 	cd wxformbuilder
 	
 	echo Copying over wxWidgets dlls from %WXWIN%
 	copy %WXWIN%\lib\gcc_dll\wxmsw28u_gcc.dll /Y output\
 	echo Copying over MinGW dlls
-	copy %GCC4DIR%\bin\mingwm10.dll /Y output\
-	copy %GCC4DIR%\bin\libgcc_s_dw2-1.dll /Y output\
+	copy %GCCDIR%\bin\mingwm10.dll /Y output\
+	copy %GCCDIR%\bin\libgcc_s_dw2-1.dll /Y output\
 	
 	echo Create the build files.
 	call premake.exe --target gnu --unicode --with-wx-shared
