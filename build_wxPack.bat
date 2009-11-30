@@ -91,6 +91,12 @@ goto BUILD_WXFORMBUILDER
 	echo Change to wxFormBuilder build directory
 	cd wxformbuilder
 	
+	echo Copying over wxWidgets dlls from %WXWIN%
+	copy %WXWIN%\lib\gcc_dll\wxmsw28u_gcc.dll /Y output\
+	echo Copying over MinGW dlls
+	copy %GCC4DIR%\bin\mingwm10.dll /Y output\
+	copy %GCC4DIR%\bin\libgcc_s_dw2-1.dll /Y output\
+	
 	echo Create the build files.
 	call premake.exe --target gnu --unicode --with-wx-shared
 	if ERRORLEVEL 1 goto ERROR
