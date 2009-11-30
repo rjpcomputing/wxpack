@@ -47,7 +47,7 @@ goto BUILD_WXCOMPILED
 
 	:: Make installer for wxCompiled
 	echo Building wxCompiled installer...
-	call "C:\Program Files\Inno Setup 5\iscc.exe" /F"wxWidgets_Compiled-setup" "wxWidgets_Compiled.iss"
+	call "C:\Program Files\Inno Setup 5\iscc.exe" /Q /F"wxWidgets_Compiled-setup" "wxWidgets_Compiled.iss"
 	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..\..
@@ -74,7 +74,7 @@ goto BUILD_WXADDITIONS
 
 	:: Make installer for wxAdditions
 	echo Building wxAdditions installer...
-	"C:\Program Files\Inno Setup 5\iscc.exe" /F"wxAdditions-setup" "wxAdditions.iss"
+	"C:\Program Files\Inno Setup 5\iscc.exe" /Q /F"wxAdditions-setup" "wxAdditions.iss"
 	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..\..
@@ -103,7 +103,7 @@ goto BUILD_WXFORMBUILDER
 	cd install\windows
 	
 	echo Building wxFormBuilder installer. Current Directory: %CD%
-	call "C:\Program Files\Inno Setup 5\ISCC.exe" /F"wxFormBuilder-setup" "wxFormBuilder.iss"
+	call "C:\Program Files\Inno Setup 5\ISCC.exe" /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
 	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..\..\..
@@ -118,7 +118,7 @@ goto BUILD_WXVC
 	cd install\wxVC
 	
 	echo Building wxVC installer...
-	call "C:\Program Files\Inno Setup 5\iscc.exe" /F"wxVC-setup" "wxVC.iss"
+	call "C:\Program Files\Inno Setup 5\iscc.exe" /Q /F"wxVC-setup" "wxVC.iss"
 	if ERRORLEVEL 1 goto ERROR
 		
 	cd ..\..
@@ -133,7 +133,7 @@ goto BUILD_WXPACK
 	cd install
 	
 	echo Building wxPack installer...
-	call "C:\Program Files\Inno Setup 5\iscc.exe" /cc "wxPack.iss"
+	call "C:\Program Files\Inno Setup 5\iscc.exe" /Q "wxPack.iss"
 	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..
