@@ -154,7 +154,7 @@ goto BUILD_WXPACK
 	if ERRORLEVEL 1 goto ERROR
 	
 	cd ..
-	echo Done building wxVC. Current Directory: %CD%
+	echo Done building wxPack. Current Directory: %CD%
 goto END
 
 :ERROR
