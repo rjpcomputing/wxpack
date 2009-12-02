@@ -24,6 +24,9 @@ goto CONFIGURE
 	mkdir wxwidgets\lib\gcc_lib\mswd\wx
 	mkdir wxwidgets\lib\gcc_lib\mswu\wx
 	mkdir wxwidgets\lib\gcc_lib\mswud\wx
+	
+	echo Cleaning up the old wxPack installs...
+	del /F /Q %~dp0install\wxPack_v*
 goto BUILD_WXCOMPILED
 
 :BUILD_WXCOMPILED
