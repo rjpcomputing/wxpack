@@ -109,7 +109,8 @@ goto BUILD_WXFORMBUILDER
 	copy %WXWIN%\lib\gcc_dll\wxmsw28u_gcc.dll /Y output\
 	echo Copying over MinGW dlls
 	copy %GCCDIR%\bin\mingwm10.dll /Y output\
-	copy %GCCDIR%\bin\libgcc_s_dw2-1.dll /Y output\
+	::copy %GCCDIR%\bin\libgcc_s_dw2-1.dll /Y output\
+	copy %GCCDIR%\bin\libintl-8.dll /Y output\
 	
 	echo Create the build files.
 	call premake.exe --target gnu --unicode --with-wx-shared
