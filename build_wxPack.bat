@@ -11,6 +11,9 @@ goto CONFIGURE
 	echo Copy the setup configuration into the source tree
 	copy setup.h /Y wxwidgets\include\wx\msw
 	copy setup.h /Y wxwidgets\include\wx
+	
+	echo Copy the documentation into the install tree
+	xcopy /Y /I /S support wxwidgets
 
 	echo Copy build script to build directory
 	copy wxBuild_wxWidgets.bat /Y wxwidgets\build\msw
@@ -28,6 +31,7 @@ goto CONFIGURE
 	echo Cleaning up the old wxPack installs...
 	del /F /Q %~dp0install\wxPack_v*
 goto BUILD_WXCOMPILED
+
 
 :BUILD_WXCOMPILED
 	echo -- WXCOMPILED ---------------------------------------------------------
