@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     01/02/97
-// RCS-ID:      $Id: setup0.h 51451 2008-01-29 23:11:55Z VZ $
+// RCS-ID:      $Id: setup0.h 60190 2009-04-16 00:57:35Z KO $
 // Copyright:   (c) Julian Smart
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -579,6 +579,18 @@
 #define wxUSE_GRAPHICS_CONTEXT 0
 #endif
 
+// Enable the new wxCairoContext classes for an advanced
+// 2D drawing API.  (Still somewhat experimental)
+//
+// Please note that you will need to link with Cairo for this to work.
+//
+// Default is 0
+//
+// Recommended setting: 1
+#ifndef wxUSE_CAIRO
+#define wxUSE_CAIRO 0
+#endif
+
 // ----------------------------------------------------------------------------
 // Individual GUI controls
 // ----------------------------------------------------------------------------
@@ -991,7 +1003,7 @@
 // Default is 0.
 //
 // Recommended setting: 1 if you intend to use OpenGL, 0 otherwise
-#define wxUSE_GLCANVAS       1
+#define wxUSE_GLCANVAS       0
 
 // wxRichTextCtrl allows editing of styled text.
 //
@@ -1070,7 +1082,7 @@
 // Use wxHTML-based help controller?
 #define wxUSE_WXHTML_HELP 1
 
-#define wxUSE_RESOURCES   1
+#define wxUSE_RESOURCES   0
                                 // 0 for no wxGetResource/wxWriteResource
 #define wxUSE_CONSTRAINTS 1
                                 // 0 for no window layout constraint system
@@ -1096,7 +1108,7 @@
 // ----------------------------------------------------------------------------
 
 // Define 1 to use ODBC classes
-#define wxUSE_ODBC          1
+#define wxUSE_ODBC          0
 
 // For backward compatibility reasons, this parameter now only controls the
 // default scrolling method used by cursors.  This default behavior can be
@@ -1309,7 +1321,7 @@
 #define wxUSE_UXTHEME_AUTO      1
 
 // Set to 1 to use InkEdit control (Tablet PC), if available
-#define wxUSE_INKEDIT  1
+#define wxUSE_INKEDIT  0
 
 // ----------------------------------------------------------------------------
 // Generic versions of native controls
