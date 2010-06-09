@@ -8,7 +8,7 @@
 
 #define wxMajorVersion "2.8"
 #define wxMinorVersion "10"
-#define MyAppVer "2.8.11.01"
+#define MyAppVer "2.8.11.02"
 #define MyAppName "wxWidgets"
 #define MyAppVerName "wxWidgets Compiled 2.8.11"
 #define MyAppPublisher "Julian Smart"
@@ -38,7 +38,7 @@ AppVersion={#MyAppVer}
 WizardImageFile=compiler:wizmodernimage-IS.bmp
 WizardSmallImageFile=compiler:wizmodernsmallimage-IS.bmp
 SetupIconFile=support\mondrian.ico
-LicenseFile=files\license.txt
+LicenseFile=license.txt
 UsePreviousAppDir=true
 DisableDirPage=false
 AppendDefaultGroupName=false
@@ -187,6 +187,7 @@ begin
 		end;
 	end;
 end;
+
 
 
 

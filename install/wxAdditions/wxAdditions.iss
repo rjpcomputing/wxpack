@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.11.01"
+#define MyAppVer "2.8.11.02"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -32,7 +32,7 @@ WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
 VersionInfoVersion={#MyAppVer}
 VersionInfoDescription={#MyAppName}
-LicenseFile=files\license.txt
+LicenseFile=license.txt
 ChangesEnvironment=true
 UsePreviousAppDir=false
 
@@ -282,6 +282,7 @@ begin
 		end;
 	end;
 end;
+
 
 
 
