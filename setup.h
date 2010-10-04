@@ -1108,7 +1108,7 @@
 // ----------------------------------------------------------------------------
 
 // Define 1 to use ODBC classes
-#define wxUSE_ODBC          0
+#define wxUSE_ODBC          1
 
 // For backward compatibility reasons, this parameter now only controls the
 // default scrolling method used by cursors.  This default behavior can be
