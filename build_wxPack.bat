@@ -41,7 +41,7 @@ goto BUILD_WXCOMPILED
 	cd wxwidgets\build\msw
 
 	echo Run the build file for each compiler
-	call wxBuild_wxWidgets.bat VC80 ALL
+	call wxBuild_wxWidgets.bat VC100 ALL
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat MINGW4 ALL
 	if ERRORLEVEL 1 goto ERROR
@@ -67,7 +67,7 @@ goto BUILD_WXADDITIONS
 	echo Change to additions build directory
 	cd wxwidgets\additions\build
 	
-	call build_wxadditions.bat VC80
+	call build_wxadditions.bat VC100
 	if ERRORLEVEL 1 goto ERROR
 	call build_wxadditions.bat MINGW4
 	if ERRORLEVEL 1 goto ERROR

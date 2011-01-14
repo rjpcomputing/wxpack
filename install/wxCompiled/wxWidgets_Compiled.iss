@@ -75,7 +75,7 @@ Name: wx\vc; Description: Visual C++; Flags: dontinheritcheck; Types: full
 Name: wx\vc\vclib; Description: Lib's; Types: full compact vc80
 Name: wx\vc\vcdll; Description: Dll's
 ;Name: wx\vc\vcdll\vc71; Description: Visual C++ 7.1 Compiled; Flags: exclusive; Types: full vc71
-Name: wx\vc\vcdll\vc80; Description: Visual C++ 8.0 Compiled; Flags: exclusive; Types: full vc80
+Name: wx\vc\vcdll\vc80; Description: Visual C++ 10.0 Compiled; Flags: exclusive; Types: full vc80
 ;Name: wx\vc\vcdll\vc80; Description: Visual C++ 9.0 Compiled; Flags: exclusive; Types: full vc90
 Name: wx\gcc; Description: MinGW Gcc 4.2.1; Flags: dontinheritcheck; Types: full gcc
 Name: wx\gcc\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc
@@ -84,7 +84,7 @@ Name: wx\gcc\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc
 [Types]
 Name: full; Description: Full Installation
 ;Name: vc71; Description: Visual C++ Only   Runtime Version: 7.1
-Name: vc80; Description: Visual C++ Only   Runtime Version: 8.0
+Name: vc80; Description: Visual C++ Only   Runtime Version: 10.0
 ;Name: vc90; Description: Visual C++ Only   Runtime Version: 9.0
 Name: gcc; Description: MinGW Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
@@ -187,7 +187,6 @@ begin
 		end;
 	end;
 end;
-
 
 
 
