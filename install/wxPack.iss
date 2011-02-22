@@ -57,11 +57,11 @@ LicenseFile=license.txt
 ChangesEnvironment=true
 
 [Files]
-Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files
-Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files
-Source: wxAdditions\wxAdditions*.exe; DestDir: {app}\files
-Source: wxVC\wxVC*.exe; DestDir: {app}\files; Check: IsVCInstalled
-Source: license.txt; DestDir: {app}
+Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files; Flags: ignoreversion
+Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files; Flags: ignoreversion
+Source: wxAdditions\wxAdditions*.exe; DestDir: {app}\files; Flags: ignoreversion
+Source: wxVC\wxVC*.exe; DestDir: {app}\files; Check: IsVCInstalled; Flags: ignoreversion
+Source: license.txt; DestDir: {app}; Flags: ignoreversion
 Source: wxwin.bmp; Flags: dontcopy
 
 [Dirs]
@@ -654,7 +654,6 @@ begin
 
 	Result := IsInstalled;
 end;
-
 
 
 
