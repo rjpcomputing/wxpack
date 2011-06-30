@@ -25,7 +25,7 @@
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "2.8.10.06"
+#define AppMinVer "2.8.12.00"
 
 ; **** DON'T EDIT BELOW THIS LINE! ****
 [Setup]

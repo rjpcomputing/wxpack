@@ -9,7 +9,7 @@
 #define MyAppVer "2.8.12.01"
 #define MyAppName "wxVC"
 #define wxMajorVersion "2.8"
-#define AppMinVer "2.8.10.01"
+#define AppMinVer "2.8.12.00"
 
 [Setup]
 AppName={#MyAppName}

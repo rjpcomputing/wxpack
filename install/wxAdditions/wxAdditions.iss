@@ -10,8 +10,8 @@
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define wxWidgetsMinVer "2.8.10.07"
-#define wxAdditionsMinVer "2.8.10.01"
+#define wxWidgetsMinVer "2.8.12.00"
+#define wxAdditionsMinVer "2.8.12.00"
 
 [Setup]
 AppName={#MyAppName}
