@@ -48,7 +48,7 @@ VersionInfoVersion={#MyAppVer}
 VersionInfoDescription={#MyAppName}
 
 [Files]
-Source: ..\..\wxwidgets\license.txt; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
+Source: ..\..\wxwidgets\docs\licence.txt; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: ..\..\wxwidgets\art\*; DestDir: {app}\art; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: ..\..\wxwidgets\contrib\*; DestDir: {app}\contrib; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: ..\..\wxwidgets\docs\*; DestDir: {app}\docs; Flags: ignoreversion recursesubdirs; Excludes: .svn\
