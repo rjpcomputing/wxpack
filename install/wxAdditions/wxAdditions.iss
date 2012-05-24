@@ -6,7 +6,7 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "2.8.12.01"
+#define MyAppVer "2.8.12.02"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -251,7 +251,7 @@ begin
 					result := true;
 				end else begin
 					// Ask if they really want to uninstall because we are in the default installer.
-					if MsgBox('Version ' + wxAdditionsVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO) = IDYES then begin
+					if SuppressibleMsgBox('Version ' + wxAdditionsVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDNO) = IDYES then begin
 						Exec(sUninstallEXE,	'/SILENT', GetPathInstalled('{#MyAppName}'),
 							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
 

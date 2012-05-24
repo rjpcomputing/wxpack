@@ -8,7 +8,7 @@
 
 #define wxMajorVersion "2.8"
 #define wxMinorVersion "12"
-#define MyAppVer "2.8.12.01"
+#define MyAppVer "2.8.12.02"
 #define MyAppName "wxWidgets"
 #define MyAppVerName "wxWidgets Compiled 2.8.12"
 #define MyAppPublisher "Julian Smart"
@@ -168,7 +168,7 @@ begin
 					result := true;
 				end else begin
 					// Ask if they really want to uninstall because we are in the default installer.
-					if SuppressibleMsgBox( 'Version ' + sVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDYES ) = IDYES then begin
+					if SuppressibleMsgBox( 'Version ' + sVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDNO ) = IDYES then begin
 						Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'),
 							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
 
