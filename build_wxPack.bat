@@ -134,7 +134,8 @@ goto BUILD_WXFORMBUILDER
 	
 	cd ..\..\..
 	echo Done building wxFormBuilder. Current Directory: %CD%
-goto BUILD_WXVC
+::goto BUILD_WXVC
+goto BUILD_WXPACK
 
 :BUILD_WXVC
 	echo -- WXVC ---------------------------------------------------------------

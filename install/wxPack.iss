@@ -21,7 +21,7 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.12.04"
+#define MyAppVer "2.8.12.05"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -60,7 +60,6 @@ ChangesEnvironment=true
 Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files; Flags: ignoreversion
 Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files; Flags: ignoreversion
 Source: wxAdditions\wxAdditions*.exe; DestDir: {app}\files; Flags: ignoreversion
-;Source: wxVC\wxVC*.exe; DestDir: {app}\files; Check: IsVCInstalled; Flags: ignoreversion
 Source: license.txt; DestDir: {app}; Flags: ignoreversion
 Source: wxwin.bmp; Flags: dontcopy
 
@@ -71,31 +70,25 @@ Name: {app}\files; Flags: uninsalwaysuninstall; attribs: hidden
 Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
-Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: """{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc80 wx\gcc\gcclib wx\gcc\gccdll
-Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: """{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
-;Filename: {app}\files\wxVC-setup.exe; StatusMsg: Installing wxVC ...; WorkingDir: {app}\files; Parameters: """{code:GetGroup|wxVC}"""; Flags: hidewizard; Components: wxvc; Check: IsVCInstalled
+Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
+Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc100 wx\gcc\gcclib wx\gcc\gccdll
+Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 
 [Components]
-Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc80 gcc compact; ExtraDiskSpaceRequired: 17406362
-Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc80 gcc compact; ExtraDiskSpaceRequired: 216111514
-Name: wxvc; Description: wxVC; Flags: disablenouninstallwarning; Types: custom full vc80 compact; Check: IsVCInstalled; ExtraDiskSpaceRequired: 3565158
+Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc100 gcc compact; ExtraDiskSpaceRequired: 17406362
+Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc100 gcc compact; ExtraDiskSpaceRequired: 216111514
 Name: wx; Description: wxWidgets Compiled By:; Flags: disablenouninstallwarning
 Name: wx\vc; Description: Visual C++; Flags: disablenouninstallwarning
-Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc80; ExtraDiskSpaceRequired: 397410304
+Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc100; ExtraDiskSpaceRequired: 397410304
 Name: wx\vc\vcdll; Description: Dll's; Flags: disablenouninstallwarning; ExtraDiskSpaceRequired: 298844160
-;Name: wx\vc\vcdll\vc71; Description: Visual C++ 7.1 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc71
-Name: wx\vc\vcdll\vc80; Description: Visual C++ 10.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc80
-;Name: wx\vc\vcdll\vc90; Description: Visual C++ 9.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc90
+Name: wx\vc\vcdll\vc100; Description: Visual C++ 10.0 Compiled; Flags: disablenouninstallwarning exclusive; Types: custom full vc100
 Name: wx\gcc; Description: MinGW GCC 4.4.1; Flags: disablenouninstallwarning
 Name: wx\gcc\gcclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 1887436800
 Name: wx\gcc\gccdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 350224384
 
 [Types]
 Name: full; Description: Full Installation
-;Name: vc71; Description: Visual C++ Only   Runtime Version: 7.1
-Name: vc80; Description: Visual C++ Only   Runtime Version: 10.0
-;Name: vc90; Description: Visual C++ Only   Runtime Version: 9.0
+Name: vc100; Description: Visual C++ Only   Runtime Version: 10.0
 Name: gcc; Description: MinGW Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
@@ -133,7 +126,7 @@ function GetSelectedComponents( Param: String ): String;
 var
 	compList: String;
 begin
-	compList := CheckComponent('wx\vc\vclib') + CheckComponent('wx\vc\vcdll\vc80') + CheckComponent('wx\gcc\gcclib') + CheckComponent('wx\gcc\gccdll');
+	compList := CheckComponent('wx\vc\vclib') + CheckComponent('wx\vc\vcdll\vc100') + CheckComponent('wx\gcc\gcclib') + CheckComponent('wx\gcc\gccdll');
 	//MsgBox(compList, mbInformation, MB_OK);
 	result := compList;
 end;
@@ -416,7 +409,6 @@ end;
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
 	wxAdditionsUninstEXE: String;
-	wxVCUninstEXE: String;
 	wxFormBuilderUninstEXE: String;
 	wxCompiledUninstEXE: String;
 	ResultCode: Integer;
@@ -426,7 +418,6 @@ begin
 	begin
 		// Get all the paths to the components uninstaller
 		wxAdditionsUninstEXE := RemoveQuotes( GetPathUninstallString( 'wxAdditions' ) );
-		wxVCUninstEXE := RemoveQuotes( GetPathUninstallString( 'wxVC' ) );
 		wxFormBuilderUninstEXE := RemoveQuotes( GetPathUninstallString( 'wxFormBuilder' ) );
 		wxCompiledUninstEXE := RemoveQuotes( GetPathUninstallString( '{{#wxWidgetsGUID}}' ) );
 
@@ -441,20 +432,6 @@ begin
 			else begin
 				// handle failure if necessary; ResultCode contains the error code
 				MsgBox(wxAdditionsUninstEXE + ' could not be executed', mbError, MB_OK);
-			end;
-		end;
-
-		// Check to make sure the return has a valid location.
-		if CompareStr( wxVCUninstEXE, '' ) > 0 then
-		begin
-			//MsgBox(wxVCUninstEXE, mbInformation, MB_OK);
-			if Exec( wxVCUninstEXE, '/silent', '', SW_SHOW, ewWaitUntilTerminated, ResultCode ) then
-			begin
-				// handle success if necessary; ResultCode contains the exit code
-			end
-			else begin
-				// handle failure if necessary; ResultCode contains the error code
-				MsgBox(wxVCUninstEXE + ' could not be executed', mbError, MB_OK);
 			end;
 		end;
 
@@ -654,3 +631,4 @@ begin
 
 	Result := IsInstalled;
 end;
+
