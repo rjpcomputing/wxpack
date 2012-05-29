@@ -21,7 +21,7 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.12.03"
+#define MyAppVer "2.8.12.04"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -60,7 +60,7 @@ ChangesEnvironment=true
 Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files; Flags: ignoreversion
 Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files; Flags: ignoreversion
 Source: wxAdditions\wxAdditions*.exe; DestDir: {app}\files; Flags: ignoreversion
-Source: wxVC\wxVC*.exe; DestDir: {app}\files; Check: IsVCInstalled; Flags: ignoreversion
+;Source: wxVC\wxVC*.exe; DestDir: {app}\files; Check: IsVCInstalled; Flags: ignoreversion
 Source: license.txt; DestDir: {app}; Flags: ignoreversion
 Source: wxwin.bmp; Flags: dontcopy
 
@@ -71,10 +71,10 @@ Name: {app}\files; Flags: uninsalwaysuninstall; attribs: hidden
 Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
-Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc80 wx\gcc\gcclib wx\gcc\gccdll
-Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
-Filename: {app}\files\wxVC-setup.exe; StatusMsg: Installing wxVC ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxVC}"""; Flags: hidewizard; Components: wxvc; Check: IsVCInstalled
+Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: """{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
+Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll\vc80 wx\gcc\gcclib wx\gcc\gccdll
+Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: """{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
+;Filename: {app}\files\wxVC-setup.exe; StatusMsg: Installing wxVC ...; WorkingDir: {app}\files; Parameters: """{code:GetGroup|wxVC}"""; Flags: hidewizard; Components: wxvc; Check: IsVCInstalled
 
 [Components]
 Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc80 gcc compact; ExtraDiskSpaceRequired: 17406362
@@ -454,7 +454,7 @@ begin
 			end
 			else begin
 				// handle failure if necessary; ResultCode contains the error code
-				MsgBox(wxFormBuilderUninstEXE + ' could not be executed', mbError, MB_OK);
+				MsgBox(wxVCUninstEXE + ' could not be executed', mbError, MB_OK);
 			end;
 		end;
 
@@ -654,6 +654,3 @@ begin
 
 	Result := IsInstalled;
 end;
-
-
-

@@ -160,8 +160,7 @@ begin
 			if FileExists( sUninstallEXE ) then begin
 				if WizardSilent() then begin
 					// Just uninstall without asking because we are in silent mode.
-					Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'),
-							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
+					//Exec( sUninstallEXE, '/SILENT', GetPathInstalled('{#MyAppName}'), SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
 
 					// Make sure that Setup is visible and the foreground window
 					BringToFrontAndRestore;
@@ -187,6 +186,3 @@ begin
 		end;
 	end;
 end;
-
-
-

@@ -243,15 +243,14 @@ begin
 			if FileExists(sUninstallEXE) then begin
 				if WizardSilent() then begin
 					// Just uninstall without asking because we are in silent mode.
-					Exec(sUninstallEXE,	'/SILENT', GetPathInstalled('{#MyAppName}'),
-							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
+					//Exec(sUninstallEXE,	'/SILENT', GetPathInstalled('{#MyAppName}'), SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
 
 					// Make sure that Setup is visible and the foreground window
 					BringToFrontAndRestore;
 					result := true;
 				end else begin
 					// Ask if they really want to uninstall because we are in the default installer.
-					if SuppressibleMsgBox('Version ' + wxAdditionsVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDNO) = IDYES then begin
+					if SuppressibleMsgBox('Version ' + wxAdditionsVersion + ' of {#MyAppName} was detected.' #13 'It is recommended that you uninstall the old version first before continuing.' + #13 + #13 + 'Would you like to uninstall it now?', mbInformation, MB_YESNO, IDYES) = IDYES then begin
 						Exec(sUninstallEXE,	'/SILENT', GetPathInstalled('{#MyAppName}'),
 							SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
 
@@ -282,7 +281,3 @@ begin
 		end;
 	end;
 end;
-
-
-
-
