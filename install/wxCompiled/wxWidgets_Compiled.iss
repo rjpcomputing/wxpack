@@ -60,7 +60,7 @@ Source: ..\..\wxwidgets\include\*; DestDir: {app}\include; Flags: ignoreversion 
 Source: ..\..\wxwidgets\src\*; DestDir: {app}\src; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: ..\..\wxwidgets\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gccdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
-Source: ..\..\wxwidgets\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll\vc80; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
@@ -71,21 +71,16 @@ Name: {group}\{#MyAppName} {#wxMajorVersion}. Help; Type: filesandordirs
 
 [Components]
 Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom compact
-Name: wx\vc; Description: Visual C++; Flags: dontinheritcheck; Types: full
-Name: wx\vc\vclib; Description: Lib's; Types: full compact vc80
-Name: wx\vc\vcdll; Description: Dll's
-;Name: wx\vc\vcdll\vc71; Description: Visual C++ 7.1 Compiled; Flags: exclusive; Types: full vc71
-Name: wx\vc\vcdll\vc80; Description: Visual C++ 10.0 Compiled; Flags: exclusive; Types: full vc80
-;Name: wx\vc\vcdll\vc80; Description: Visual C++ 9.0 Compiled; Flags: exclusive; Types: full vc90
+Name: wx\vc; Description: Visual C++ 2010; Flags: dontinheritcheck; Types: full vc
+Name: wx\vc\vclib; Description: Lib's; Types: full compact vc
+Name: wx\vc\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
 Name: wx\gcc; Description: MinGW Gcc 4.2.1; Flags: dontinheritcheck; Types: full gcc
 Name: wx\gcc\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc
 Name: wx\gcc\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc
 
 [Types]
 Name: full; Description: Full Installation
-;Name: vc71; Description: Visual C++ Only   Runtime Version: 7.1
-Name: vc80; Description: Visual C++ Only   Runtime Version: 10.0
-;Name: vc90; Description: Visual C++ Only   Runtime Version: 9.0
+Name: vc; Description: Visual C++ 2010 Only   Runtime Version: 10.0
 Name: gcc; Description: MinGW Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
