@@ -43,6 +43,8 @@ goto BUILD_WXCOMPILED
 	echo Run the build file for each compiler
 	call wxBuild_wxWidgets.bat VC100 ALL
 	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxWidgets.bat VC100_64 ALL
+	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat MINGW4 ALL
 	if ERRORLEVEL 1 goto ERROR
 	::call wxBuild_wxWidgets.bat MINGW4 NULL LIB_RELEASE_UNICODE

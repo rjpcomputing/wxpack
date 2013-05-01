@@ -8,7 +8,7 @@
 
 #define wxMajorVersion "2.8"
 #define wxMinorVersion "12"
-#define MyAppVer "2.8.12.02"
+#define MyAppVer "2.8.12.03"
 #define MyAppName "wxWidgets"
 #define MyAppVerName "wxWidgets Compiled 2.8.12"
 #define MyAppPublisher "Julian Smart"
@@ -62,6 +62,8 @@ Source: ..\..\wxwidgets\lib\gcc_dll\*; DestDir: {app}\lib\gcc_dll; Flags: ignore
 Source: ..\..\wxwidgets\lib\gcc_lib\*; DestDir: {app}\lib\gcc_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\gcclib; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc_dll\*; DestDir: {app}\lib\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\vcdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc_lib\*; DestDir: {app}\lib\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\vclib; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc_amd64_dll\*; DestDir: {app}\lib64\vc_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc64\vcdll; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc_amd64_lib\*; DestDir: {app}\lib64\vc_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc64\vclib; Excludes: .svn\, *.ilk
 Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
 Source: wxWidgets_Compiled.iss; DestDir: {app}; Flags: dontcopy
@@ -74,6 +76,9 @@ Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom 
 Name: wx\vc; Description: Visual C++ 2010; Flags: dontinheritcheck; Types: full vc
 Name: wx\vc\vclib; Description: Lib's; Types: full compact vc
 Name: wx\vc\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
+Name: wx\vc64; Description: Visual C++ 2010 64bit; Flags: dontinheritcheck; Types: full vc
+Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc
+Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
 Name: wx\gcc; Description: MinGW Gcc 4.2.1; Flags: dontinheritcheck; Types: full gcc
 Name: wx\gcc\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc
 Name: wx\gcc\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc
