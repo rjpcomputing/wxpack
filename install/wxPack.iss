@@ -21,7 +21,7 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "2.8.12.06"
+#define MyAppVer "2.8.12.07"
 #define wxMajorVersion "2.8"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
@@ -82,8 +82,8 @@ Name: wx\vc; Description: Visual C++ 2010; Flags: disablenouninstallwarning
 Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc; ExtraDiskSpaceRequired: 397410304
 Name: wx\vc\vcdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full vc; ExtraDiskSpaceRequired: 298844160
 Name: wx\vc64; Description: Visual C++ 2010 64bit; Flags: dontinheritcheck; Types: full vc
-Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc
-Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
+Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc; ExtraDiskSpaceRequired: 770844058
+Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc; ExtraDiskSpaceRequired: 665911296
 Name: wx\gcc; Description: MinGW GCC 4.4.1; Flags: disablenouninstallwarning
 Name: wx\gcc\gcclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 1887436800
 Name: wx\gcc\gccdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 350224384
