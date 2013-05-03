@@ -71,7 +71,7 @@ Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
 Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll wx\gcc\gcclib wx\gcc\gccdll
+Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\vclib wx\vc\vcdll wx\vc64\vclib wx\vc64\vcdll wx\gcc\gcclib wx\gcc\gccdll
 Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 
 [Components]
@@ -81,6 +81,9 @@ Name: wx; Description: wxWidgets Compiled By:; Flags: disablenouninstallwarning
 Name: wx\vc; Description: Visual C++ 2010; Flags: disablenouninstallwarning
 Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc; ExtraDiskSpaceRequired: 397410304
 Name: wx\vc\vcdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full vc; ExtraDiskSpaceRequired: 298844160
+Name: wx\vc64; Description: Visual C++ 2010 64bit; Flags: dontinheritcheck; Types: full vc
+Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc
+Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
 Name: wx\gcc; Description: MinGW GCC 4.4.1; Flags: disablenouninstallwarning
 Name: wx\gcc\gcclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 1887436800
 Name: wx\gcc\gccdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 350224384
@@ -125,7 +128,7 @@ function GetSelectedComponents( Param: String ): String;
 var
 	compList: String;
 begin
-	compList := CheckComponent('wx\vc\vclib') + CheckComponent('wx\vc\vcdll') + CheckComponent('wx\gcc\gcclib') + CheckComponent('wx\gcc\gccdll');
+	compList := CheckComponent('wx\vc\vclib') + CheckComponent('wx\vc\vcdll') + CheckComponent('wx\vc64\vclib') + CheckComponent('wx\vc64\vcdll') + CheckComponent('wx\gcc\gcclib') + CheckComponent('wx\gcc\gccdll');
 	//MsgBox(compList, mbInformation, MB_OK);
 	result := compList;
 end;

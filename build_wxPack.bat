@@ -11,7 +11,7 @@ goto CONFIGURE
 	echo Copy the setup configuration into the source tree
 	copy setup.h /Y wxwidgets\include\wx\msw
 	copy setup.h /Y wxwidgets\include\wx
-	
+
 	echo Copy the documentation into the install tree
 	xcopy /Y /I /S support wxwidgets
 
@@ -27,7 +27,13 @@ goto CONFIGURE
 	mkdir wxwidgets\lib\gcc_lib\mswd\wx
 	mkdir wxwidgets\lib\gcc_lib\mswu\wx
 	mkdir wxwidgets\lib\gcc_lib\mswud\wx
-	
+
+	echo Get wxFormBuilders source
+	svn checkout https://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk/ wxformbuilder
+
+	echo Get wxAdditions source
+	svn checkout https://svn.code.sf.net/p/wxformbuilder/code/plugins/additions/trunk/ wxwidgets/additions
+
 	echo Cleaning up the old wxPack installs...
 	del /F /Q %~dp0install\wxPack_v*
 goto BUILD_WXCOMPILED
@@ -57,7 +63,7 @@ goto BUILD_WXCOMPILED
 	echo Building wxCompiled installer...
 	call "%ProgramFiles%\Inno Setup 5\iscc.exe" /Q /F"wxWidgets_Compiled-setup" "wxWidgets_Compiled.iss"
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	cd ..\..
 	echo Done building wxCompiled. Current Directory: %CD%
 goto BUILD_WXADDITIONS
@@ -68,12 +74,12 @@ goto BUILD_WXADDITIONS
 	echo Starting to build wxAdditions from %CD%
 	echo Change to additions build directory
 	cd wxwidgets\additions\build
-	
+
 	call build_wxadditions.bat VC100
 	if ERRORLEVEL 1 goto ERROR
 	call build_wxadditions.bat MINGW4
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	echo Build the wxFormBuilder plugin
 	call build_wxfb_plugin.bat
 
@@ -84,7 +90,7 @@ goto BUILD_WXADDITIONS
 	echo Building wxAdditions installer...
 	"%ProgramFiles%\Inno Setup 5\iscc.exe" /Q /F"wxAdditions-setup" "wxAdditions.iss"
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	cd ..\..
 	echo Done building wxAdditions. Current Directory: %CD%
 goto BUILD_WXFORMBUILDER
@@ -93,7 +99,7 @@ goto BUILD_WXFORMBUILDER
 	echo -- WXFORMBUILDER ------------------------------------------------------
 	echo --
 	echo Starting to build wxFormBuilder from '%CD%'
-	
+
 	:: MinGW Gcc install location. This must match you systems configuration.
 	set GCCDIR=C:\MinGW4
 	set CC=gcc
@@ -107,10 +113,10 @@ goto BUILD_WXFORMBUILDER
 	if "%OS%" == "Windows_NT" set PATH=%GCCDIR%\BIN;%PATH%
 	if "%OS%" == "" set PATH="%GCCDIR%\BIN";"%PATH%"
 	echo.
-	
+
 	echo Change to wxFormBuilder build directory
 	cd wxformbuilder
-	
+
 	echo Copying over wxWidgets dlls from %WXWIN%
 	copy %WXWIN%\lib\gcc_dll\wxmsw28u_gcc.dll /Y output\
 	echo Copying over MinGW dlls
@@ -118,22 +124,22 @@ goto BUILD_WXFORMBUILDER
 	::copy %GCCDIR%\bin\libgcc_s_dw2-1.dll /Y output\
 	copy %GCCDIR%\bin\libintl-8.dll /Y output\
 	copy %GCCDIR%\bin\libiconv-2.dll /Y output\
-	
+
 	echo Create the build files.
 	call premake.exe --target gnu --unicode --with-wx-shared
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	echo Building wxFormBuilder.
 	call mingw32-make.exe CONFIG=Release -j %NUMBER_OF_PROCESSORS%
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	echo Change to installer directory.
 	cd install\windows
-	
+
 	echo Building wxFormBuilder installer. Current Directory: %CD%
 	call "%ProgramFiles%\Inno Setup 5\ISCC.exe" /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	cd ..\..\..
 	echo Done building wxFormBuilder. Current Directory: %CD%
 ::goto BUILD_WXVC
@@ -145,11 +151,11 @@ goto BUILD_WXPACK
 	echo Starting to build wxVC from %CD%
 	echo Change to wxVC installer directory
 	cd install\wxVC
-	
+
 	echo Building wxVC installer...
 	call "%ProgramFiles%\Inno Setup 5\iscc.exe" /Q /F"wxVC-setup" "wxVC.iss"
 	if ERRORLEVEL 1 goto ERROR
-		
+
 	cd ..\..
 	echo Done building wxVC. Current Directory: %CD%
 goto BUILD_WXPACK
@@ -160,11 +166,11 @@ goto BUILD_WXPACK
 	echo Starting to build wxPack from %CD%
 	echo Change to wxPack installer directory
 	cd install
-	
+
 	echo Building wxPack installer...
 	call "%ProgramFiles%\Inno Setup 5\iscc.exe" /Q "wxPack.iss"
 	if ERRORLEVEL 1 goto ERROR
-	
+
 	cd ..
 	echo Done building wxPack. Current Directory: %CD%
 goto END
