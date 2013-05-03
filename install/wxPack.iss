@@ -82,8 +82,8 @@ Name: wx\vc; Description: Visual C++ 2010; Flags: disablenouninstallwarning
 Name: wx\vc\vclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full compact vc; ExtraDiskSpaceRequired: 397410304
 Name: wx\vc\vcdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full vc; ExtraDiskSpaceRequired: 298844160
 Name: wx\vc64; Description: Visual C++ 2010 64bit; Flags: dontinheritcheck; Types: full vc
-Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc; ExtraDiskSpaceRequired: 770844058
-Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc; ExtraDiskSpaceRequired: 665911296
+Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc; ExtraDiskSpaceRequired: 634944058
+Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc; ExtraDiskSpaceRequired: 399211296
 Name: wx\gcc; Description: MinGW GCC 4.4.1; Flags: disablenouninstallwarning
 Name: wx\gcc\gcclib; Description: Lib's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 1887436800
 Name: wx\gcc\gccdll; Description: Dll's; Flags: disablenouninstallwarning; Types: custom full gcc; ExtraDiskSpaceRequired: 350224384
