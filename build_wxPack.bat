@@ -77,8 +77,16 @@ goto BUILD_WXADDITIONS
 
 	call build_wxadditions.bat VC100
 	if ERRORLEVEL 1 goto ERROR
+	call build_wxadditions.bat VC100_64
+	if ERRORLEVEL 1 goto ERROR
 	call build_wxadditions.bat MINGW4
 	if ERRORLEVEL 1 goto ERROR
+
+	echo Move 64bit directory to lib64
+	:: Move Visual C++ 10.0 64-bit directories.
+	if not exist ..\lib64 mkdir ..\lib64
+	if exist ..\lib\vc_amd64_lib move /Y ..\lib\vc_amd64_lib ..\lib64\vc_lib
+	if exist ..\lib\vc_amd64_dll move /Y ..\lib\vc_amd64_dll ..\lib64\vc_dll
 
 	echo Build the wxFormBuilder plugin
 	call build_wxfb_plugin.bat
