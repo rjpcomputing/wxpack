@@ -58,6 +58,10 @@ if %1 == VC100    goto SETUP_VC100_BUILD_ENVIRONMENT
 if %1 == vc100    goto SETUP_VC100_BUILD_ENVIRONMENT
 if %1 == VC100_64 goto SETUP_VC100_64_BUILD_ENVIRONMENT
 if %1 == vc100_64 goto SETUP_VC100_64_BUILD_ENVIRONMENT
+if %1 == VC110    goto SETUP_VC110_BUILD_ENVIRONMENT
+if %1 == vc110    goto SETUP_VC110_BUILD_ENVIRONMENT
+if %1 == VC110_64 goto SETUP_VC110_64_BUILD_ENVIRONMENT
+if %1 == vc110_64 goto SETUP_VC110_64_BUILD_ENVIRONMENT
 if %1 == MINGW    goto SETUP_GCC_BUILD_ENVIRONMENT
 if %1 == mingw    goto SETUP_GCC_BUILD_ENVIRONMENT
 if %1 == MINGW4   goto SETUP_GCC4_BUILD_ENVIRONMENT
@@ -221,6 +225,47 @@ set MAKEFILE=makefile.vc
 set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
 goto START
 
+
+:SETUP_VC110_BUILD_ENVIRONMENT
+:: If cleaning or moving - no need to set up environment
+if %2 == CLEAN goto CLEAN_VS
+if %2 == clean goto CLEAN_VS
+if %2 == MOVE  goto MOVE
+if %2 == move  goto MOVE
+
+:: Add the VC 2012 includes.
+echo Setting environment for Visual C++ 11.0...
+echo.
+call "%VS110COMNTOOLS%vsvars32.bat"
+set INCLUDE=%WXWIN%\include;%INCLUDE%
+:: -- Setup the make executable and the actual makefile name --
+set MAKE=nmake
+set MAKEFILE=makefile.vc
+set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+goto START
+
+:SETUP_VC110_64_BUILD_ENVIRONMENT
+:: If cleaning or moving - no need to set up environment
+if %2 == CLEAN goto CLEAN_VS64
+if %2 == clean goto CLEAN_VS64
+if %2 == MOVE  goto MOVE
+if %2 == move  goto MOVE
+
+:: Add the VC 2012 64-bit includes.
+echo Setting environment for Visual C++ 11.0 64-bit...
+echo.
+set CPU=AMD64
+set CMD32="%VS110COMNTOOLS%vcvarsall.bat"
+set CMD64=%CMD32:\Common7\Tools\=\VC\%
+call %CMD64% x86_amd64
+set INCLUDE=%WXWIN%\include;%INCLUDE%
+:: -- Setup the make executable and the actual makefile name --
+set MAKE=nmake
+set MAKEFILE=makefile.vc
+set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+goto START
+
+
 :SETUP_GCC_BUILD_ENVIRONMENT
 :: If cleaning or moving - no need to set up environment
 if %2 == CLEAN goto CLEAN_MINGW
@@ -365,6 +410,10 @@ if %1 == VC100    goto MOVE_VC100
 if %1 == vc100    goto MOVE_VC100
 if %1 == VC100_64 goto MOVE_VC100_64
 if %1 == vc100_64 goto MOVE_VC100_64
+if %1 == VC110    goto MOVE_VC110
+if %1 == vc110    goto MOVE_VC110
+if %1 == VC110_64 goto MOVE_VC110_64
+if %1 == vc110_64 goto MOVE_VC110_64
 if %1 == MINGW    goto MOVE_MINGW
 if %1 == mingw    goto MOVE_MINGW
 if %1 == MINGW4   goto MOVE_MINGW4
@@ -420,6 +469,21 @@ goto END
 if not exist ..\..\lib64 mkdir ..\..\lib64
 if exist ..\..\lib\vc_amd64_lib move /Y ..\..\lib\vc_amd64_lib ..\..\lib64\vc10_lib
 if exist ..\..\lib\vc_amd64_dll move /Y ..\..\lib\vc_amd64_dll ..\..\lib64\vc10_dll
+echo.
+goto END
+
+:MOVE_VC110
+:: Move Visual C++ 11.0 directories.
+if exist ..\..\lib\vc_lib move /Y ..\..\lib\vc_lib ..\..\lib\vc11_lib
+if exist ..\..\lib\vc_dll move /Y ..\..\lib\vc_dll ..\..\lib\vc11_dll
+echo.
+goto END
+
+:MOVE_VC110_64
+:: Move Visual C++ 11.0 64-bit directories.
+if not exist ..\..\lib64 mkdir ..\..\lib64
+if exist ..\..\lib\vc_amd64_lib move /Y ..\..\lib\vc_amd64_lib ..\..\lib64\vc11_lib
+if exist ..\..\lib\vc_amd64_dll move /Y ..\..\lib\vc_amd64_dll ..\..\lib64\vc11_dll
 echo.
 goto END
 
@@ -702,6 +766,8 @@ echo           VC90     = Visual C++ 9.0
 echo           VC90_64  = Visual C++ 9.0 64-bit
 echo           VC100    = Visual C++ 10.0
 echo           VC100_64 = Visual C++ 10.0 64-bit
+echo           VC110    = Visual C++ 11.0
+echo           VC110_64 = Visual C++ 11.0 64-bit
 echo.
 echo      BuildTarget Options:
 echo           LIB   = Builds all the static library targets.
