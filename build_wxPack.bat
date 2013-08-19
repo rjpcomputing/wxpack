@@ -47,14 +47,12 @@ goto BUILD_WXCOMPILED
 	cd wxwidgets\build\msw
 
 	echo Run the build file for each compiler
-	call wxBuild_wxWidgets.bat VC100 ALL
+	call wxBuild_wxWidgets.bat VC110 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC100_64 ALL
+	call wxBuild_wxWidgets.bat VC110_64 ALL
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat MINGW4 ALL
 	if ERRORLEVEL 1 goto ERROR
-	::call wxBuild_wxWidgets.bat MINGW4 NULL LIB_RELEASE_UNICODE
-	::call wxBuild_wxWidgets.bat MINGW4 NULL DLL_RELEASE_UNICODE
 
 	echo Change to installer directory
 	cd ..\..\..\install\wxCompiled
@@ -75,9 +73,9 @@ goto BUILD_WXADDITIONS
 	echo Change to additions build directory
 	cd wxwidgets\additions\build
 
-	call build_wxadditions.bat VC100
+	call build_wxadditions.bat VC110
 	if ERRORLEVEL 1 goto ERROR
-	call build_wxadditions.bat VC100_64
+	call build_wxadditions.bat VC110_64
 	if ERRORLEVEL 1 goto ERROR
 	call build_wxadditions.bat MINGW4
 	if ERRORLEVEL 1 goto ERROR
