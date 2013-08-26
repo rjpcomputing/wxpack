@@ -132,15 +132,18 @@ goto BUILD_WXFORMBUILDER
 	copy %GCCDIR%\bin\libiconv-2.dll /Y output\
 
 	echo Create the build files.
-	call premake.exe --target gnu --unicode --with-wx-shared
+	call create_build_files4.bat
 	if ERRORLEVEL 1 goto ERROR
 
+	echo Change to build directory.
+	cd build\2.8\gmake
+	
 	echo Building wxFormBuilder.
-	call mingw32-make.exe CONFIG=Release -j %NUMBER_OF_PROCESSORS%
+	call mingw32-make.exe config=release -j %NUMBER_OF_PROCESSORS%
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Change to installer directory.
-	cd install\windows
+	cd ..\..\..\install\windows
 
 	echo Building wxFormBuilder installer. Current Directory: %CD%
 	call "%ProgramFiles%\Inno Setup 5\ISCC.exe" /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
