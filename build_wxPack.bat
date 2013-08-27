@@ -139,7 +139,7 @@ goto BUILD_WXFORMBUILDER
 	cd build\2.8\gmake
 	
 	echo Building wxFormBuilder.
-	call mingw32-make.exe config=release -j %NUMBER_OF_PROCESSORS%
+	call mingw32-make.exe config=release
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Change to installer directory.
