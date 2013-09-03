@@ -8,7 +8,7 @@
 
 #define wxMajorVersion "2.8"
 #define wxMinorVersion "12"
-#define MyAppVer "2.8.12.03"
+#define MyAppVer "2.8.12.04"
 #define MyAppName "wxWidgets"
 #define MyAppVerName "wxWidgets Compiled 2.8.12"
 #define MyAppPublisher "Julian Smart"
@@ -73,10 +73,10 @@ Name: {group}\{#MyAppName} {#wxMajorVersion}. Help; Type: filesandordirs
 
 [Components]
 Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom compact
-Name: wx\vc; Description: Visual C++ 2010; Flags: dontinheritcheck; Types: full vc
+Name: wx\vc; Description: Visual C++ 2012; Flags: dontinheritcheck; Types: full vc
 Name: wx\vc\vclib; Description: Lib's; Types: full compact vc
 Name: wx\vc\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
-Name: wx\vc64; Description: Visual C++ 2010 64bit; Flags: dontinheritcheck; Types: full vc
+Name: wx\vc64; Description: Visual C++ 2012 64bit; Flags: dontinheritcheck; Types: full vc
 Name: wx\vc64\vclib; Description: Lib's; Types: full compact vc
 Name: wx\vc64\vcdll; Description: Dll's; Flags: checkablealone; Types: full vc
 Name: wx\gcc; Description: MinGW Gcc 4.2.1; Flags: dontinheritcheck; Types: full gcc
@@ -85,7 +85,7 @@ Name: wx\gcc\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc
 
 [Types]
 Name: full; Description: Full Installation
-Name: vc; Description: Visual C++ 2010 Only   Runtime Version: 10.0
+Name: vc; Description: Visual C++ 2012 Only   Runtime Version: 11.0
 Name: gcc; Description: MinGW Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
