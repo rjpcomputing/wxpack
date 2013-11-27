@@ -19,15 +19,31 @@ goto CONFIGURE
 	copy wxBuild_wxWidgets.bat /Y wxwidgets\build\msw
 
 	echo Create directories for binary targets in GCC because of a bug in the wx Makefiles.
-	mkdir wxwidgets\lib\gcc_dll\msw\wx
-	mkdir wxwidgets\lib\gcc_dll\mswd\wx
-	mkdir wxwidgets\lib\gcc_dll\mswu\wx
-	mkdir wxwidgets\lib\gcc_dll\mswud\wx
-	mkdir wxwidgets\lib\gcc_lib\msw\wx
-	mkdir wxwidgets\lib\gcc_lib\mswd\wx
-	mkdir wxwidgets\lib\gcc_lib\mswu\wx
-	mkdir wxwidgets\lib\gcc_lib\mswud\wx
+	mkdir wxwidgets\lib\gcc48_dll\msw\wx
+	mkdir wxwidgets\lib\gcc48_dll\mswd\wx
+	mkdir wxwidgets\lib\gcc48_dll\mswu\wx
+	mkdir wxwidgets\lib\gcc48_dll\mswud\wx
+	mkdir wxwidgets\lib\gcc48_lib\msw\wx
+	mkdir wxwidgets\lib\gcc48_lib\mswd\wx
+	mkdir wxwidgets\lib\gcc48_lib\mswu\wx
+	mkdir wxwidgets\lib\gcc48_lib\mswud\wx
 
+	mkdir wxwidgets\lib\gcc48_dll_x64\msw\wx
+	mkdir wxwidgets\lib\gcc48_dll_x64\mswd\wx
+	mkdir wxwidgets\lib\gcc48_dll_x64\mswu\wx
+	mkdir wxwidgets\lib\gcc48_dll_x64\mswud\wx
+	mkdir wxwidgets\lib\gcc48_lib_x64\msw\wx
+	mkdir wxwidgets\lib\gcc48_lib_x64\mswd\wx
+	mkdir wxwidgets\lib\gcc48_lib_x64\mswu\wx
+	mkdir wxwidgets\lib\gcc48_lib_x64\mswud\wx
+	
+	set INNOSETUPPATH=
+	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"
+	if exist "%ProgramFiles(x86)%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles(x86)%\Inno Setup 5\iscc.exe"
+	IF (%INNOSETUPPATH%) == () goto ERROR
+	echo InnoSetup 5 detected at '%INNOSETUPPATH%'
+	
+	
 	echo Get wxFormBuilders source
 	svn checkout https://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk/ wxformbuilder
 
@@ -47,11 +63,17 @@ goto BUILD_WXCOMPILED
 	cd wxwidgets\build\msw
 
 	echo Run the build file for each compiler
-	call wxBuild_wxWidgets.bat VC110 ALL
+	call wxBuild_wxWidgets.bat VC100 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC110_64 ALL
+	call wxBuild_wxWidgets.bat VC100_64 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat MINGW4 ALL
+	call wxBuild_wxWidgets.bat VC120 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxWidgets.bat VC120_64 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxWidgets.bat MINGW4_W64 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Change to installer directory
@@ -59,7 +81,7 @@ goto BUILD_WXCOMPILED
 
 	:: Make installer for wxCompiled
 	echo Building wxCompiled installer...
-	call "%ProgramFiles%\Inno Setup 5\iscc.exe" /Q /F"wxWidgets_Compiled-setup" "wxWidgets_Compiled.iss"
+	call %INNOSETUPPATH% /Q /F"wxWidgets_Compiled-setup" "wxWidgets_Compiled.iss"
 	if ERRORLEVEL 1 goto ERROR
 
 	cd ..\..
@@ -73,28 +95,30 @@ goto BUILD_WXADDITIONS
 	echo Change to additions build directory
 	cd wxwidgets\additions\build
 
-	call build_wxadditions.bat VC110
+	call wxBuild_wxAdditions.bat VC100 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call build_wxadditions.bat VC110_64
+	call wxBuild_wxAdditions.bat VC100_64 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call build_wxadditions.bat MINGW4
+	call wxBuild_wxAdditions.bat VC120 ALL
 	if ERRORLEVEL 1 goto ERROR
-
-	echo Move 64bit directory to lib64
-	:: Move Visual C++ 10.0 64-bit directories.
-	if not exist ..\lib64 mkdir ..\lib64
-	if exist ..\lib\vc_amd64_lib move /Y ..\lib\vc_amd64_lib ..\lib64\vc_lib
-	if exist ..\lib\vc_amd64_dll move /Y ..\lib\vc_amd64_dll ..\lib64\vc_dll
+	call wxBuild_wxAdditions.bat VC120_64 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxAdditions.bat MINGW4_W64 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxAdditions.bat MINGW4_W64_64 ALL
+	if ERRORLEVEL 1 goto ERROR
 
 	echo Build the wxFormBuilder plugin
-	call build_wxfb_plugin.bat
+	echo Change to wxFormBuilder plugin directory
+	cd ..\wxfbPlugin
+	call wxBuild_wxFormBuilderPlugin.bat
 
 	echo Change to installer directory
 	cd ..\..\..\install\wxAdditions
 
 	:: Make installer for wxAdditions
 	echo Building wxAdditions installer...
-	"%ProgramFiles%\Inno Setup 5\iscc.exe" /Q /F"wxAdditions-setup" "wxAdditions.iss"
+	%INNOSETUPPATH% /Q /F"wxAdditions-setup" "wxAdditions.iss"
 	if ERRORLEVEL 1 goto ERROR
 
 	cd ..\..
@@ -124,19 +148,15 @@ goto BUILD_WXFORMBUILDER
 	cd wxformbuilder
 
 	echo Copying over wxWidgets dlls from %WXWIN%
-	copy %WXWIN%\lib\gcc_dll\wxmsw28u_gcc.dll /Y output\
+	copy %WXWIN%\lib\gcc48_dll\wxmsw30u_gcc48.dll /Y output\
 	echo Copying over MinGW dlls
-	copy %GCCDIR%\bin\mingwm10.dll /Y output\
-	::copy %GCCDIR%\bin\libgcc_s_dw2-1.dll /Y output\
-	copy %GCCDIR%\bin\libintl-8.dll /Y output\
-	copy %GCCDIR%\bin\libiconv-2.dll /Y output\
 
 	echo Create the build files.
-	call create_build_files4.bat
+	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64_32 --compiler-version=48
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Change to build directory.
-	cd build\2.8\gmake
+	cd build\3.0\gmake
 	
 	echo Building wxFormBuilder.
 	call mingw32-make.exe config=release
@@ -146,27 +166,11 @@ goto BUILD_WXFORMBUILDER
 	cd ..\..\..\install\windows
 
 	echo Building wxFormBuilder installer. Current Directory: %CD%
-	call "%ProgramFiles%\Inno Setup 5\ISCC.exe" /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
+	call %INNOSETUPPATH% /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
 	if ERRORLEVEL 1 goto ERROR
 
 	cd ..\..\..
 	echo Done building wxFormBuilder. Current Directory: %CD%
-::goto BUILD_WXVC
-goto BUILD_WXPACK
-
-:BUILD_WXVC
-	echo -- WXVC ---------------------------------------------------------------
-	echo --
-	echo Starting to build wxVC from %CD%
-	echo Change to wxVC installer directory
-	cd install\wxVC
-
-	echo Building wxVC installer...
-	call "%ProgramFiles%\Inno Setup 5\iscc.exe" /Q /F"wxVC-setup" "wxVC.iss"
-	if ERRORLEVEL 1 goto ERROR
-
-	cd ..\..
-	echo Done building wxVC. Current Directory: %CD%
 goto BUILD_WXPACK
 
 :BUILD_WXPACK
@@ -177,7 +181,7 @@ goto BUILD_WXPACK
 	cd install
 
 	echo Building wxPack installer...
-	call "%ProgramFiles%\Inno Setup 5\iscc.exe" /Q "wxPack.iss"
+	call %INNOSETUPPATH% /Q "wxPack.iss"
 	if ERRORLEVEL 1 goto ERROR
 
 	cd ..
