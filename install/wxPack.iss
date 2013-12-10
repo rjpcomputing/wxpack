@@ -173,6 +173,7 @@ end;
 
 function PackCustomPages_NextButtonClick(Page: TWizardPage): Boolean;
 begin
+	wxLocationString := wxLocation.text;
 	Result := True;
 end;
 
