@@ -131,7 +131,7 @@ goto BUILD_WXFORMBUILDER
 	echo Starting to build wxFormBuilder from '%CD%'
 
 	:: MinGW Gcc install location. This must match you systems configuration.
-	set GCCDIR=C:\MinGW4
+	set GCCDIR=C:\GCC\MinGW-w64\4.8.1
 	set CC=gcc
 	set CXX=g++
 
