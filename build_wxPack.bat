@@ -152,7 +152,7 @@ goto BUILD_WXFORMBUILDER
 	echo Copying over MinGW dlls
 
 	echo Create the build files.
-	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64_32 --compiler-version=48
+	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64 --compiler-version=48
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Change to build directory.
