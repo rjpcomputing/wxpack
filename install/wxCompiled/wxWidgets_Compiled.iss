@@ -7,14 +7,14 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #define wxMajorVersion "3.0"
-#define wxMinorVersion "0"
-#define MyAppVer "3.0.0.00"
+#define wxMinorVersion "1"
+#define MyAppVer "3.0.1.00"
 #define MyAppName "wxWidgets"
-#define MyAppVerName "wxWidgets Compiled 3.0.0"
+#define MyAppVerName "wxWidgets Compiled 3.0.1"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "3.0.0.00"
+#define AppMinVer "3.0.1.00"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
