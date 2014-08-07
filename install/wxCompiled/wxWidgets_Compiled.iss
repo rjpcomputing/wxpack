@@ -70,7 +70,7 @@ Source: ..\..\wxwidgets\lib\vc120_dll\*; DestDir: {app}\lib\vc120_dll; Flags: ig
 Source: ..\..\wxwidgets\lib\vc120_lib\*; DestDir: {app}\lib\vc120_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\120\x86\vclib; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc120_x64_dll\*; DestDir: {app}\lib64\vc120_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\120\x64\vcdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc120_x64_lib\*; DestDir: {app}\lib64\vc120_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\120\x64\vclib; Excludes: .svn\, *.ilk
-Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
+;Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
 Source: wxWidgets_Compiled.iss; DestDir: {app}; Flags: dontcopy
 
