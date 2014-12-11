@@ -45,10 +45,12 @@ goto CONFIGURE
 	
 	
 	echo Get wxFormBuilders source
-	svn checkout https://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk/ wxformbuilder
+	svn checkout svn://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk/ wxformbuilder
+	if ERRORLEVEL 1 goto ERROR
 
 	echo Get wxAdditions source
-	svn checkout https://svn.code.sf.net/p/wxformbuilder/code/plugins/additions/trunk/ wxwidgets/additions
+	svn checkout svn://svn.code.sf.net/p/wxformbuilder/code/plugins/additions/trunk/ wxwidgets/additions
+	if ERRORLEVEL 1 goto ERROR
 
 	echo Cleaning up the old wxPack installs...
 	del /F /Q %~dp0install\wxPack_v*
