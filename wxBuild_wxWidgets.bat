@@ -283,7 +283,12 @@ echo.
 set CPU=AMD64
 set CMD32="%VS140COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
-call %CMD64% amd64
+set CMD64_ARG=amd64
+echo Determining Processor Architecture for VC140 64-bit Build.
+if %PROCESSOR_ARCHITECTURE% == "x86" set CMD64_ARG=x86_amd64
+echo Determined %CMD64_ARG%
+echo.
+call %CMD64% %CMD64_ARG%
 set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
