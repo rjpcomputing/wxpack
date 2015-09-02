@@ -7,14 +7,14 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #define wxMajorVersion "3.0"
-#define wxMinorVersion "1"
-#define MyAppVer "3.0.2.00"
+#define wxMinorVersion "2"
+#define MyAppVer "3.0.2.01"
 #define MyAppName "wxWidgets"
 #define MyAppVerName "wxWidgets Compiled 3.0.2"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "3.0.2.00"
+#define AppMinVer "3.0.2.01"
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
@@ -70,6 +70,10 @@ Source: ..\..\wxwidgets\lib\vc120_dll\*; DestDir: {app}\lib\vc120_dll; Flags: ig
 Source: ..\..\wxwidgets\lib\vc120_lib\*; DestDir: {app}\lib\vc120_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\120\x86\vclib; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc120_x64_dll\*; DestDir: {app}\lib64\vc120_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\120\x64\vcdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc120_x64_lib\*; DestDir: {app}\lib64\vc120_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\120\x64\vclib; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc140_dll\*; DestDir: {app}\lib\vc140_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\140\x86\vcdll; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc140_lib\*; DestDir: {app}\lib\vc140_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\140\x86\vclib; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc140_x64_dll\*; DestDir: {app}\lib64\vc140_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\140\x64\vcdll; Excludes: .svn\, *.ilk
+Source: ..\..\wxwidgets\lib\vc140_x64_lib\*; DestDir: {app}\lib64\vc140_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\140\x64\vclib; Excludes: .svn\, *.ilk
 ;Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
 Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
 Source: wxWidgets_Compiled.iss; DestDir: {app}; Flags: dontcopy

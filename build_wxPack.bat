@@ -73,6 +73,10 @@ goto BUILD_WXCOMPILED
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat VC120_64 ALL
 	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxWidgets.bat VC140 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxWidgets.bat VC140_64 ALL
+	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat MINGW4_W64 ALL
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
@@ -104,6 +108,10 @@ goto BUILD_WXADDITIONS
 	call wxBuild_wxAdditions.bat VC120 ALL
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxAdditions.bat VC120_64 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxAdditions.bat VC140 ALL
+	if ERRORLEVEL 1 goto ERROR
+	call wxBuild_wxAdditions.bat VC140_64 ALL
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxAdditions.bat MINGW4_W64 ALL
 	if ERRORLEVEL 1 goto ERROR
