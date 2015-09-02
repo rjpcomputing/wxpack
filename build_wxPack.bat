@@ -65,22 +65,22 @@ goto BUILD_WXCOMPILED
 	cd wxwidgets\build\msw
 
 	echo Run the build file for each compiler
-	call wxBuild_wxWidgets.bat VC100 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC100_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC120 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC120_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC140 ALL
-	if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC100 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC100_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC120 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC120_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC140 ALL
+	::if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat VC140_64 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat MINGW4_W64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
-	if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat MINGW4_W64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
 
 	echo Change to installer directory
 	cd ..\..\..\install\wxCompiled
@@ -101,22 +101,22 @@ goto BUILD_WXADDITIONS
 	echo Change to additions build directory
 	cd wxwidgets\additions\build
 
-	call wxBuild_wxAdditions.bat VC100 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC100_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC120 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC120_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC140 ALL
-	if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat VC100 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat VC100_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat VC120 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat VC120_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat VC140 ALL
+	::if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxAdditions.bat VC140_64 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat MINGW4_W64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat MINGW4_W64_64 ALL
-	if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat MINGW4_W64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxAdditions.bat MINGW4_W64_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
 
 	echo Build the wxFormBuilder plugin
 	echo Change to wxFormBuilder plugin directory
