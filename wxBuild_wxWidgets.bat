@@ -283,6 +283,9 @@ echo.
 set CPU=AMD64
 set CMD32="%VS140COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
+:: If we are on native x64, build with that, else use cross-compiler.
+:: Note: Until VS2015 Update 1 happens, you will need to do this for the cross-compiler to work:
+:: https://connect.microsoft.com/VisualStudio/feedback/details/1651822/incorrect-mspdb140-dll-version-picked-in-x86-x64-cross-tools-environment
 set CMD64_ARG=x86_amd64
 echo Determining Processor Architecture for VC140 64-bit Build.
 if %PROCESSOR_ARCHITECTURE% == AMD64 set CMD64_ARG=amd64

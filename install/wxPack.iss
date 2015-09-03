@@ -21,11 +21,11 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "3.0.02.00"
+#define MyAppVer "3.0.02.01"
 #define wxMajorVersion "3.0"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "3.0.02.00"
+#define AppMinVer "3.0.02.01"
 
 ; **** DON'T EDIT BELOW THIS LINE! ****
 [Setup]
@@ -79,20 +79,27 @@ Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types:
 Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc gcc compact; ExtraDiskSpaceRequired: 1067346000
 Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom compact
 Name: wx\vc; Description: "Visual C++"; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc; 
-Name: wx\vc\120; Description: Visual C++ 2013; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013
-Name: wx\vc\120\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013
-Name: wx\vc\120\x86\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013 compact; ExtraDiskSpaceRequired: 788110000
-Name: wx\vc\120\x86\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013; ExtraDiskSpaceRequired: 260000000
-Name: wx\vc\120\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013
-Name: wx\vc\120\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013 compact; ExtraDiskSpaceRequired: 1002860000
-Name: wx\vc\120\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013; ExtraDiskSpaceRequired: 298005000
-Name: wx\vc\100; Description: Visual C++ 2010; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
-Name: wx\vc\100\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
-Name: wx\vc\100\x86\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010 compact; ExtraDiskSpaceRequired: 766500000
-Name: wx\vc\100\x86\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010; ExtraDiskSpaceRequired: 402339000
-Name: wx\vc\100\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
-Name: wx\vc\100\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010 compact; ExtraDiskSpaceRequired: 978531000
-Name: wx\vc\100\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010; ExtraDiskSpaceRequired: 441765000
+Name: wx\vc\140; Description: Visual C++ 2015; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015
+Name: wx\vc\140\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015
+Name: wx\vc\140\x86\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015 compact; ExtraDiskSpaceRequired: 788110000
+Name: wx\vc\140\x86\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015; ExtraDiskSpaceRequired: 260000000
+Name: wx\vc\140\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015
+Name: wx\vc\140\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015 compact; ExtraDiskSpaceRequired: 1002860000
+Name: wx\vc\140\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015; ExtraDiskSpaceRequired: 298005000
+;Name: wx\vc\120; Description: Visual C++ 2013; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013
+;Name: wx\vc\120\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013
+;Name: wx\vc\120\x86\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013 compact; ExtraDiskSpaceRequired: 788110000
+;Name: wx\vc\120\x86\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013; ExtraDiskSpaceRequired: 260000000
+;Name: wx\vc\120\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013
+;Name: wx\vc\120\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013 compact; ExtraDiskSpaceRequired: 1002860000
+;Name: wx\vc\120\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2013; ExtraDiskSpaceRequired: 298005000
+;Name: wx\vc\100; Description: Visual C++ 2010; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
+;Name: wx\vc\100\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
+;Name: wx\vc\100\x86\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010 compact; ExtraDiskSpaceRequired: 766500000
+;Name: wx\vc\100\x86\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010; ExtraDiskSpaceRequired: 402339000
+;Name: wx\vc\100\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
+;Name: wx\vc\100\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010 compact; ExtraDiskSpaceRequired: 978531000
+;Name: wx\vc\100\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010; ExtraDiskSpaceRequired: 441765000
 Name: wx\gcc; Description: MinGW4-w64; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
 Name: wx\gcc\48; Description: 4.8; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
 Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
@@ -105,8 +112,9 @@ Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone disablenou
 [Types]
 Name: full; Description: Full Installation
 Name: vc; Description: Visual C++
-Name: vc2013; Description: Visual C++ 2013 Only   Runtime Version: 12.0
-Name: vc2010; Description: Visual C++ 2010 Only   Runtime Version: 10.0
+Name: vc2015; Description: Visual C++ 2015 Only   Runtime Version: 14.0
+;Name: vc2013; Description: Visual C++ 2013 Only   Runtime Version: 12.0
+;Name: vc2010; Description: Visual C++ 2010 Only   Runtime Version: 10.0
 Name: gcc; Description: MinGW-w64 Gcc Only
 Name: gcc64; Description: MinGW-w64 x64 Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
