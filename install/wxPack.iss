@@ -71,7 +71,9 @@ Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
 Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\120\x86\vclib wx\vc\120\x86\vcdll wx\vc\120\x64\vclib wx\vc\120\x64\vcdll wx\vc\100\x86\vclib wx\vc\100\x86\vcdll wx\vc\100\x64\vclib wx\vc\100\x64\vcdll wx\gcc\48\x86\gcclib wx\gcc\48\x86\gccdll wx\gcc\48\x64\gcclib wx\gcc\48\x64\gccdll
+;Removed support for any but vs2015 and mingw.
+;Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\120\x86\vclib wx\vc\120\x86\vcdll wx\vc\120\x64\vclib wx\vc\120\x64\vcdll wx\vc\100\x86\vclib wx\vc\100\x86\vcdll wx\vc\100\x64\vclib wx\vc\100\x64\vcdll wx\gcc\48\x86\gcclib wx\gcc\48\x86\gccdll wx\gcc\48\x64\gcclib wx\gcc\48\x64\gccdll
+Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\140\x86\vclib wx\vc\140\x86\vcdll wx\vc\140\x64\vclib wx\vc\140\x64\vcdll wx\gcc\48\x86\gcclib wx\gcc\48\x86\gccdll wx\gcc\48\x64\gcclib wx\gcc\48\x64\gccdll
 Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 
 [Components]
