@@ -157,7 +157,7 @@ function GetSelectedComponents( Param: String ): String;
 var
 	compList: String;
 begin
-	compList := CheckComponent('wx\vc\120\x86\vclib') + CheckComponent('wx\vc\120\x86\vcdll') + CheckComponent('wx\vc\120\x64\vclib') + CheckComponent('wx\vc\120\x64\vcdll') + CheckComponent('wx\vc\100\x86\vclib') + CheckComponent('wx\vc\100\x86\vcdll') + CheckComponent('wx\vc\100\x64\vclib') + CheckComponent('wx\vc\100\x64\vcdll') + CheckComponent('wx\gcc\48\x86\gcclib') + CheckComponent('wx\gcc\48\x86\gccdll') + CheckComponent('wx\gcc\48\x64\gcclib') + CheckComponent('wx\gcc\48\x64\gccdll');
+	compList := CheckComponent('wx\vc\140\x86\vclib') + CheckComponent('wx\vc\140\x86\vcdll') + CheckComponent('wx\vc\140\x64\vclib') + CheckComponent('wx\vc\140\x64\vcdll') + CheckComponent('wx\vc\120\x86\vclib') + CheckComponent('wx\vc\120\x86\vcdll') + CheckComponent('wx\vc\120\x64\vclib') + CheckComponent('wx\vc\120\x64\vcdll') + CheckComponent('wx\vc\100\x86\vclib') + CheckComponent('wx\vc\100\x86\vcdll') + CheckComponent('wx\vc\100\x64\vclib') + CheckComponent('wx\vc\100\x64\vcdll') + CheckComponent('wx\gcc\48\x86\gcclib') + CheckComponent('wx\gcc\48\x86\gccdll') + CheckComponent('wx\gcc\48\x64\gcclib') + CheckComponent('wx\gcc\48\x64\gccdll');
 	//MsgBox(compList, mbInformation, MB_OK);
 	result := compList;
 end;
