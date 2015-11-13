@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<makefile>
+	<phony id="wxjpeg"/>
+<!--	<phony id="wxtiff"/>
+	<phony id="wxpng"/>
+	<phony id="wxzlib"/>-->
+	<include file="wx.bkl"/>
+</makefile>	

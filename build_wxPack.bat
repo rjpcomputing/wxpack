@@ -18,6 +18,8 @@ goto CONFIGURE
 
 	echo Copy build script to build directory
 	copy wxBuild_wxWidgets.bat /Y wxwidgets\build\msw
+	copy wxBuild_Bakefile.bat /Y wxwidgets\build\msw
+	copy wx_no_3rd_party.bkl /Y wxwidgets\build\bakefiles
 
 	echo Create directories for binary targets in GCC because of a bug in the wx Makefiles.
 	mkdir wxwidgets\lib\gcc48_dll\msw\wx
