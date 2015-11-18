@@ -6,12 +6,12 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define MyAppVer "3.0.1.02"
+#define MyAppVer "3.0.1.03"
 #define MyAppName "wxAdditions"
 #define wxFBAppID "wxFormBuilder"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define wxWidgetsMinVer "3.0.1.02"
-#define wxAdditionsMinVer "3.0.1.02"
+#define wxWidgetsMinVer "3.0.1.03"
+#define wxAdditionsMinVer "3.0.1.03"
 
 [Setup]
 AppName={#MyAppName}
