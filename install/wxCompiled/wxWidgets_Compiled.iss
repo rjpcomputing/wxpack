@@ -75,6 +75,7 @@ Source: ..\..\wxwidgets\lib\vc140_lib\*; DestDir: {app}\lib\vc140_lib; Flags: ig
 Source: ..\..\wxwidgets\lib\vc140_x64_dll\*; DestDir: {app}\lib64\vc140_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\140\x64\vcdll; Excludes: .svn\, *.ilk
 Source: ..\..\wxwidgets\lib\vc140_x64_lib\*; DestDir: {app}\lib64\vc140_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\140\x64\vclib; Excludes: .svn\, *.ilk
 ;Source: support\upx.exe; DestDir: {win}; Flags: ignoreversion
+Source: cmake\*.cmake; DestDir: {app}\cmake; Flags: ignoreversion
 Source: support\gdiplus.dll; DestDir: {sys}; Flags: uninsneveruninstall onlyifdoesntexist; MinVersion: 0,5.0.2195; OnlyBelowVersion: 0,5.0.2195sp3
 Source: wxWidgets_Compiled.iss; DestDir: {app}; Flags: dontcopy
 
