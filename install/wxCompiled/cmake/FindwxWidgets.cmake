@@ -186,12 +186,27 @@ set(wxWidgets_LIBRARIES    "")
 set(wxWidgets_LIBRARY_DIRS "")
 set(wxWidgets_CXX_FLAGS    "")
 set(wxWidgets_USE_FILE UsewxWidgets)
+# Useful common wx libs needed by almost all components.
+set(wxWidgets_COMMON_LIBRARIES png tiff jpeg zlib regex expat)
 
-set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} $ENV{SACK}/cmake )
-find_package( ZLIB REQUIRED )
-find_package( PNG REQUIRED )
-find_package( TIFF REQUIRED )
-find_package( JPEG REQUIRED )
+if( DEFINED ENV{SACK} )
+  file( TO_CMAKE_PATH "$ENV{SACK}/cmake" SACK_CMAKE_DIR )
+  list( APPEND CMAKE_MODULE_PATH ${SACK_CMAKE_DIR} )
+
+  find_package( ZLIB REQUIRED )
+  find_package( PNG REQUIRED )
+  find_package( TIFF REQUIRED )
+  find_package( JPEG REQUIRED )
+
+  list( APPEND wxWidgets_FIND_COMPONENTS regex expat )
+else()
+  # Add the common (usually required libs) unless
+  # wxWidgets_EXCLUDE_COMMON_LIBRARIES has been set.
+  if(NOT wxWidgets_EXCLUDE_COMMON_LIBRARIES)
+    list(APPEND wxWidgets_FIND_COMPONENTS
+      ${wxWidgets_COMMON_LIBRARIES})
+  endif()
+endif()
 
   #-------------------------------------------------------------------
   # WIN32: Helper MACROS
@@ -379,15 +394,16 @@ find_package( JPEG REQUIRED )
       list(APPEND wxWidgets_LIBRARIES opengl32 glu32)
     endif()
 
-    list(APPEND wxWidgets_LIBRARIES ${JPEG_LIBRARIES} ${TIFF_LIBRARIES} ${PNG_LIBRARIES} ${ZLIB_LIBRARIES} winmm comctl32 rpcrt4 wsock32)
+	if( DEFINED ENV{SACK} )
+    	list(APPEND wxWidgets_LIBRARIES ${JPEG_LIBRARIES} ${TIFF_LIBRARIES} ${PNG_LIBRARIES} ${ZLIB_LIBRARIES} )
+	endif()
+	list(APPEND wxWidgets_LIBRARIES winmm comctl32 rpcrt4 wsock32)
   endmacro()
 
   #-------------------------------------------------------------------
   # WIN32: Start actual work.
   #-------------------------------------------------------------------
   
-  set( wxWidgets_COMMON_LIBRARIES png tiff jpeg zlib regex expat )
-  list( APPEND wxWidgets_FIND_COMPONENTS regex expat )
   list( FIND wxWidgets_FIND_COMPONENTS stc WX_USE_STC )
   if( NOT WX_USE_STC EQUAL -1 )
 	list( APPEND wxWidgets_FIND_COMPONENTS scintilla )
