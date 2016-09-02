@@ -21,11 +21,11 @@
 ; -- Included application defines.
 ;    Change these when any of the included apps change.
 ;    (i.e. When a new rev of an application comes out)
-#define MyAppVer "3.0.02.05"
+#define MyAppVer "3.0.02.06"
 #define wxMajorVersion "3.0"
 #define MyAppName "wxPack"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "3.0.02.05"
+#define AppMinVer "3.0.02.06"
 
 ; **** DON'T EDIT BELOW THIS LINE! ****
 [Setup]
@@ -59,7 +59,6 @@ ChangesEnvironment=true
 [Files]
 Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files; Flags: ignoreversion;
 Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files; Flags: ignoreversion;
-Source: wxAdditions\wxAdditions*.exe; DestDir: {app}\files; Flags: ignoreversion;
 Source: license.txt; DestDir: {app}; Flags: ignoreversion
 Source: wxwin.bmp; Flags: dontcopy
 
@@ -72,13 +71,11 @@ Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 [Run]
 Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
 Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\140\x86\vclib wx\vc\140\x86\vcdll wx\vc\140\x64\vclib wx\vc\140\x64\vcdll wx\vc\120\x86\vclib wx\vc\120\x86\vcdll wx\vc\120\x64\vclib wx\vc\120\x64\vcdll wx\gcc\48\x86\gcclib wx\gcc\48\x86\gccdll wx\gcc\48\x64\gcclib wx\gcc\48\x64\gccdll
-Filename: {app}\files\wxAdditions-setup.exe; StatusMsg: Installing wxAdditions ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxAdditions}"""; Flags: hidewizard; Components: add
 
 [Components]
 Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc gcc compact; ExtraDiskSpaceRequired: 69520600
-Name: add; Description: wxWidgets Additions; Flags: disablenouninstallwarning; Types: custom full vc gcc compact; ExtraDiskSpaceRequired: 1067346000
 Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom compact
-Name: wx\vc; Description: "Visual C++"; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc; 
+Name: wx\vc; Description: "Visual C++"; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc;
 Name: wx\vc\140; Description: Visual C++ 2015; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015
 Name: wx\vc\140\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015
 Name: wx\vc\140\x86\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015 compact; ExtraDiskSpaceRequired: 788110000
@@ -106,7 +103,7 @@ Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck disablenounins
 Name: wx\gcc\48\x86\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 615200000
 Name: wx\gcc\48\x86\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 585001000
 Name: wx\gcc\48\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc gcc64
-Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 741658000 
+Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 741658000
 Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 612893000
 
 [Types]

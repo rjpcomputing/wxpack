@@ -39,20 +39,15 @@ goto CONFIGURE
 	mkdir wxwidgets\lib\gcc48_lib_x64\mswd\wx
 	mkdir wxwidgets\lib\gcc48_lib_x64\mswu\wx
 	mkdir wxwidgets\lib\gcc48_lib_x64\mswud\wx
-	
+
 	set INNOSETUPPATH=
 	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"
 	if exist "%ProgramFiles(x86)%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles(x86)%\Inno Setup 5\iscc.exe"
 	IF (%INNOSETUPPATH%) == () goto ERROR
 	echo InnoSetup 5 detected at '%INNOSETUPPATH%'
-	
-	
-	echo Get wxFormBuilders source
-	svn checkout svn://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk/ wxformbuilder
-	if ERRORLEVEL 1 goto ERROR
 
-	echo Get wxAdditions source
-	svn checkout svn://svn.code.sf.net/p/wxformbuilder/code/plugins/additions/trunk/ wxwidgets/additions
+	echo Get wxFormBuilders source
+	git clone https://github.com/wxFormBuilder/wxFormBuilder.git wxformbuilder
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Cleaning up the old wxPack installs...
@@ -95,47 +90,6 @@ goto BUILD_WXCOMPILED
 
 	cd ..\..
 	echo Done building wxCompiled. Current Directory: %CD%
-goto BUILD_WXADDITIONS
-
-:BUILD_WXADDITIONS
-	echo -- WXADDITIONS --------------------------------------------------------
-	echo --
-	echo Starting to build wxAdditions from %CD%
-	echo Change to additions build directory
-	cd wxwidgets\additions\build
-
-	::call wxBuild_wxAdditions.bat VC100 ALL
-	::if ERRORLEVEL 1 goto ERROR
-	::call wxBuild_wxAdditions.bat VC100_64 ALL
-	::if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC120 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC120_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC140 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat VC140_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat MINGW4_W64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxAdditions.bat MINGW4_W64_64 ALL
-	if ERRORLEVEL 1 goto ERROR
-
-	echo Build the wxFormBuilder plugin
-	echo Change to wxFormBuilder plugin directory
-	cd ..\wxfbPlugin
-	call wxBuild_wxFormBuilderPlugin.bat
-
-	echo Change to installer directory
-	cd ..\..\..\install\wxAdditions
-
-	:: Make installer for wxAdditions
-	echo Building wxAdditions installer...
-	%INNOSETUPPATH% /Q /F"wxAdditions-setup" "wxAdditions.iss"
-	if ERRORLEVEL 1 goto ERROR
-
-	cd ..\..
-	echo Done building wxAdditions. Current Directory: %CD%
 goto BUILD_WXFORMBUILDER
 
 :BUILD_WXFORMBUILDER
@@ -160,6 +114,10 @@ goto BUILD_WXFORMBUILDER
 	echo Change to wxFormBuilder build directory
 	cd wxformbuilder
 
+	echo Initializing Git submodules
+	git submodule init
+	git submodule update
+
 	echo Copying over wxWidgets dlls from %WXWIN%
 	copy %WXWIN%\lib\gcc48_dll\wxmsw30u_gcc48.dll /Y output\
 	echo Copying over MinGW dlls
@@ -170,7 +128,7 @@ goto BUILD_WXFORMBUILDER
 
 	echo Change to build directory.
 	cd build\3.0\gmake
-	
+
 	echo Building wxFormBuilder.
 	call mingw32-make.exe config=release
 	if ERRORLEVEL 1 goto ERROR
