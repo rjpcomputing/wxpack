@@ -199,14 +199,14 @@ if( DEFINED ENV{SACK} )
   find_package( JPEG REQUIRED )
 
   list( APPEND wxWidgets_FIND_COMPONENTS regex expat )
-else()
+endif()
+
   # Add the common (usually required libs) unless
   # wxWidgets_EXCLUDE_COMMON_LIBRARIES has been set.
   if(NOT wxWidgets_EXCLUDE_COMMON_LIBRARIES)
     list(APPEND wxWidgets_FIND_COMPONENTS
       ${wxWidgets_COMMON_LIBRARIES})
   endif()
-endif()
 
   #-------------------------------------------------------------------
   # WIN32: Helper MACROS
@@ -805,3 +805,4 @@ function(WXWIDGETS_ADD_RESOURCES _outfiles)
 
   set(${_outfiles} ${${_outfiles}} PARENT_SCOPE)
 endfunction()
+
