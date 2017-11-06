@@ -57,7 +57,7 @@ LicenseFile=license.txt
 ChangesEnvironment=true
 
 [Files]
-Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files; Flags: ignoreversion;
+;Source: ..\wxformbuilder\install\windows\wxFormBuilder*.exe; DestDir: {app}\files; Flags: ignoreversion;
 Source: wxCompiled\wxWidgets_Compiled*.exe; DestDir: {app}\files; Flags: ignoreversion;
 Source: license.txt; DestDir: {app}; Flags: ignoreversion
 Source: wxwin.bmp; Flags: dontcopy
@@ -69,11 +69,11 @@ Name: {app}\files; Flags: uninsalwaysuninstall; attribs: hidden
 Name: {group}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}
 
 [Run]
-Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
-Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\140\x86\vclib wx\vc\140\x86\vcdll wx\vc\140\x64\vclib wx\vc\140\x64\vcdll wx\vc\120\x86\vclib wx\vc\120\x86\vcdll wx\vc\120\x64\vclib wx\vc\120\x64\vcdll wx\gcc\48\x86\gcclib wx\gcc\48\x86\gccdll wx\gcc\48\x64\gcclib wx\gcc\48\x64\gccdll
+;Filename: {app}\files\wxFormBuilder-setup.exe; StatusMsg: Installing wxFormBuilder ...; WorkingDir: {app}\files; Parameters: "/SILENT ""{code:GetGroup|wxFormBuilder}"""; Flags: hidewizard; Components: wxfb
+Filename: {app}\files\wxWidgets_Compiled-setup.exe; StatusMsg: Installing wxWidgets ...; WorkingDir: {app}\files; Parameters: "/SILENT /DIR=""{code:GetLocation}"" ""{code:GetGroup|wxWidgets Compiled}"" /COMPONENTS={code:GetSelectedComponents}"; Flags: hidewizard; Components: wx\vc\140\x86\vclib wx\vc\140\x86\vcdll wx\vc\140\x64\vclib wx\vc\140\x64\vcdll wx\vc\120\x86\vclib wx\vc\120\x86\vcdll wx\vc\120\x64\vclib wx\vc\120\x64\vcdll
 
 [Components]
-Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc gcc compact; ExtraDiskSpaceRequired: 69520600
+;Name: wxfb; Description: wxFormBuilder; Flags: disablenouninstallwarning; Types: custom full vc gcc compact; ExtraDiskSpaceRequired: 69520600
 Name: wx; Description: wxWidgets Compiled By:; Flags: fixed; Types: full custom compact
 Name: wx\vc; Description: "Visual C++"; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc;
 Name: wx\vc\140; Description: Visual C++ 2015; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2015
@@ -97,14 +97,14 @@ Name: wx\vc\120\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disableno
 ;Name: wx\vc\100\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010
 ;Name: wx\vc\100\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010 compact; ExtraDiskSpaceRequired: 978531000
 ;Name: wx\vc\100\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010; ExtraDiskSpaceRequired: 441765000
-Name: wx\gcc; Description: MinGW4-w64; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
-Name: wx\gcc\48; Description: 4.8; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
-Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
-Name: wx\gcc\48\x86\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 615200000
-Name: wx\gcc\48\x86\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 585001000
-Name: wx\gcc\48\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc gcc64
-Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 741658000
-Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 612893000
+;Name: wx\gcc; Description: MinGW4-w64; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
+;Name: wx\gcc\48; Description: 4.8; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
+;Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
+;Name: wx\gcc\48\x86\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 615200000
+;Name: wx\gcc\48\x86\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 585001000
+;Name: wx\gcc\48\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc gcc64
+;Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 741658000
+;Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 612893000
 
 [Types]
 Name: full; Description: Full Installation
@@ -112,8 +112,8 @@ Name: vc; Description: Visual C++
 Name: vc2015; Description: Visual C++ 2015 Only   Runtime Version: 14.0
 Name: vc2013; Description: Visual C++ 2013 Only   Runtime Version: 12.0
 ;Name: vc2010; Description: Visual C++ 2010 Only   Runtime Version: 10.0
-Name: gcc; Description: MinGW-w64 Gcc Only
-Name: gcc64; Description: MinGW-w64 x64 Gcc Only
+;Name: gcc; Description: MinGW-w64 Gcc Only
+;Name: gcc64; Description: MinGW-w64 x64 Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
 
@@ -152,7 +152,7 @@ function GetSelectedComponents( Param: String ): String;
 var
 	compList: String;
 begin
-	compList := CheckComponent('wx\vc\140\x86\vclib') + CheckComponent('wx\vc\140\x86\vcdll') + CheckComponent('wx\vc\140\x64\vclib') + CheckComponent('wx\vc\140\x64\vcdll') + CheckComponent('wx\vc\120\x86\vclib') + CheckComponent('wx\vc\120\x86\vcdll') + CheckComponent('wx\vc\120\x64\vclib') + CheckComponent('wx\vc\120\x64\vcdll') + CheckComponent('wx\vc\100\x86\vclib') + CheckComponent('wx\vc\100\x86\vcdll') + CheckComponent('wx\vc\100\x64\vclib') + CheckComponent('wx\vc\100\x64\vcdll') + CheckComponent('wx\gcc\48\x86\gcclib') + CheckComponent('wx\gcc\48\x86\gccdll') + CheckComponent('wx\gcc\48\x64\gcclib') + CheckComponent('wx\gcc\48\x64\gccdll');
+	compList := CheckComponent('wx\vc\140\x86\vclib') + CheckComponent('wx\vc\140\x86\vcdll') + CheckComponent('wx\vc\140\x64\vclib') + CheckComponent('wx\vc\140\x64\vcdll') + CheckComponent('wx\vc\120\x86\vclib') + CheckComponent('wx\vc\120\x86\vcdll') + CheckComponent('wx\vc\120\x64\vclib') + CheckComponent('wx\vc\120\x64\vcdll');
 	//MsgBox(compList, mbInformation, MB_OK);
 	result := compList;
 end;

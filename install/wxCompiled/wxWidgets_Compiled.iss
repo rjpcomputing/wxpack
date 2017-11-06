@@ -58,10 +58,10 @@ Source: ..\..\wxwidgets\utils\*; DestDir: {app}\utils; Flags: ignoreversion recu
 Source: ..\..\wxwidgets\build\*; DestDir: {app}\build; Flags: ignoreversion recursesubdirs; Excludes: .svn\, *.ilk, *.exp, *.pch, *.o, *.d, *.obj
 Source: ..\..\wxwidgets\include\*; DestDir: {app}\include; Flags: ignoreversion recursesubdirs; Excludes: .svn\
 Source: ..\..\wxwidgets\src\*; DestDir: {app}\src; Flags: ignoreversion recursesubdirs; Excludes: .svn\
-Source: ..\..\wxwidgets\lib\gcc48_dll\*; DestDir: {app}\lib\gcc48_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x86\gccdll; Excludes: .svn\, *.ilk
-Source: ..\..\wxwidgets\lib\gcc48_lib\*; DestDir: {app}\lib\gcc48_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x86\gcclib; Excludes: .svn\, *.ilk
-Source: ..\..\wxwidgets\lib\gcc48_dll_x64\*; DestDir: {app}\lib64\gcc48_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x64\gccdll; Excludes: .svn\, *.ilk
-Source: ..\..\wxwidgets\lib\gcc48_lib_x64\*; DestDir: {app}\lib64\gcc48_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x64\gcclib; Excludes: .svn\, *.ilk
+;Source: ..\..\wxwidgets\lib\gcc48_dll\*; DestDir: {app}\lib\gcc48_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x86\gccdll; Excludes: .svn\, *.ilk
+;Source: ..\..\wxwidgets\lib\gcc48_lib\*; DestDir: {app}\lib\gcc48_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x86\gcclib; Excludes: .svn\, *.ilk
+;Source: ..\..\wxwidgets\lib\gcc48_dll_x64\*; DestDir: {app}\lib64\gcc48_dll; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x64\gccdll; Excludes: .svn\, *.ilk
+;Source: ..\..\wxwidgets\lib\gcc48_lib_x64\*; DestDir: {app}\lib64\gcc48_lib; Flags: ignoreversion recursesubdirs; Components: wx\gcc\48\x64\gcclib; Excludes: .svn\, *.ilk
 ;Source: ..\..\wxwidgets\lib\vc100_dll\*; DestDir: {app}\lib\vc100_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\100\x86\vcdll; Excludes: .svn\, *.ilk
 ;Source: ..\..\wxwidgets\lib\vc100_lib\*; DestDir: {app}\lib\vc100_lib; Flags: ignoreversion recursesubdirs; Components: wx\vc\100\x86\vclib; Excludes: .svn\, *.ilk
 ;Source: ..\..\wxwidgets\lib\vc100_x64_dll\*; DestDir: {app}\lib64\vc100_dll; Flags: ignoreversion recursesubdirs; Components: wx\vc\100\x64\vcdll; Excludes: .svn\, *.ilk
@@ -110,14 +110,14 @@ Name: wx\vc\120\x64\vcdll; Description: Dll's; Flags: dontinheritcheck; Types: f
 ;Name: wx\vc\100\x64\vclib; Description: Lib's; Flags: dontinheritcheck; Types: full vc vc2010 compact
 ;Name: wx\vc\100\x64\vcdll; Description: Dll's; Flags: dontinheritcheck; Types: full vc vc2010
 
-Name: wx\gcc; Description: MinGW4-w64; Flags: dontinheritcheck; Types: full gcc
-Name: wx\gcc\48; Description: 4.8; Flags: dontinheritcheck; Types: full gcc
-Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck; Types: full gcc
-Name: wx\gcc\48\x86\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc
-Name: wx\gcc\48\x86\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc
-Name: wx\gcc\48\x64; Description: 64-bit; Flags: dontinheritcheck; Types: full gcc gcc64
-Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc gcc64
-Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc gcc64
+;Name: wx\gcc; Description: MinGW4-w64; Flags: dontinheritcheck; Types: full gcc
+;Name: wx\gcc\48; Description: 4.8; Flags: dontinheritcheck; Types: full gcc
+;Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck; Types: full gcc
+;Name: wx\gcc\48\x86\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc
+;Name: wx\gcc\48\x86\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc
+;Name: wx\gcc\48\x64; Description: 64-bit; Flags: dontinheritcheck; Types: full gcc gcc64
+;Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone; Types: full gcc gcc64
+;Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone; Types: full gcc gcc64
 
 [Types]
 Name: full; Description: Full Installation
@@ -125,8 +125,8 @@ Name: vc; Description: Visual C++
 Name: vc2015; Description: Visual C++ 2015 Only   Runtime Version: 14.0
 Name: vc2013; Description: Visual C++ 2013 Only   Runtime Version: 12.0
 ;Name: vc2010; Description: Visual C++ 2010 Only   Runtime Version: 10.0
-Name: gcc; Description: MinGW-w64 Gcc Only
-Name: gcc64; Description: MinGW-w64 x64 Gcc Only
+;Name: gcc; Description: MinGW-w64 Gcc Only
+;Name: gcc64; Description: MinGW-w64 x64 Gcc Only
 Name: compact; Description: Compact Installation (VC Libs Only)
 Name: custom; Description: Custom Installation; Flags: iscustom
 

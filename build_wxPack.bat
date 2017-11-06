@@ -21,24 +21,24 @@ goto CONFIGURE
 	copy wxBuild_Bakefile.bat /Y wxwidgets\build\msw
 	copy wx_no_3rd_party.bkl /Y wxwidgets\build\bakefiles
 
-	echo Create directories for binary targets in GCC because of a bug in the wx Makefiles.
-	mkdir wxwidgets\lib\gcc48_dll\msw\wx
-	mkdir wxwidgets\lib\gcc48_dll\mswd\wx
-	mkdir wxwidgets\lib\gcc48_dll\mswu\wx
-	mkdir wxwidgets\lib\gcc48_dll\mswud\wx
-	mkdir wxwidgets\lib\gcc48_lib\msw\wx
-	mkdir wxwidgets\lib\gcc48_lib\mswd\wx
-	mkdir wxwidgets\lib\gcc48_lib\mswu\wx
-	mkdir wxwidgets\lib\gcc48_lib\mswud\wx
-
-	mkdir wxwidgets\lib\gcc48_dll_x64\msw\wx
-	mkdir wxwidgets\lib\gcc48_dll_x64\mswd\wx
-	mkdir wxwidgets\lib\gcc48_dll_x64\mswu\wx
-	mkdir wxwidgets\lib\gcc48_dll_x64\mswud\wx
-	mkdir wxwidgets\lib\gcc48_lib_x64\msw\wx
-	mkdir wxwidgets\lib\gcc48_lib_x64\mswd\wx
-	mkdir wxwidgets\lib\gcc48_lib_x64\mswu\wx
-	mkdir wxwidgets\lib\gcc48_lib_x64\mswud\wx
+	::echo Create directories for binary targets in GCC because of a bug in the wx Makefiles.
+	::mkdir wxwidgets\lib\gcc48_dll\msw\wx
+	::mkdir wxwidgets\lib\gcc48_dll\mswd\wx
+	::mkdir wxwidgets\lib\gcc48_dll\mswu\wx
+	::mkdir wxwidgets\lib\gcc48_dll\mswud\wx
+	::mkdir wxwidgets\lib\gcc48_lib\msw\wx
+	::mkdir wxwidgets\lib\gcc48_lib\mswd\wx
+	::mkdir wxwidgets\lib\gcc48_lib\mswu\wx
+	::mkdir wxwidgets\lib\gcc48_lib\mswud\wx
+	
+	::mkdir wxwidgets\lib\gcc48_dll_x64\msw\wx
+	::mkdir wxwidgets\lib\gcc48_dll_x64\mswd\wx
+	::mkdir wxwidgets\lib\gcc48_dll_x64\mswu\wx
+	::mkdir wxwidgets\lib\gcc48_dll_x64\mswud\wx
+	::mkdir wxwidgets\lib\gcc48_lib_x64\msw\wx
+	::mkdir wxwidgets\lib\gcc48_lib_x64\mswd\wx
+	::mkdir wxwidgets\lib\gcc48_lib_x64\mswu\wx
+	::mkdir wxwidgets\lib\gcc48_lib_x64\mswud\wx
 
 	set INNOSETUPPATH=
 	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"
@@ -46,9 +46,9 @@ goto CONFIGURE
 	IF (%INNOSETUPPATH%) == () goto ERROR
 	echo InnoSetup 5 detected at '%INNOSETUPPATH%'
 
-	echo Get wxFormBuilders source
-	git clone https://github.com/wxFormBuilder/wxFormBuilder.git wxformbuilder
-	if ERRORLEVEL 1 goto ERROR
+	::echo Get wxFormBuilders source
+	::git clone https://github.com/wxFormBuilder/wxFormBuilder.git wxformbuilder
+	::if ERRORLEVEL 1 goto ERROR
 
 	echo Cleaning up the old wxPack installs...
 	del /F /Q %~dp0install\wxPack_v*
@@ -75,10 +75,10 @@ goto BUILD_WXCOMPILED
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat VC140_64 ALL
 	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat MINGW4_W64 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
-	if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat MINGW4_W64 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
 
 	echo Change to installer directory
 	cd ..\..\..\install\wxCompiled
@@ -90,7 +90,7 @@ goto BUILD_WXCOMPILED
 
 	cd ..\..
 	echo Done building wxCompiled. Current Directory: %CD%
-goto BUILD_WXFORMBUILDER
+goto BUILD_WXPACK
 
 :BUILD_WXFORMBUILDER
 	echo -- WXFORMBUILDER ------------------------------------------------------
