@@ -832,8 +832,6 @@ public:
     appname& wxGetApp() { return *static_cast<appname*>(wxApp::GetInstance()); }    \
     wxAppConsole *wxCreateApp()                                             \
     {                                                                       \
-        wxAppConsole::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE,         \
-                                        "your program");                    \
         return new appname;                                                 \
     }                                                                       \
     wxAppInitializer                                                        \
