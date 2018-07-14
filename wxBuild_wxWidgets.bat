@@ -365,7 +365,7 @@ goto START
 :: Add the VS 2017 includes.
 echo Setting environment for Visual C++ 14.1...
 echo.
-for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -version 15 -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
   set InstallDir=%%i
 )
 if not exist "%InstallDir%\Common7\Tools\vsdevcmd.bat" (
@@ -373,7 +373,7 @@ if not exist "%InstallDir%\Common7\Tools\vsdevcmd.bat" (
   echo Compiler not found.
   goto END
 )
-call "%InstallDir%\Common7\Tools\vsdevcmd.bat" -no_logo -arch=x86
+call "%InstallDir%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.1 -arch=x86
 set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
@@ -396,7 +396,7 @@ echo Determining Processor Architecture for VC141 64-bit Build.
 if %PROCESSOR_ARCHITECTURE% == AMD64 set HOSTARCH=amd64
 echo Determined %HOSTARCH%
 echo.
-for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -version 15 -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
   set InstallDir=%%i
 )
 if not exist "%InstallDir%\Common7\Tools\vsdevcmd.bat" (
@@ -404,7 +404,7 @@ if not exist "%InstallDir%\Common7\Tools\vsdevcmd.bat" (
   echo Compiler not found.
   goto END
 )
-call "%InstallDir%\Common7\Tools\vsdevcmd.bat" -no_logo -arch=amd64 -host_arch=%HOSTARCH%
+call "%InstallDir%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.1 -arch=amd64 -host_arch=%HOSTARCH%
 set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
