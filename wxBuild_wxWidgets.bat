@@ -1,31 +1,32 @@
 @echo off
 ::**************************************************************************
 :: File:           wxBuild_wxWidgets.bat
-:: Version:        1.13
+:: Version:        1.15
 :: Name:           RJP Computing - modified for 64-bit VS compilation
 :: Date:           09/03/2009
 :: Description:    Build wxWidgets with the MinGW/Visual C++.
-::                 
-::                 	v1.01 - Added Compiler setup for VC7.1 and VC8.0.
-::                 	v1.02 - Added INCLUDE variable to VC7.1 and VC8.0 setups.
-:: 					v1.03 - Added FLAGS. Use to set extra command line options.
-:: 					v1.04 - Added flags for specific wxWidgets build options.
-:: 					v1.05 - Added mono static library creation. (Only needed for
-::					        building wxWidgets)
-::					        Added a better clean method.
-::					        Added an app name parameter.
-:: 					v1.06 - Fixed that the monolithic static libraries were not
-::							built using the static run-time library.
-:: 					v1.07 - Added MinGW Gcc 4.x.x compiler.
-:: 					v1.08 - Added a move command to help automate building with
-::							multiple compilers from the same family.
-::							(ie. vc and gcc).
-::					v1.09 - Removed 'CXXFLAGS=/Zc:wchar_t-' from VC8.0 setup.
-::					v1.10 - Added USE_GDIPLUS=1 to FLAGS for wxGraphicsContext.
-::					v1.11 - Added support for VC 9.0
-::          		V1.12 - Added support for VC 10.0 and x64 builds
-::					V1.13 - Added support for VC 12.0 and wxWidgets 3.0 and MinGW4-w64
-::					V1.14 - Added support for VC 14.0 and external 3rd party libraries
+::
+::                 v1.01 - Added Compiler setup for VC7.1 and VC8.0.
+::                 v1.02 - Added INCLUDE variable to VC7.1 and VC8.0 setups.
+::                 v1.03 - Added FLAGS. Use to set extra command line options.
+::                 v1.04 - Added flags for specific wxWidgets build options.
+::                 v1.05 - Added mono static library creation. (Only needed for
+::                         building wxWidgets)
+::                         Added a better clean method.
+::                         Added an app name parameter.
+::                 v1.06 - Fixed that the monolithic static libraries were not
+::                         built using the static run-time library.
+::                 v1.07 - Added MinGW Gcc 4.x.x compiler.
+::                 v1.08 - Added a move command to help automate building with
+::                         multiple compilers from the same family.
+::                         (ie. vc and gcc).
+::                 v1.09 - Removed 'CXXFLAGS=/Zc:wchar_t-' from VC8.0 setup.
+::                 v1.10 - Added USE_GDIPLUS=1 to FLAGS for wxGraphicsContext.
+::                 v1.11 - Added support for VC 9.0
+::                 v1.12 - Added support for VC 10.0 and x64 builds
+::                 v1.13 - Added support for VC 12.0 and wxWidgets 3.0 and MinGW4-w64
+::                 v1.14 - Added support for VC 14.0 and external 3rd party libraries
+::                 v1.15 - Added support for VC 14.1
 ::**************************************************************************
 SETLOCAL
 set WXBUILD_VERSION=1.15
@@ -51,43 +52,43 @@ if (%1) == help  goto SHOW_USAGE
 if (%2) == ()    goto ERROR
 
 :: -- Check which compiler was selected. --
-if %1 == VCTK     	    goto SETUP_VC71_TOOLKIT_BUILD_ENVIRONMENT
-if %1 == vctk     	    goto SETUP_VC71_TOOLKIT_BUILD_ENVIRONMENT
-if %1 == VC71     	    goto SETUP_VC71_BUILD_ENVIRONMENT
-if %1 == vc71     	    goto SETUP_VC71_BUILD_ENVIRONMENT
-if %1 == VC80     	    goto SETUP_VC80_BUILD_ENVIRONMENT
-if %1 == vc80     	    goto SETUP_VC80_BUILD_ENVIRONMENT
-if %1 == VC80_64  	    goto SETUP_VC80_64_BUILD_ENVIRONMENT
-if %1 == vc80_64  	    goto SETUP_VC80_64_BUILD_ENVIRONMENT
-if %1 == VC90     	    goto SETUP_VC90_BUILD_ENVIRONMENT
-if %1 == vc90     	    goto SETUP_VC90_BUILD_ENVIRONMENT
-if %1 == VC90_64  	    goto SETUP_VC90_64_BUILD_ENVIRONMENT
-if %1 == vc90_64  	    goto SETUP_VC90_64_BUILD_ENVIRONMENT
-if %1 == VC100    	    goto SETUP_VC100_BUILD_ENVIRONMENT
-if %1 == vc100    	    goto SETUP_VC100_BUILD_ENVIRONMENT
-if %1 == VC100_64 	    goto SETUP_VC100_64_BUILD_ENVIRONMENT
-if %1 == vc100_64 	    goto SETUP_VC100_64_BUILD_ENVIRONMENT
-if %1 == VC110    	    goto SETUP_VC110_BUILD_ENVIRONMENT
-if %1 == vc110    	    goto SETUP_VC110_BUILD_ENVIRONMENT
-if %1 == VC110_64 	    goto SETUP_VC110_64_BUILD_ENVIRONMENT
-if %1 == vc110_64 	    goto SETUP_VC110_64_BUILD_ENVIRONMENT
-if %1 == VC120    	    goto SETUP_VC120_BUILD_ENVIRONMENT
-if %1 == vc120    	    goto SETUP_VC120_BUILD_ENVIRONMENT
-if %1 == VC120_64 	    goto SETUP_VC120_64_BUILD_ENVIRONMENT
-if %1 == vc120_64 	    goto SETUP_VC120_64_BUILD_ENVIRONMENT
-if %1 == VC140    	    goto SETUP_VC140_BUILD_ENVIRONMENT
-if %1 == vc140    	    goto SETUP_VC140_BUILD_ENVIRONMENT
-if %1 == VC140_64 	    goto SETUP_VC140_64_BUILD_ENVIRONMENT
-if %1 == vc140_64 	    goto SETUP_VC140_64_BUILD_ENVIRONMENT
-if %1 == VC141    	    goto SETUP_VC141_BUILD_ENVIRONMENT
-if %1 == vc141    	    goto SETUP_VC141_BUILD_ENVIRONMENT
-if %1 == VC141_64 	    goto SETUP_VC141_64_BUILD_ENVIRONMENT
-if %1 == vc141_64 	    goto SETUP_VC141_64_BUILD_ENVIRONMENT
-if %1 == MINGW    	    goto SETUP_GCC_BUILD_ENVIRONMENT
-if %1 == mingw    	    goto SETUP_GCC_BUILD_ENVIRONMENT
-if %1 == MINGW4   	    goto SETUP_GCC4_BUILD_ENVIRONMENT
-if %1 == mingw4   	    goto SETUP_GCC4_BUILD_ENVIRONMENT
-if %1 == MINGW4_W64	    goto SETUP_MINGW4_W64_BUILD_ENVIRONMENT
+if %1 == VCTK           goto SETUP_VC71_TOOLKIT_BUILD_ENVIRONMENT
+if %1 == vctk           goto SETUP_VC71_TOOLKIT_BUILD_ENVIRONMENT
+if %1 == VC71           goto SETUP_VC71_BUILD_ENVIRONMENT
+if %1 == vc71           goto SETUP_VC71_BUILD_ENVIRONMENT
+if %1 == VC80           goto SETUP_VC80_BUILD_ENVIRONMENT
+if %1 == vc80           goto SETUP_VC80_BUILD_ENVIRONMENT
+if %1 == VC80_64        goto SETUP_VC80_64_BUILD_ENVIRONMENT
+if %1 == vc80_64        goto SETUP_VC80_64_BUILD_ENVIRONMENT
+if %1 == VC90           goto SETUP_VC90_BUILD_ENVIRONMENT
+if %1 == vc90           goto SETUP_VC90_BUILD_ENVIRONMENT
+if %1 == VC90_64        goto SETUP_VC90_64_BUILD_ENVIRONMENT
+if %1 == vc90_64        goto SETUP_VC90_64_BUILD_ENVIRONMENT
+if %1 == VC100          goto SETUP_VC100_BUILD_ENVIRONMENT
+if %1 == vc100          goto SETUP_VC100_BUILD_ENVIRONMENT
+if %1 == VC100_64       goto SETUP_VC100_64_BUILD_ENVIRONMENT
+if %1 == vc100_64       goto SETUP_VC100_64_BUILD_ENVIRONMENT
+if %1 == VC110          goto SETUP_VC110_BUILD_ENVIRONMENT
+if %1 == vc110          goto SETUP_VC110_BUILD_ENVIRONMENT
+if %1 == VC110_64       goto SETUP_VC110_64_BUILD_ENVIRONMENT
+if %1 == vc110_64       goto SETUP_VC110_64_BUILD_ENVIRONMENT
+if %1 == VC120          goto SETUP_VC120_BUILD_ENVIRONMENT
+if %1 == vc120          goto SETUP_VC120_BUILD_ENVIRONMENT
+if %1 == VC120_64       goto SETUP_VC120_64_BUILD_ENVIRONMENT
+if %1 == vc120_64       goto SETUP_VC120_64_BUILD_ENVIRONMENT
+if %1 == VC140          goto SETUP_VC140_BUILD_ENVIRONMENT
+if %1 == vc140          goto SETUP_VC140_BUILD_ENVIRONMENT
+if %1 == VC140_64       goto SETUP_VC140_64_BUILD_ENVIRONMENT
+if %1 == vc140_64       goto SETUP_VC140_64_BUILD_ENVIRONMENT
+if %1 == VC141          goto SETUP_VC141_BUILD_ENVIRONMENT
+if %1 == vc141          goto SETUP_VC141_BUILD_ENVIRONMENT
+if %1 == VC141_64       goto SETUP_VC141_64_BUILD_ENVIRONMENT
+if %1 == vc141_64       goto SETUP_VC141_64_BUILD_ENVIRONMENT
+if %1 == MINGW          goto SETUP_GCC_BUILD_ENVIRONMENT
+if %1 == mingw          goto SETUP_GCC_BUILD_ENVIRONMENT
+if %1 == MINGW4         goto SETUP_GCC4_BUILD_ENVIRONMENT
+if %1 == mingw4         goto SETUP_GCC4_BUILD_ENVIRONMENT
+if %1 == MINGW4_W64     goto SETUP_MINGW4_W64_BUILD_ENVIRONMENT
 if %1 == mingw4_w64     goto SETUP_MINGW4_W64_BUILD_ENVIRONMENT
 if %1 == MINGW4_W64_64  goto SETUP_MINGW4_W64_64_BUILD_ENVIRONMENT
 if %1 == mingw4_w64_64  goto SETUP_MINGW4_W64_64_BUILD_ENVIRONMENT
@@ -665,18 +666,12 @@ echo ERROR OCCURED!
 echo Unsupported compiler. %1 is not an available compiler option.
 goto SHOW_USAGE
 
-:MOVE_ERROR
-echo.
-echo ERROR OCCURED!
-echo Unsupported compiler users as a parameter to move. (%1)
-goto SHOW_USAGE
-
 :SHOW_USAGE
 echo.
 echo %WXBUILD_APPNAME% v%WXBUILD_VERSION%
 echo     Build wxWidgets with the MinGW/Visual C++ Tool chains.
 echo.
-echo Usage: "wxBuild_wxWidgets.bat <Compiler{MINGW|VCTK|VC71|VC80|VC90}> <BuildTarget{LIB|DLL|ALL|CLEAN|MOVE|NULL}> [Specific Option (See Below)]"
+echo Usage: "wxBuild_wxWidgets.bat <Compiler{MINGW*|VC*}> <BuildTarget{LIB|DLL|ALL|NULL}> [Specific Option]"
 goto SHOW_OPTIONS
 
 :SHOW_OPTIONS
@@ -709,7 +704,7 @@ echo           DLL   = Builds all the dynamic library targets.
 echo           ALL   = Builds all the targets (Recommended).
 echo           NULL  = Used so that you can specify a specific target. (See below)
 echo.
-echo      Specific Options(Used with NULL): 
+echo      Specific Options (Used with NULL):
 echo           LIB_DEBUG_UNICODE, LIB_RELEASE_UNICODE,
 echo           LIB_DEBUG_MONO_UNICODE, LIB_RELEASE_MONO_UNICODE,
 echo.
