@@ -39,11 +39,11 @@ set GCCVER=3
 set GCC4DIR=C:\MinGW4
 set GCC4VER=48
 :: MinGW-w64 Gcc install location. This must match your systems configuration.
-set MINGW_W64_DIR=C:\GCC\MinGW-w64\4.8.1
-set MINGW_W64_VER=48
+set MINGW_W64_DIR=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32
+set MINGW_W64_VER=81
 :: MinGW-w64 x64 Gcc install location. This must match your systems configuration.
-set MINGW_W64_64_DIR=C:\GCC\MinGW-w64\4.8.1
-set MINGW_W64_64_VER=48
+set MINGW_W64_64_DIR=C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64
+set MINGW_W64_64_VER=81
 
 set CPU=X86
 set CFG=

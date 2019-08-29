@@ -22,23 +22,23 @@ goto CONFIGURE
 	copy wx_no_3rd_party.bkl /Y wxwidgets\build\bakefiles
 
 	::echo Create directories for binary targets in GCC because of a bug in the wx Makefiles.
-	::mkdir wxwidgets\lib\gcc48_dll\msw\wx
-	::mkdir wxwidgets\lib\gcc48_dll\mswd\wx
-	::mkdir wxwidgets\lib\gcc48_dll\mswu\wx
-	::mkdir wxwidgets\lib\gcc48_dll\mswud\wx
-	::mkdir wxwidgets\lib\gcc48_lib\msw\wx
-	::mkdir wxwidgets\lib\gcc48_lib\mswd\wx
-	::mkdir wxwidgets\lib\gcc48_lib\mswu\wx
-	::mkdir wxwidgets\lib\gcc48_lib\mswud\wx
+	::mkdir wxwidgets\lib\gcc81_dll\msw\wx
+	::mkdir wxwidgets\lib\gcc81_dll\mswd\wx
+	::mkdir wxwidgets\lib\gcc81_dll\mswu\wx
+	::mkdir wxwidgets\lib\gcc81_dll\mswud\wx
+	::mkdir wxwidgets\lib\gcc81_lib\msw\wx
+	::mkdir wxwidgets\lib\gcc81_lib\mswd\wx
+	::mkdir wxwidgets\lib\gcc81_lib\mswu\wx
+	::mkdir wxwidgets\lib\gcc81_lib\mswud\wx
 	
-	::mkdir wxwidgets\lib\gcc48_dll_x64\msw\wx
-	::mkdir wxwidgets\lib\gcc48_dll_x64\mswd\wx
-	::mkdir wxwidgets\lib\gcc48_dll_x64\mswu\wx
-	::mkdir wxwidgets\lib\gcc48_dll_x64\mswud\wx
-	::mkdir wxwidgets\lib\gcc48_lib_x64\msw\wx
-	::mkdir wxwidgets\lib\gcc48_lib_x64\mswd\wx
-	::mkdir wxwidgets\lib\gcc48_lib_x64\mswu\wx
-	::mkdir wxwidgets\lib\gcc48_lib_x64\mswud\wx
+	::mkdir wxwidgets\lib\gcc81_dll_x64\msw\wx
+	::mkdir wxwidgets\lib\gcc81_dll_x64\mswd\wx
+	::mkdir wxwidgets\lib\gcc81_dll_x64\mswu\wx
+	::mkdir wxwidgets\lib\gcc81_dll_x64\mswud\wx
+	::mkdir wxwidgets\lib\gcc81_lib_x64\msw\wx
+	::mkdir wxwidgets\lib\gcc81_lib_x64\mswd\wx
+	::mkdir wxwidgets\lib\gcc81_lib_x64\mswu\wx
+	::mkdir wxwidgets\lib\gcc81_lib_x64\mswud\wx
 
 	set INNOSETUPPATH=
 	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"
@@ -98,7 +98,7 @@ goto BUILD_WXPACK
 	echo Starting to build wxFormBuilder from '%CD%'
 
 	:: MinGW Gcc install location. This must match you systems configuration.
-	set GCCDIR=C:\GCC\MinGW-w64\4.8.1
+	set GCCDIR=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32
 	set CC=gcc
 	set CXX=g++
 
@@ -119,11 +119,11 @@ goto BUILD_WXPACK
 	git submodule update
 
 	echo Copying over wxWidgets dlls from %WXWIN%
-	copy %WXWIN%\lib\gcc48_dll\wxmsw30u_gcc48.dll /Y output\
+	copy %WXWIN%\lib\gcc81_dll\wxmsw30u_gcc81.dll /Y output\
 	echo Copying over MinGW dlls
 
 	echo Create the build files.
-	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64 --compiler-version=48
+	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64 --compiler-version=81
 	if ERRORLEVEL 1 goto ERROR
 
 	echo Change to build directory.
