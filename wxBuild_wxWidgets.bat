@@ -41,6 +41,9 @@ set GCC4VER=48
 :: MinGW-w64 Gcc install location. This must match your systems configuration.
 set MINGW_W64_DIR=C:\GCC\MinGW-w64\4.8.1
 set MINGW_W64_VER=48
+:: MinGW-w64 x64 Gcc install location. This must match your systems configuration.
+set MINGW_W64_64_DIR=C:\GCC\MinGW-w64\4.8.1
+set MINGW_W64_64_VER=48
 
 set CPU=X86
 
@@ -549,19 +552,19 @@ goto START
 
 :SETUP_MINGW_W64_64_BUILD_ENVIRONMENT
 echo Assuming that MinGW-w64 has been installed to:
-echo   %MINGW_W64_DIR%
+echo   %MINGW_W64_64_DIR%
 echo.
 :: -- Add MinGW directory to the systems PATH --
 echo Setting environment for MinGW4-w64 64-bit Gcc...
-if "%OS%" == "Windows_NT" set PATH=%MINGW_W64_DIR%\BIN;%PATH%
-if "%OS%" == "" set PATH="%MINGW_W64_DIR%\BIN";"%PATH%"
+if "%OS%" == "Windows_NT" set PATH=%MINGW_W64_64_DIR%\BIN;%PATH%
+if "%OS%" == "" set PATH="%MINGW_W64_64_DIR%\BIN";"%PATH%"
 echo.
 :: -- Setup the make executable and the actual makefile name --
 set CFG=_x64
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
 set FLAGS=CXXFLAGS=-Wno-attributes USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0 -j %NUMBER_OF_PROCESSORS%
-set COMPILER_VERSION=%MINGW_W64_VER%
+set COMPILER_VERSION=%MINGW_W64_64_VER%
 set COMPILER_NAME=mingw
 set COMPILER_ARCH=64
 set BAKE_FORMAT=mingw
