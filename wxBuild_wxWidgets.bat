@@ -1,7 +1,7 @@
 @echo off
 ::**************************************************************************
 :: File:           wxBuild_wxWidgets.bat
-:: Version:        1.16
+:: Version:        1.17
 :: Name:           RJP Computing - modified for 64-bit VS compilation
 :: Date:           09/03/2009
 :: Description:    Build wxWidgets with the MinGW/Visual C++.
@@ -28,9 +28,10 @@
 ::                 v1.14 - Added support for VC 14.0 and external 3rd party libraries
 ::                 v1.15 - Added support for VC 14.1
 ::                 v1.16 - Added support for VC 14.2
+::                 v1.17 - Added support to build utils and samples
 ::**************************************************************************
 SETLOCAL
-set WXBUILD_VERSION=1.16
+set WXBUILD_VERSION=1.17
 set WXBUILD_APPNAME=wxBuild_wxWidgets
 :: MinGW Gcc install location. This must match your systems configuration.
 set GCCDIR=C:\MinGW
