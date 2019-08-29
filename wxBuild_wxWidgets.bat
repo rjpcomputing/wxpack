@@ -609,7 +609,6 @@ if %2 == null goto END
 if %2 == NULL goto END
 goto LIB_BUILD_MONO_UNICODE
 
-::_____________________________________________________________________________
 :LIB_BUILD_MONO_UNICODE
 echo Building Monolithic Unicode lib's...
 echo.
@@ -947,8 +946,8 @@ echo.
 echo      BuildTarget Options:
 echo           LIB   = Builds all the static library targets.
 echo           DLL   = Builds all the dynamic library targets.
-echo           ALL   = Builds all the targets (Recommended).
-echo           NULL  = Used so that you can specify a specific target. (See below)
+echo           ALL   = Builds all the library targets (Recommended).
+echo           NULL  = Used to build a specific target only (See below).
 echo.
 echo      Specific Options (Used with NULL):
 echo           LIB_DEBUG_UNICODE, LIB_RELEASE_UNICODE,
@@ -971,13 +970,13 @@ echo           SAMPLES_DLL_DEBUG_MONO_UNICODE, SAMPLES_DLL_RELEASE_MONO_UNICODE
 echo.
 echo      Examples:
 echo           wxBuild_default.bat MINGW ALL
-echo             Builds all targets with MinGW Gcc Compiler.
+echo                Builds all targets with MinGW Gcc Compiler.
 echo.
 echo           wxBuild_default.bat VCTK LIB
-echo             Builds just the static libraries with Visual C++ 7.1 Toolkit.
+echo                Builds just the static libraries with Visual C++ 7.1 Toolkit.
 echo.
 echo           wxBuild_default.bat VCTK NULL LIB_RELEASE_UNICODE
-echo             Builds only the release static library with Visual C++ 7.1 Toolkit
+echo                Builds only the release static library with Visual C++ 7.1 Toolkit
 goto END
 
 :END
