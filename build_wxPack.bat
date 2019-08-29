@@ -75,9 +75,9 @@ goto BUILD_WXCOMPILED
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat VC140_64 ALL
 	if ERRORLEVEL 1 goto ERROR
-	::call wxBuild_wxWidgets.bat MINGW4_W64 ALL
+	::call wxBuild_wxWidgets.bat MINGW_W64 ALL
 	::if ERRORLEVEL 1 goto ERROR
-	::call wxBuild_wxWidgets.bat MINGW4_W64_64 ALL
+	::call wxBuild_wxWidgets.bat MINGW_W64_64 ALL
 	::if ERRORLEVEL 1 goto ERROR
 
 	echo Change to installer directory
