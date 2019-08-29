@@ -111,7 +111,7 @@ set MSSDK=C:\Program Files\Microsoft Platform SDK
 set DOTNETSDK=C:\Program Files\Microsoft Visual Studio .NET 2003\vc7
 
 set PATH=%MSVC%\bin;%MSSDK%\bin;%MSSDK%\bin\win64;%DOTNETSDK%\bin;%PATH%
-set INCLUDE=%MSVC%\include;%MSSDK%\include;%DOTNETSDK%\include;%WXWIN%\include;%INCLUDE%
+set INCLUDE=%MSVC%\include;%MSSDK%\include;%DOTNETSDK%\include;%INCLUDE%
 set LIB=%MSVC%\lib;%MSSDK%\lib;%DOTNETSDK%\lib;%LIB%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
@@ -129,7 +129,6 @@ goto START
 echo Setting environment for Visual C++ 7.1...
 echo.
 call "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -146,7 +145,6 @@ goto START
 echo Setting environment for Visual C++ 8.0...
 echo.
 call "%VS80COMNTOOLS%vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -166,7 +164,6 @@ set CPU=AMD64
 set CMD32="%VS80COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
 call %CMD64% amd64
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -183,7 +180,6 @@ goto START
 echo Setting environment for Visual C++ 9.0...
 echo.
 call "%VS90COMNTOOLS%vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -203,7 +199,6 @@ set CPU=AMD64
 set CMD32="%VS90COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
 call %CMD64% amd64
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -220,7 +215,6 @@ goto START
 echo Setting environment for Visual C++ 10.0...
 echo.
 call "%VS100COMNTOOLS%vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -240,7 +234,6 @@ set CPU=AMD64
 set CMD32="%VS100COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
 call %CMD64% amd64
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -257,7 +250,6 @@ goto START
 echo Setting environment for Visual C++ 11.0...
 echo.
 call "%VS110COMNTOOLS%vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -277,7 +269,6 @@ set CPU=AMD64
 set CMD32="%VS110COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
 call %CMD64% x86_amd64
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -294,7 +285,6 @@ goto START
 echo Setting environment for Visual C++ 12.0...
 echo.
 call "%VS120COMNTOOLS%vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -314,7 +304,6 @@ set CPU=AMD64
 set CMD32="%VS120COMNTOOLS%vcvarsall.bat"
 set CMD64=%CMD32:\Common7\Tools\=\VC\%
 call %CMD64% x86_amd64
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -331,7 +320,6 @@ goto START
 echo Setting environment for Visual C++ 14.0...
 echo.
 call "%VS140COMNTOOLS%vsvars32.bat"
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -359,7 +347,6 @@ if %PROCESSOR_ARCHITECTURE% == AMD64 set CMD64_ARG=amd64
 echo Determined %CMD64_ARG%
 echo.
 call %CMD64% %CMD64_ARG%
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -386,7 +373,6 @@ if not exist "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" (
   goto END
 )
 call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.1 -arch=x86
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -419,7 +405,6 @@ if not exist "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" (
   goto END
 )
 call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.1 -arch=amd64 -host_arch=%HOSTARCH%
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -446,7 +431,6 @@ if not exist "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" (
   goto END
 )
 call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.2 -arch=x86
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
@@ -479,7 +463,6 @@ if not exist "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" (
   goto END
 )
 call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.2 -arch=amd64 -host_arch=%HOSTARCH%
-set INCLUDE=%WXWIN%\include;%INCLUDE%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
