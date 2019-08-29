@@ -116,7 +116,7 @@ set LIB=%MSVC%\lib;%MSSDK%\lib;%DOTNETSDK%\lib;%LIB%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=71
 set COMPILER_NAME=vs2003
 set COMPILER_ARCH=32
@@ -132,7 +132,7 @@ call "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=71
 set COMPILER_NAME=vs2003
 set COMPILER_ARCH=32
@@ -148,7 +148,7 @@ call "%VS80COMNTOOLS%vsvars32.bat"
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=80
 set COMPILER_NAME=vs2005
 set COMPILER_ARCH=32
@@ -167,7 +167,7 @@ call %CMD64% amd64
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=80
 set COMPILER_NAME=vs2005
 set COMPILER_ARCH=64
@@ -183,7 +183,7 @@ call "%VS90COMNTOOLS%vsvars32.bat"
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=90
 set COMPILER_NAME=vs2008
 set COMPILER_ARCH=32
@@ -202,7 +202,7 @@ call %CMD64% amd64
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=90
 set COMPILER_NAME=vs2008
 set COMPILER_ARCH=64
@@ -218,7 +218,7 @@ call "%VS100COMNTOOLS%vsvars32.bat"
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=100
 set COMPILER_NAME=vs2010
 set COMPILER_ARCH=32
@@ -237,7 +237,7 @@ call %CMD64% amd64
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1
+set FLAGS=
 set COMPILER_VERSION=100
 set COMPILER_NAME=vs2010
 set COMPILER_ARCH=64
@@ -253,7 +253,7 @@ call "%VS110COMNTOOLS%vsvars32.bat"
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=110
 set COMPILER_NAME=vs2012
 set COMPILER_ARCH=32
@@ -272,7 +272,7 @@ call %CMD64% x86_amd64
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=110
 set COMPILER_NAME=vs2012
 set COMPILER_ARCH=64
@@ -288,7 +288,7 @@ call "%VS120COMNTOOLS%vsvars32.bat"
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=120
 set COMPILER_NAME=vs2013
 set COMPILER_ARCH=32
@@ -307,7 +307,7 @@ call %CMD64% x86_amd64
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=120
 set COMPILER_NAME=vs2013
 set COMPILER_ARCH=64
@@ -323,7 +323,7 @@ call "%VS140COMNTOOLS%vsvars32.bat"
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=140
 set COMPILER_NAME=vs2015
 set COMPILER_ARCH=32
@@ -350,7 +350,7 @@ call %CMD64% %CMD64_ARG%
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=140
 set COMPILER_NAME=vs2015
 set COMPILER_ARCH=64
@@ -376,7 +376,7 @@ call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.1 -arch=x
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=141
 set COMPILER_NAME=vs2017
 set COMPILER_ARCH=32
@@ -408,7 +408,7 @@ call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.1 -arch=a
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=141
 set COMPILER_NAME=vs2017
 set COMPILER_ARCH=64
@@ -434,7 +434,7 @@ call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.2 -arch=x
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=142
 set COMPILER_NAME=vs2019
 set COMPILER_ARCH=32
@@ -466,7 +466,7 @@ call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.2 -arch=a
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=nmake
 set MAKEFILE=makefile.vc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set FLAGS=
 set COMPILER_VERSION=142
 set COMPILER_NAME=vs2019
 set COMPILER_ARCH=64
@@ -486,7 +486,7 @@ echo.
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
-set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0 -j %NUMBER_OF_PROCESSORS%
+set FLAGS=-j %NUMBER_OF_PROCESSORS%
 set COMPILER_VERSION=%GCCVER%
 set COMPILER_NAME=mingw
 set COMPILER_ARCH=32
@@ -506,7 +506,7 @@ echo.
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
-set FLAGS=CXXFLAGS=-Wno-attributes USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0 -j %NUMBER_OF_PROCESSORS%
+set FLAGS=CXXFLAGS=-Wno-attributes -j %NUMBER_OF_PROCESSORS%
 set COMPILER_VERSION=%GCC4VER%
 set COMPILER_NAME=mingw
 set COMPILER_ARCH=32
@@ -526,7 +526,7 @@ echo.
 :: -- Setup the make executable and the actual makefile name --
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
-set FLAGS=CXXFLAGS=-Wno-attributes USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0 -j %NUMBER_OF_PROCESSORS% CFLAGS=-m32 CPPFLAGS=-m32 LDFLAGS=-m32 CC="gcc -m32" WINDRES="windres --use-temp-file -F pe-i386"
+set FLAGS=CXXFLAGS=-Wno-attributes -j %NUMBER_OF_PROCESSORS% CFLAGS=-m32 CPPFLAGS=-m32 LDFLAGS=-m32 CC="gcc -m32" WINDRES="windres --use-temp-file -F pe-i386"
 set COMPILER_VERSION=%MINGW_W64_VER%
 set COMPILER_NAME=mingw
 set COMPILER_ARCH=32
@@ -547,7 +547,7 @@ echo.
 set CFG=_x64
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
-set FLAGS=CXXFLAGS=-Wno-attributes USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=0 -j %NUMBER_OF_PROCESSORS%
+set FLAGS=CXXFLAGS=-Wno-attributes -j %NUMBER_OF_PROCESSORS%
 set COMPILER_VERSION=%MINGW_W64_64_VER%
 set COMPILER_NAME=mingw
 set COMPILER_ARCH=64
