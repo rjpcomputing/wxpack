@@ -46,6 +46,7 @@ set MINGW_W64_64_DIR=C:\GCC\MinGW-w64\4.8.1
 set MINGW_W64_64_VER=48
 
 set CPU=X86
+set CFG=
 
 if (%1) == () goto ERROR
 :: -- Check if user wants help --
@@ -796,10 +797,26 @@ goto END
 set WXBUILD_VERSION=
 set WXBUILD_APPNAME=
 set GCCDIR=
+set GCCVER=
 set GCC4DIR=
+set GCC4VER=
+set MINGW_W64_DIR=
+set MINGW_W64_VER=
+set MINGW_W64_64_DIR=
+set MINGW_W64_64_VER=
+set CPU=
+set CFG=
+set HOSTARCH=
+set CMD32=
+set CMD64=
+set BASEDIR=
+set INSTALLDIR=
 set MAKE=
 set MAKEFILE=
 set FLAGS=
-set CPU=
-set COMPILER_FLAGS=
+set COMPILER_VERSION=
+set COMPILER_NAME=
+set COMPILER_ARCH=
+set BAKE_FORMAT=
+set BAKE_OPTIONS_FILE=
 ENDLOCAL
