@@ -1,7 +1,7 @@
 @echo off
 ::**************************************************************************
 :: File:           wxBuild_wxWidgets.bat
-:: Version:        1.15
+:: Version:        1.16
 :: Name:           RJP Computing - modified for 64-bit VS compilation
 :: Date:           09/03/2009
 :: Description:    Build wxWidgets with the MinGW/Visual C++.
@@ -27,9 +27,10 @@
 ::                 v1.13 - Added support for VC 12.0 and wxWidgets 3.0 and MinGW4-w64
 ::                 v1.14 - Added support for VC 14.0 and external 3rd party libraries
 ::                 v1.15 - Added support for VC 14.1
+::                 v1.16 - Added support for VC 14.2
 ::**************************************************************************
 SETLOCAL
-set WXBUILD_VERSION=1.15
+set WXBUILD_VERSION=1.16
 set WXBUILD_APPNAME=wxBuild_wxWidgets
 :: MinGW Gcc install location. This must match your systems configuration.
 set GCCDIR=C:\MinGW
@@ -84,6 +85,10 @@ if %1 == VC141          goto SETUP_VC141_BUILD_ENVIRONMENT
 if %1 == vc141          goto SETUP_VC141_BUILD_ENVIRONMENT
 if %1 == VC141_64       goto SETUP_VC141_64_BUILD_ENVIRONMENT
 if %1 == vc141_64       goto SETUP_VC141_64_BUILD_ENVIRONMENT
+if %1 == VC142          goto SETUP_VC142_BUILD_ENVIRONMENT
+if %1 == vc142          goto SETUP_VC142_BUILD_ENVIRONMENT
+if %1 == VC142_64       goto SETUP_VC142_64_BUILD_ENVIRONMENT
+if %1 == vc142_64       goto SETUP_VC142_64_BUILD_ENVIRONMENT
 if %1 == MINGW          goto SETUP_GCC_BUILD_ENVIRONMENT
 if %1 == mingw          goto SETUP_GCC_BUILD_ENVIRONMENT
 if %1 == MINGW4         goto SETUP_GCC4_BUILD_ENVIRONMENT
@@ -422,6 +427,66 @@ set BAKE_FORMAT=msvc
 set BAKE_OPTIONS_FILE=config.vc
 goto START
 
+:SETUP_VC142_BUILD_ENVIRONMENT
+:: Add the VS 2019 includes.
+echo Setting environment for Visual C++ 14.2...
+echo.
+set BASEDIR=%ProgramFiles(x86)%
+if %PROCESSOR_ARCHITECTURE% == x86 set BASEDIR=%ProgramFiles%
+for /f "usebackq tokens=*" %%i in (`"%BASEDIR%\Microsoft Visual Studio\Installer\vswhere.exe" -version 16 -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+  set INSTALLDIR=%%i
+)
+if not exist "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" (
+  echo ERROR OCCURED!
+  echo Compiler not found.
+  goto END
+)
+call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.2 -arch=x86
+set INCLUDE=%WXWIN%\include;%INCLUDE%
+:: -- Setup the make executable and the actual makefile name --
+set MAKE=nmake
+set MAKEFILE=makefile.vc
+set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set COMPILER_VERSION=142
+set COMPILER_NAME=vs2019
+set COMPILER_ARCH=32
+set BAKE_FORMAT=msvc
+set BAKE_OPTIONS_FILE=config.vc
+goto START
+
+:SETUP_VC142_64_BUILD_ENVIRONMENT
+:: Add the VS 2019 64-bit includes.
+echo Setting environment for Visual C++ 14.2 64-bit...
+echo.
+set CPU=AMD64
+set HOSTARCH=x86
+echo Determining Processor Architecture for VC142 64-bit Build.
+if %PROCESSOR_ARCHITECTURE% == AMD64 set HOSTARCH=amd64
+echo Determined %HOSTARCH%
+echo.
+set BASEDIR=%ProgramFiles(x86)%
+if %PROCESSOR_ARCHITECTURE% == x86 set BASEDIR=%ProgramFiles%
+for /f "usebackq tokens=*" %%i in (`"%BASEDIR%\Microsoft Visual Studio\Installer\vswhere.exe" -version 16 -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+  set INSTALLDIR=%%i
+)
+if not exist "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" (
+  echo ERROR OCCURED!
+  echo Compiler not found.
+  goto END
+)
+call "%INSTALLDIR%\Common7\Tools\vsdevcmd.bat" -no_logo -vcvars_ver=14.2 -arch=amd64 -host_arch=%HOSTARCH%
+set INCLUDE=%WXWIN%\include;%INCLUDE%
+:: -- Setup the make executable and the actual makefile name --
+set MAKE=nmake
+set MAKEFILE=makefile.vc
+set FLAGS=USE_ODBC=1 USE_OPENGL=1 USE_QA=1 USE_GDIPLUS=1 CXXFLAGS=/DNEED_PBT_H=0
+set COMPILER_VERSION=142
+set COMPILER_NAME=vs2019
+set COMPILER_ARCH=64
+set BAKE_FORMAT=msvc
+set BAKE_OPTIONS_FILE=config.vc
+goto START
+
 :SETUP_GCC_BUILD_ENVIRONMENT
 echo Assuming that GCC has been installed to:
 echo   %GCCDIR%
@@ -697,6 +762,8 @@ echo           VC140         = Visual C++ 14.0
 echo           VC140_64      = Visual C++ 14.0 64-bit
 echo           VC141         = Visual C++ 14.1
 echo           VC141_64      = Visual C++ 14.1 64-bit
+echo           VC142         = Visual C++ 14.2
+echo           VC142_64      = Visual C++ 14.2 64-bit
 echo.
 echo      BuildTarget Options:
 echo           LIB   = Builds all the static library targets.
