@@ -704,6 +704,10 @@ goto END
 echo Compiling utils lib debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -716,6 +720,10 @@ goto END
 echo Compiling utils lib release Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -728,6 +736,10 @@ goto END
 echo Compiling utils lib debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -740,6 +752,10 @@ goto END
 echo Compiling utils lib release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -752,6 +768,10 @@ goto END
 echo Compiling utils dll debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -764,6 +784,10 @@ goto END
 echo Compiling utils dll release Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -776,6 +800,10 @@ goto END
 echo Compiling utils dll debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -788,6 +816,10 @@ goto END
 echo Compiling utils dll release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -800,6 +832,10 @@ goto END
 echo Compiling samples lib debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -812,6 +848,10 @@ goto END
 echo Compiling samples lib release Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -824,6 +864,10 @@ goto END
 echo Compiling samples lib debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -836,6 +880,10 @@ goto END
 echo Compiling samples lib release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -848,6 +896,10 @@ goto END
 echo Compiling samples dll debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -860,6 +912,10 @@ goto END
 echo Compiling samples dll release Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -872,6 +928,10 @@ goto END
 echo Compiling samples dll debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -884,6 +944,10 @@ goto END
 echo Compiling samples dll release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -908,6 +972,12 @@ goto SHOW_USAGE
 echo.
 echo ERROR OCCURED!
 echo Unsupported compiler. %1 is not an available compiler option.
+goto SHOW_USAGE
+
+:WRONGTARGET
+echo.
+echo ERROR OCCURED!
+echo The command line parameter was %4. This is not an available target.
 goto SHOW_USAGE
 
 :SHOW_USAGE
