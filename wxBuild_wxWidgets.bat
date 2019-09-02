@@ -30,7 +30,7 @@
 ::                 v1.16 - Added support for VC 14.2
 ::                 v1.17 - Added support to build utils and samples
 ::**************************************************************************
-SETLOCAL
+setlocal
 set WXBUILD_VERSION=1.17
 set WXBUILD_APPNAME=wxBuild_wxWidgets
 :: MinGW Gcc install location. This must match your systems configuration.
@@ -573,7 +573,7 @@ goto WRONGBUILD
 :SPECIFIC_BUILD
 echo Specific mode...
 echo.
-IF (%3) == () goto ERROR
+if (%3) == () goto ERROR
 goto %3
 
 :ALL_BUILD
@@ -1081,4 +1081,4 @@ set COMPILER_ARCH=
 set BAKE_FORMAT=
 set BAKE_OPTIONS_FILE=
 set OLDDIR=
-ENDLOCAL
+endlocal
