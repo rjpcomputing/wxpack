@@ -566,11 +566,11 @@ if %2 == DLL   goto DLL_BUILD_UNICODE
 if %2 == dll   goto DLL_BUILD_UNICODE
 if %2 == ALL   goto ALL_BUILD
 if %2 == all   goto ALL_BUILD
-if %2 == NULL  goto SECIFIC_BUILD
-if %2 == null  goto SECIFIC_BUILD
-goto WRONGPARAM
+if %2 == NULL  goto SPECIFIC_BUILD
+if %2 == null  goto SPECIFIC_BUILD
+goto WRONGBUILD
 
-:SECIFIC_BUILD
+:SPECIFIC_BUILD
 echo Specific mode...
 echo.
 IF (%3) == () goto ERROR
@@ -962,16 +962,16 @@ echo ERROR OCCURED!
 echo Not enough command line parameters.
 goto SHOW_USAGE
 
-:WRONGPARAM
-echo.
-echo ERROR OCCURED!
-echo The command line parameters was %1. This is not an available option.
-goto SHOW_USAGE
-
 :COMPILER_ERROR
 echo.
 echo ERROR OCCURED!
 echo Unsupported compiler. %1 is not an available compiler option.
+goto SHOW_USAGE
+
+:WRONGBUILD
+echo.
+echo ERROR OCCURED!
+echo The command line parameter was %2. This is not an available build option.
 goto SHOW_USAGE
 
 :WRONGTARGET
@@ -983,9 +983,10 @@ goto SHOW_USAGE
 :SHOW_USAGE
 echo.
 echo %WXBUILD_APPNAME% v%WXBUILD_VERSION%
-echo     Build wxWidgets with the MinGW/Visual C++ Tool chains.
+echo      Build wxWidgets with the MinGW/Visual C++ Tool Chains.
 echo.
-echo Usage: "wxBuild_wxWidgets.bat <Compiler{MINGW*|VC*}> <BuildTarget{LIB|DLL|ALL|NULL}> [Specific Option]"
+echo Usage:
+echo      wxBuild_wxWidgets.bat ^<Compiler {MINGW*^|VC*}^> ^<BuildTarget {LIB^|DLL^|ALL^|NULL}^> [Specific Option] [Specific Target]
 goto SHOW_OPTIONS
 
 :SHOW_OPTIONS
@@ -1038,6 +1039,9 @@ echo           SAMPLES_LIB_DEBUG_MONO_UNICODE, SAMPLES_LIB_RELEASE_MONO_UNICODE,
 echo.
 echo           SAMPLES_DLL_DEBUG_UNICODE, SAMPLES_DLL_RELEASE_UNICODE,
 echo           SAMPLES_DLL_DEBUG_MONO_UNICODE, SAMPLES_DLL_RELEASE_MONO_UNICODE
+echo.
+echo      Specific Target (Used with NULL and UTILS_* or SAMPLES_*):
+echo           Directory of the single utility or sample to build
 echo.
 echo      Examples:
 echo           wxBuild_default.bat MINGW ALL
