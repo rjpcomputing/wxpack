@@ -1,7 +1,7 @@
 @echo off
 ::**************************************************************************
 :: File:           wxBuild_wxWidgets.bat
-:: Version:        1.16
+:: Version:        1.17
 :: Name:           RJP Computing - modified for 64-bit VS compilation
 :: Date:           09/03/2009
 :: Description:    Build wxWidgets with the MinGW/Visual C++.
@@ -28,9 +28,10 @@
 ::                 v1.14 - Added support for VC 14.0 and external 3rd party libraries
 ::                 v1.15 - Added support for VC 14.1
 ::                 v1.16 - Added support for VC 14.2
+::                 v1.17 - Added support to build utils and samples
 ::**************************************************************************
 SETLOCAL
-set WXBUILD_VERSION=1.16
+set WXBUILD_VERSION=1.17
 set WXBUILD_APPNAME=wxBuild_wxWidgets
 :: MinGW Gcc install location. This must match your systems configuration.
 set GCCDIR=C:\MinGW
@@ -609,7 +610,6 @@ if %2 == null goto END
 if %2 == NULL goto END
 goto LIB_BUILD_MONO_UNICODE
 
-::_____________________________________________________________________________
 :LIB_BUILD_MONO_UNICODE
 echo Building Monolithic Unicode lib's...
 echo.
@@ -700,6 +700,198 @@ if %2 == null goto END
 if %2 == NULL goto END
 goto END
 
+:UTILS_LIB_DEBUG_UNICODE
+echo Compiling utils lib debug Unicode...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_LIB_RELEASE_UNICODE
+echo Compiling utils lib release Unicode...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_LIB_DEBUG_MONO_UNICODE
+echo Compiling utils lib debug Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_LIB_RELEASE_MONO_UNICODE
+echo Compiling utils lib release Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_DLL_DEBUG_UNICODE
+echo Compiling utils dll debug Unicode...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_DLL_RELEASE_UNICODE
+echo Compiling utils dll release Unicode...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_DLL_DEBUG_MONO_UNICODE
+echo Compiling utils dll debug Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:UTILS_DLL_RELEASE_MONO_UNICODE
+echo Compiling utils dll release Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\utils
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_LIB_DEBUG_UNICODE
+echo Compiling samples lib debug Unicode...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_LIB_RELEASE_UNICODE
+echo Compiling samples lib release Unicode...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_LIB_DEBUG_MONO_UNICODE
+echo Compiling samples lib debug Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_LIB_RELEASE_MONO_UNICODE
+echo Compiling samples lib release Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_DLL_DEBUG_UNICODE
+echo Compiling samples dll debug Unicode...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_DLL_RELEASE_UNICODE
+echo Compiling samples dll release Unicode...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_DLL_DEBUG_MONO_UNICODE
+echo Compiling samples dll debug Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
+:SAMPLES_DLL_RELEASE_MONO_UNICODE
+echo Compiling samples dll release Unicode monolithic...
+set OLDDIR=%CD%
+cd ..\..\samples
+:: Calling the compilers  make
+%MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
+cd /D "%OLDDIR%"
+
+echo.
+:: This can only be used in specific mode.
+goto END
+
 :ERROR
 echo.
 echo ERROR OCCURED!
@@ -755,8 +947,8 @@ echo.
 echo      BuildTarget Options:
 echo           LIB   = Builds all the static library targets.
 echo           DLL   = Builds all the dynamic library targets.
-echo           ALL   = Builds all the targets (Recommended).
-echo           NULL  = Used so that you can specify a specific target. (See below)
+echo           ALL   = Builds all the library targets (Recommended).
+echo           NULL  = Used to build a specific target only (See below).
 echo.
 echo      Specific Options (Used with NULL):
 echo           LIB_DEBUG_UNICODE, LIB_RELEASE_UNICODE,
@@ -765,15 +957,27 @@ echo.
 echo           DLL_DEBUG_UNICODE, DLL_RELEASE_UNICODE,
 echo           DLL_DEBUG_MONO_UNICODE, DLL_RELEASE_MONO_UNICODE
 echo.
+echo           UTILS_LIB_DEBUG_UNICODE, UTILS_LIB_RELEASE_UNICODE,
+echo           UTILS_LIB_DEBUG_MONO_UNICODE, UTILS_LIB_RELEASE_MONO_UNICODE,
+echo.
+echo           UTILS_DLL_DEBUG_UNICODE, UTILS_DLL_RELEASE_UNICODE,
+echo           UTILS_DLL_DEBUG_MONO_UNICODE, UTILS_DLL_RELEASE_MONO_UNICODE
+echo.
+echo           SAMPLES_LIB_DEBUG_UNICODE, SAMPLES_LIB_RELEASE_UNICODE,
+echo           SAMPLES_LIB_DEBUG_MONO_UNICODE, SAMPLES_LIB_RELEASE_MONO_UNICODE,
+echo.
+echo           SAMPLES_DLL_DEBUG_UNICODE, SAMPLES_DLL_RELEASE_UNICODE,
+echo           SAMPLES_DLL_DEBUG_MONO_UNICODE, SAMPLES_DLL_RELEASE_MONO_UNICODE
+echo.
 echo      Examples:
 echo           wxBuild_default.bat MINGW ALL
-echo             Builds all targets with MinGW Gcc Compiler.
+echo                Builds all targets with MinGW Gcc Compiler.
 echo.
 echo           wxBuild_default.bat VCTK LIB
-echo             Builds just the static libraries with Visual C++ 7.1 Toolkit.
+echo                Builds just the static libraries with Visual C++ 7.1 Toolkit.
 echo.
 echo           wxBuild_default.bat VCTK NULL LIB_RELEASE_UNICODE
-echo             Builds only the release static library with Visual C++ 7.1 Toolkit
+echo                Builds only the release static library with Visual C++ 7.1 Toolkit
 goto END
 
 :END
@@ -802,4 +1006,5 @@ set COMPILER_NAME=
 set COMPILER_ARCH=
 set BAKE_FORMAT=
 set BAKE_OPTIONS_FILE=
+set OLDDIR=
 ENDLOCAL
