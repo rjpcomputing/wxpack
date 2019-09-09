@@ -10,7 +10,6 @@ goto CONFIGURE
 :CONFIGURE
 	echo Copy the setup configuration into the source tree
 	copy setup.h /Y wxwidgets\include\wx\msw
-	copy setup.h /Y wxwidgets\include\wx
 
 	echo Copy the documentation into the install tree
 	xcopy /Y /I /S support wxwidgets
