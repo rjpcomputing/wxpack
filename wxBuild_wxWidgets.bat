@@ -1,7 +1,7 @@
 @echo off
 ::**************************************************************************
 :: File:           wxBuild_wxWidgets.bat
-:: Version:        1.17
+:: Version:        1.18
 :: Name:           RJP Computing - modified for 64-bit VS compilation
 :: Date:           09/03/2009
 :: Description:    Build wxWidgets with the MinGW/Visual C++.
@@ -29,9 +29,10 @@
 ::                 v1.15 - Added support for VC 14.1
 ::                 v1.16 - Added support for VC 14.2
 ::                 v1.17 - Added support to build utils and samples
+::                 v1.18 - Added support to build only a single utility or sample
 ::**************************************************************************
-SETLOCAL
-set WXBUILD_VERSION=1.17
+setlocal
+set WXBUILD_VERSION=1.18
 set WXBUILD_APPNAME=wxBuild_wxWidgets
 :: MinGW Gcc install location. This must match your systems configuration.
 set GCCDIR=C:\MinGW
@@ -566,14 +567,14 @@ if %2 == DLL   goto DLL_BUILD_UNICODE
 if %2 == dll   goto DLL_BUILD_UNICODE
 if %2 == ALL   goto ALL_BUILD
 if %2 == all   goto ALL_BUILD
-if %2 == NULL  goto SECIFIC_BUILD
-if %2 == null  goto SECIFIC_BUILD
-goto WRONGPARAM
+if %2 == NULL  goto SPECIFIC_BUILD
+if %2 == null  goto SPECIFIC_BUILD
+goto WRONGBUILD
 
-:SECIFIC_BUILD
+:SPECIFIC_BUILD
 echo Specific mode...
 echo.
-IF (%3) == () goto ERROR
+if (%3) == () goto ERROR
 goto %3
 
 :ALL_BUILD
@@ -704,6 +705,10 @@ goto END
 echo Compiling utils lib debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -716,6 +721,10 @@ goto END
 echo Compiling utils lib release Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -728,6 +737,10 @@ goto END
 echo Compiling utils lib debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -740,6 +753,10 @@ goto END
 echo Compiling utils lib release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -752,6 +769,10 @@ goto END
 echo Compiling utils dll debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -764,6 +785,10 @@ goto END
 echo Compiling utils dll release Unicode...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -776,6 +801,10 @@ goto END
 echo Compiling utils dll debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -788,6 +817,10 @@ goto END
 echo Compiling utils dll release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\utils
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -800,6 +833,10 @@ goto END
 echo Compiling samples lib debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -812,6 +849,10 @@ goto END
 echo Compiling samples lib release Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -824,6 +865,10 @@ goto END
 echo Compiling samples lib debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -836,6 +881,10 @@ goto END
 echo Compiling samples lib release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=0 UNICODE=1 OFFICIAL_BUILD=0 RUNTIME_LIBS=static TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -848,6 +897,10 @@ goto END
 echo Compiling samples dll debug Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -860,6 +913,10 @@ goto END
 echo Compiling samples dll release Unicode...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -872,6 +929,10 @@ goto END
 echo Compiling samples dll debug Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=debug MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -884,6 +945,10 @@ goto END
 echo Compiling samples dll release Unicode monolithic...
 set OLDDIR=%CD%
 cd ..\..\samples
+if not (%4) == () (
+  cd "%4"
+  if ERRORLEVEL 1 goto WRONGTARGET
+)
 :: Calling the compilers  make
 %MAKE% -f %MAKEFILE%  BUILD=release MONOLITHIC=1 SHARED=1 UNICODE=1 OFFICIAL_BUILD=0 TARGET_CPU=%CPU% COMPILER_VERSION=%COMPILER_VERSION% %FLAGS%
 cd /D "%OLDDIR%"
@@ -898,24 +963,31 @@ echo ERROR OCCURED!
 echo Not enough command line parameters.
 goto SHOW_USAGE
 
-:WRONGPARAM
-echo.
-echo ERROR OCCURED!
-echo The command line parameters was %1. This is not an available option.
-goto SHOW_USAGE
-
 :COMPILER_ERROR
 echo.
 echo ERROR OCCURED!
 echo Unsupported compiler. %1 is not an available compiler option.
 goto SHOW_USAGE
 
+:WRONGBUILD
+echo.
+echo ERROR OCCURED!
+echo The command line parameter was %2. This is not an available build option.
+goto SHOW_USAGE
+
+:WRONGTARGET
+echo.
+echo ERROR OCCURED!
+echo The command line parameter was %4. This is not an available target.
+goto SHOW_USAGE
+
 :SHOW_USAGE
 echo.
 echo %WXBUILD_APPNAME% v%WXBUILD_VERSION%
-echo     Build wxWidgets with the MinGW/Visual C++ Tool chains.
+echo      Build wxWidgets with the MinGW/Visual C++ Tool Chains.
 echo.
-echo Usage: "wxBuild_wxWidgets.bat <Compiler{MINGW*|VC*}> <BuildTarget{LIB|DLL|ALL|NULL}> [Specific Option]"
+echo Usage:
+echo      wxBuild_wxWidgets.bat ^<Compiler {MINGW*^|VC*}^> ^<BuildTarget {LIB^|DLL^|ALL^|NULL}^> [Specific Option] [Specific Target]
 goto SHOW_OPTIONS
 
 :SHOW_OPTIONS
@@ -969,6 +1041,9 @@ echo.
 echo           SAMPLES_DLL_DEBUG_UNICODE, SAMPLES_DLL_RELEASE_UNICODE,
 echo           SAMPLES_DLL_DEBUG_MONO_UNICODE, SAMPLES_DLL_RELEASE_MONO_UNICODE
 echo.
+echo      Specific Target (Used with NULL and UTILS_* or SAMPLES_*):
+echo           Directory of the single utility or sample to build
+echo.
 echo      Examples:
 echo           wxBuild_default.bat MINGW ALL
 echo                Builds all targets with MinGW Gcc Compiler.
@@ -1007,4 +1082,4 @@ set COMPILER_ARCH=
 set BAKE_FORMAT=
 set BAKE_OPTIONS_FILE=
 set OLDDIR=
-ENDLOCAL
+endlocal
