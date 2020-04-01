@@ -546,11 +546,13 @@ if "%OS%" == "Windows_NT" set PATH=%MINGW_W64_64_DIR%\BIN;%PATH%
 if "%OS%" == "" set PATH="%MINGW_W64_64_DIR%\BIN";"%PATH%"
 echo.
 :: -- Setup the make executable and the actual makefile name --
-set CFG=_x64
+:: The configuration postfix gets added at the wrong position to match the directory structure
+:: of the official releases, modify the compiler version instead, this produces the correct output
+::set CFG=_x64
 set MAKE=mingw32-make.exe
 set MAKEFILE=makefile.gcc
 set FLAGS=CXXFLAGS=-Wno-attributes -j %NUMBER_OF_PROCESSORS%
-set COMPILER_VERSION=%MINGW_W64_64_VER%
+set COMPILER_VERSION=%MINGW_W64_64_VER%_x64
 set COMPILER_NAME=mingw
 set COMPILER_ARCH=64
 set BAKE_FORMAT=mingw
