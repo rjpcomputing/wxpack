@@ -30,9 +30,11 @@
 ::                 v1.16 - Added support for VC 14.2
 ::                 v1.17 - Added support to build utils and samples
 ::                 v1.18 - Added support to build only a single utility or sample
+::                 v1.19 - Modified MinGW-w64 64-bit output directories
+::                         to match official releases
 ::**************************************************************************
 setlocal
-set WXBUILD_VERSION=1.18
+set WXBUILD_VERSION=1.19
 set WXBUILD_APPNAME=wxBuild_wxWidgets
 :: MinGW Gcc install location. This must match your systems configuration.
 set GCCDIR=C:\MinGW
