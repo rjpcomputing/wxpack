@@ -29,14 +29,14 @@ goto CONFIGURE
 	::mkdir wxwidgets\lib\gcc81_lib\mswu\wx
 	::mkdir wxwidgets\lib\gcc81_lib\mswud\wx
 	
-	::mkdir wxwidgets\lib\gcc81_dll_x64\msw\wx
-	::mkdir wxwidgets\lib\gcc81_dll_x64\mswd\wx
-	::mkdir wxwidgets\lib\gcc81_dll_x64\mswu\wx
-	::mkdir wxwidgets\lib\gcc81_dll_x64\mswud\wx
-	::mkdir wxwidgets\lib\gcc81_lib_x64\msw\wx
-	::mkdir wxwidgets\lib\gcc81_lib_x64\mswd\wx
-	::mkdir wxwidgets\lib\gcc81_lib_x64\mswu\wx
-	::mkdir wxwidgets\lib\gcc81_lib_x64\mswud\wx
+	::mkdir wxwidgets\lib\gcc81_x64_dll\msw\wx
+	::mkdir wxwidgets\lib\gcc81_x64_dll\mswd\wx
+	::mkdir wxwidgets\lib\gcc81_x64_dll\mswu\wx
+	::mkdir wxwidgets\lib\gcc81_x64_dll\mswud\wx
+	::mkdir wxwidgets\lib\gcc81_x64_lib\msw\wx
+	::mkdir wxwidgets\lib\gcc81_x64_lib\mswd\wx
+	::mkdir wxwidgets\lib\gcc81_x64_lib\mswu\wx
+	::mkdir wxwidgets\lib\gcc81_x64_lib\mswud\wx
 
 	set INNOSETUPPATH=
 	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"

@@ -98,13 +98,13 @@ Name: wx\vc\120\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disableno
 ;Name: wx\vc\100\x64\vclib; Description: Lib's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010 compact; ExtraDiskSpaceRequired: 978531000
 ;Name: wx\vc\100\x64\vcdll; Description: Dll's; Flags: dontinheritcheck disablenouninstallwarning; Types: full vc vc2010; ExtraDiskSpaceRequired: 441765000
 ;Name: wx\gcc; Description: MinGW4-w64; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
-;Name: wx\gcc\48; Description: 4.8; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
-;Name: wx\gcc\48\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
-;Name: wx\gcc\48\x86\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 615200000
-;Name: wx\gcc\48\x86\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 585001000
-;Name: wx\gcc\48\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc gcc64
-;Name: wx\gcc\48\x64\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 741658000
-;Name: wx\gcc\48\x64\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 612893000
+;Name: wx\gcc\81; Description: 8.1; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
+;Name: wx\gcc\81\x86; Description: 32-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc
+;Name: wx\gcc\81\x86\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 615200000
+;Name: wx\gcc\81\x86\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc; ExtraDiskSpaceRequired: 585001000
+;Name: wx\gcc\81\x64; Description: 64-bit; Flags: dontinheritcheck disablenouninstallwarning; Types: full gcc gcc64
+;Name: wx\gcc\81\x64\gcclib; Description: Lib's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 741658000
+;Name: wx\gcc\81\x64\gccdll; Description: Dll's; Flags: checkablealone disablenouninstallwarning; Types: full gcc gcc64; ExtraDiskSpaceRequired: 612893000
 
 [Types]
 Name: full; Description: Full Installation
