@@ -38,12 +38,12 @@ goto CONFIGURE
 	::mkdir wxwidgets\lib\gcc81_x64_lib\mswu\wx
 	::mkdir wxwidgets\lib\gcc81_x64_lib\mswud\wx
 
-	echo Locate Inno Setup
+	echo Locate Inno Setup 6
 	set INNOSETUPPATH=
-	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"
-	if exist "%ProgramFiles(x86)%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles(x86)%\Inno Setup 5\iscc.exe"
+	if exist "%ProgramFiles%\Inno Setup 6\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 6\iscc.exe"
+	if exist "%ProgramFiles(x86)%\Inno Setup 6\iscc.exe" set INNOSETUPPATH="%ProgramFiles(x86)%\Inno Setup 6\iscc.exe"
 	IF (%INNOSETUPPATH%) == () goto ERROR
-	echo InnoSetup 5 detected at '%INNOSETUPPATH%'
+	echo InnoSetup 6 detected at '%INNOSETUPPATH%'
 
 	::echo Get wxFormBuilders source
 	::git clone https://github.com/wxFormBuilder/wxFormBuilder.git wxformbuilder
