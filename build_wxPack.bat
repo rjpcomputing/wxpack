@@ -38,6 +38,7 @@ goto CONFIGURE
 	::mkdir wxwidgets\lib\gcc81_x64_lib\mswu\wx
 	::mkdir wxwidgets\lib\gcc81_x64_lib\mswud\wx
 
+	echo Locate Inno Setup
 	set INNOSETUPPATH=
 	if exist "%ProgramFiles%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles%\Inno Setup 5\iscc.exe"
 	if exist "%ProgramFiles(x86)%\Inno Setup 5\iscc.exe" set INNOSETUPPATH="%ProgramFiles(x86)%\Inno Setup 5\iscc.exe"
