@@ -65,10 +65,10 @@ goto BUILD_WXCOMPILED
 	::if ERRORLEVEL 1 goto ERROR
 	::call wxBuild_wxWidgets.bat VC100_64 ALL
 	::if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC120 ALL
-	if ERRORLEVEL 1 goto ERROR
-	call wxBuild_wxWidgets.bat VC120_64 ALL
-	if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC120 ALL
+	::if ERRORLEVEL 1 goto ERROR
+	::call wxBuild_wxWidgets.bat VC120_64 ALL
+	::if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat VC140 ALL
 	if ERRORLEVEL 1 goto ERROR
 	call wxBuild_wxWidgets.bat VC140_64 ALL
@@ -90,57 +90,58 @@ goto BUILD_WXCOMPILED
 	echo Done building wxCompiled. Current Directory: %CD%
 goto BUILD_WXPACK
 
-:BUILD_WXFORMBUILDER
-	echo -- WXFORMBUILDER ------------------------------------------------------
-	echo --
-	echo Starting to build wxFormBuilder from '%CD%'
+::We don't need to build this anymore.  See builds here: https://github.com/wxFormBuilder/wxFormBuilder/releases
+@REM :BUILD_WXFORMBUILDER
+@REM 	echo -- WXFORMBUILDER ------------------------------------------------------
+@REM 	echo --
+@REM 	echo Starting to build wxFormBuilder from '%CD%'
 
-	:: MinGW Gcc install location. This must match you systems configuration.
-	set GCCDIR=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32
-	set CC=gcc
-	set CXX=g++
+@REM 	:: MinGW Gcc install location. This must match you systems configuration.
+@REM 	set GCCDIR=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32
+@REM 	set CC=gcc
+@REM 	set CXX=g++
 
-	echo Assuming that MinGW has been installed to:
-	echo   %GCCDIR%
-	echo.
-	:: -- Add MinGW directory to the systems PATH --
-	echo Setting environment for MinGW Gcc...
-	if "%OS%" == "Windows_NT" set PATH=%GCCDIR%\BIN;%PATH%
-	if "%OS%" == "" set PATH="%GCCDIR%\BIN";"%PATH%"
-	echo.
+@REM 	echo Assuming that MinGW has been installed to:
+@REM 	echo   %GCCDIR%
+@REM 	echo.
+@REM 	:: -- Add MinGW directory to the systems PATH --
+@REM 	echo Setting environment for MinGW Gcc...
+@REM 	if "%OS%" == "Windows_NT" set PATH=%GCCDIR%\BIN;%PATH%
+@REM 	if "%OS%" == "" set PATH="%GCCDIR%\BIN";"%PATH%"
+@REM 	echo.
 
-	echo Change to wxFormBuilder build directory
-	cd wxformbuilder
+@REM 	echo Change to wxFormBuilder build directory
+@REM 	cd wxformbuilder
 
-	echo Initializing Git submodules
-	git submodule init
-	git submodule update
+@REM 	echo Initializing Git submodules
+@REM 	git submodule init
+@REM 	git submodule update
 
-	echo Copying over wxWidgets dlls from %WXWIN%
-	copy %WXWIN%\lib\gcc81_dll\wxmsw30u_gcc81.dll /Y output\
-	echo Copying over MinGW dlls
+@REM 	echo Copying over wxWidgets dlls from %WXWIN%
+@REM 	copy %WXWIN%\lib\gcc81_dll\wxmsw30u_gcc81.dll /Y output\
+@REM 	echo Copying over MinGW dlls
 
-	echo Create the build files.
-	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64 --compiler-version=81
-	if ERRORLEVEL 1 goto ERROR
+@REM 	echo Create the build files.
+@REM 	call create_build_files4.bat --wx-version=3.0 --compiler=mingw64 --compiler-version=81
+@REM 	if ERRORLEVEL 1 goto ERROR
 
-	echo Change to build directory.
-	cd build\3.0\gmake
+@REM 	echo Change to build directory.
+@REM 	cd build\3.0\gmake
 
-	echo Building wxFormBuilder.
-	call mingw32-make.exe config=release
-	if ERRORLEVEL 1 goto ERROR
+@REM 	echo Building wxFormBuilder.
+@REM 	call mingw32-make.exe config=release
+@REM 	if ERRORLEVEL 1 goto ERROR
 
-	echo Change to installer directory.
-	cd ..\..\..\install\windows
+@REM 	echo Change to installer directory.
+@REM 	cd ..\..\..\install\windows
 
-	echo Building wxFormBuilder installer. Current Directory: %CD%
-	call %INNOSETUPPATH% /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
-	if ERRORLEVEL 1 goto ERROR
+@REM 	echo Building wxFormBuilder installer. Current Directory: %CD%
+@REM 	call %INNOSETUPPATH% /Q /F"wxFormBuilder-setup" "wxFormBuilder.iss"
+@REM 	if ERRORLEVEL 1 goto ERROR
 
-	cd ..\..\..
-	echo Done building wxFormBuilder. Current Directory: %CD%
-goto BUILD_WXPACK
+@REM 	cd ..\..\..
+@REM 	echo Done building wxFormBuilder. Current Directory: %CD%
+@REM goto BUILD_WXPACK
 
 :BUILD_WXPACK
 	echo -- WXPACK -------------------------------------------------------------
