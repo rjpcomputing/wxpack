@@ -6,15 +6,15 @@
 ; License:     wxWindows license
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define wxMajorVersion "3.0"
+#define wxMajorVersion "3.2"
 #define wxMinorVersion "2"
-#define MyAppVer "3.0.4.01"
+#define MyAppVer "3.2.4.01"
 #define MyAppName "wxWidgets"
-#define MyAppVerName "wxWidgets Compiled 3.0.4"
+#define MyAppVerName "wxWidgets Compiled 3.2.4"
 #define MyAppPublisher "Julian Smart"
 #define MyAppURL "http://www.wxwidgets.org/"
 #define wxWidgetsGUID "C8088AE5-A62A-4C29-A3D5-E5E258B517DE"
-#define AppMinVer "3.0.4.01
+#define AppMinVer "3.2.4.01
 
 [Setup]
 AppID={{C8088AE5-A62A-4C29-A3D5-E5E258B517DE}
